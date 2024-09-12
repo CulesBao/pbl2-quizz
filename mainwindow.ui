@@ -2,29 +2,478 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>869</width>
+    <height>579</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
+  <property name="maximumSize">
+   <size>
+    <width>869</width>
+    <height>579</height>
+   </size>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>25</height>
-    </rect>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>Quizz</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>0</y>
+      <width>901</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>901</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>901</width>
+      <height>591</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #f5f5f5;</string>
+    </property>
+    <widget class="QWidget" name="pageLogin">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>120</y>
+        <width>411</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
+      </property>
+      <property name="title">
+       <string>QIUZZ SYSTEM</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="layoutUsername">
+         <item>
+          <widget class="QLabel" name="lbUsername">
+           <property name="styleSheet">
+            <string notr="true">color: #333;
+font: 14px 'Arial';
+padding: 5px;</string>
+           </property>
+           <property name="text">
+            <string>Username:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtUsername">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 14px;
+        color: #333;
+    }
+    
+    /* Khi ô nhập liệu được chọn */
+    QLineEdit:focus {
+        border: 1px solid #4CAF50;
+    }</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutPassword">
+         <item>
+          <widget class="QLabel" name="lbPassword">
+           <property name="styleSheet">
+            <string notr="true">color: #333;
+font: 14px 'Arial';
+padding: 5px;</string>
+           </property>
+           <property name="text">
+            <string>Password:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtPassword">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 14px;
+        color: #333;
+    }
+    
+    /* Khi ô nhập liệu được chọn */
+    QLineEdit:focus {
+        border: 1px solid #4CAF50;
+    }</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnLogin">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+        background-color: #4CAF50;
+        color: white;
+        font: bold 14px 'Arial';
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    /* Khi di chuột qua nút đăng nhập */
+    QPushButton:hover {
+        background-color: #45a049;
+    }
+
+    /* Khi nhấn vào nút đăng nhập */
+    QPushButton:pressed {
+        background-color: #388E3C;
+    }</string>
+         </property>
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnRegister">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+        background-color: #0059ff;
+        color: white;
+        font: bold 14px 'Arial';
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    /* Khi di chuột qua nút đăng nhập */
+    QPushButton:hover {
+        background-color: #0037ff;
+    }
+
+    /* Khi nhấn vào nút đăng nhập */
+    QPushButton:pressed {
+        background-color: #2600ff;
+    }</string>
+         </property>
+         <property name="text">
+          <string>Register</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pageTeacherDashboard">
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>90</y>
+        <width>491</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
+      </property>
+      <property name="text">
+       <string>aaaaaaaaaaaaaaaaaaaa</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pageRegister">
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>130</y>
+        <width>411</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;</string>
+      </property>
+      <property name="title">
+       <string>QIUZZ SYSTEM</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="layoutFullname">
+         <item>
+          <widget class="QLabel" name="lbFullname">
+           <property name="styleSheet">
+            <string notr="true">color: #333;
+font: 14px 'Arial';
+padding: 5px;</string>
+           </property>
+           <property name="text">
+            <string>Full name:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtFullname">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 14px;
+        color: #333;
+    }
+    
+    /* Khi ô nhập liệu được chọn */
+    QLineEdit:focus {
+        border: 1px solid #4CAF50;
+    }</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutUsername_2">
+         <item>
+          <widget class="QLabel" name="lbUsername_2">
+           <property name="styleSheet">
+            <string notr="true">color: #333;
+font: 14px 'Arial';
+padding: 5px;</string>
+           </property>
+           <property name="text">
+            <string>Username:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtUsername_2">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 14px;
+        color: #333;
+    }
+    
+    /* Khi ô nhập liệu được chọn */
+    QLineEdit:focus {
+        border: 1px solid #4CAF50;
+    }</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutPassword_2">
+         <item>
+          <widget class="QLabel" name="lbPassword_2">
+           <property name="styleSheet">
+            <string notr="true">color: #333;
+font: 14px 'Arial';
+padding: 5px;</string>
+           </property>
+           <property name="text">
+            <string>Password:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtPassword_2">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 14px;
+        color: #333;
+    }
+    
+    /* Khi ô nhập liệu được chọn */
+    QLineEdit:focus {
+        border: 1px solid #4CAF50;
+    }</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutChoice">
+         <item>
+          <widget class="QLabel" name="lbChoice">
+           <property name="styleSheet">
+            <string notr="true">color: #333;
+font: 14px 'Arial';
+padding: 5px;</string>
+           </property>
+           <property name="text">
+            <string>Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbChoice">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 14px;
+        color: #333;
+    }
+    
+    /* Khi ô nhập liệu được chọn */
+    QLineEdit:focus {
+        border: 1px solid #4CAF50;
+    }</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>Student</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Teacher</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutButton">
+         <item>
+          <widget class="QPushButton" name="btnBack">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+        background-color: #fbfbff;
+        color: #27ff64;
+        font: bold 14px 'Arial';
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    /* Khi nhấn vào nút đăng nhập */
+    QPushButton:pressed {
+        background-color: #27ff64;
+		color: #fbfbff;
+    }</string>
+           </property>
+           <property name="text">
+            <string>Back to Login</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnRegister_2">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+        background-color: #0059ff;
+        color: white;
+        font: bold 14px 'Arial';
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    /* Khi di chuột qua nút đăng nhập */
+    QPushButton:hover {
+        background-color: #0037ff;
+    }
+
+    /* Khi nhấn vào nút đăng nhập */
+    QPushButton:pressed {
+        background-color: #2600ff;
+    }</string>
+           </property>
+           <property name="text">
+            <string>Register</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
