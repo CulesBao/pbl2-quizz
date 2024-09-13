@@ -2,5 +2,6 @@
     <qresource prefix="/images"/>
     <qresource prefix="/data">
         <file>teachers.txt</file>
+        <file>student.txt</file>
     </qresource>
 </RCC>

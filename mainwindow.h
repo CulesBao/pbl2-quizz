@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
-#include "teacherDashboardWidget.h"
 #include "teacher.h"
+#include "student.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -22,8 +22,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    TeacherDashboardWidget *teacherDashboard;
-    teacherManager manager;
+    teacherManager managerTeacher;
+    studentManager managerStudent;
 private slots:
     void login();
     void on_btnRegister_clicked();

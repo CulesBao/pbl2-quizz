@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "teacher.h"
+#include "student.h"
 #include <QMessageBox>
 
 using namespace std;
@@ -23,8 +24,7 @@ void MainWindow::login()
     std::string username = qUsername.toStdString();
     std::string password = qPassword.toStdString();
 
-    bool isOke = manager.login(username, password);
-    if (isOke) {
+    if (managerTeacher.login(username, password) or managerStudent.login(username, password)) {
         QMessageBox::information(this, "Login", "Login successful!");
         ui->stackedWidget->setCurrentIndex(1);
     } else {
@@ -56,7 +56,11 @@ void MainWindow::on_btnRegister_2_clicked()
     string password = qPassword.toStdString();
     string choice = qChoice.toStdString();
 
-    if (choice == "Teacher" && manager.registerTeacher(fullname, username, password)){
+    if (choice == "Teacher" && managerTeacher.registerTeacher(fullname, username, password)){
+        QMessageBox::information(this, "Register", "Register successful!");
+        ui->stackedWidget->setCurrentIndex(1);
+    }
+    else if (choice == "Student" && managerStudent.registerStudent(fullname, username, password)){
         QMessageBox::information(this, "Register", "Register successful!");
         ui->stackedWidget->setCurrentIndex(1);
     }
