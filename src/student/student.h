@@ -1,6 +1,8 @@
 #ifndef STUDENT_H
 #define STUDENT_H
     #include <bits/stdc++.h>
+    #include "../currentUser/currentUser.h"
+
     using namespace std;
 
     class student {
@@ -36,6 +38,6 @@
     public:
         studentManager();
         bool registerStudent(const string &fullname, const string &username, const string &password);
-        bool login(const string& username, const string& password);
+        bool login(const string& username, const string& password, currentUser& user);
     };
 #endif // STUDENT_H

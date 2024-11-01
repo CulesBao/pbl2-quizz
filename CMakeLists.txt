@@ -27,10 +27,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         img.qrc
-        teacher.h
-        teacher.cpp
-        student.h
-        student.cpp
+        src/teacher/teacher.h
+        src/teacher/teacher.cpp
+        src/student/student.h
+        src/student/student.cpp
+        src/currentUser/currentUser.cpp src/currentUser/currentUser.h
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET temp APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

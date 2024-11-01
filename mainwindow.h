@@ -3,12 +3,13 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
-#include "teacher.h"
-#include "student.h"
+#include "./src/teacher/teacher.h"
+#include "./src/student/student.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
+namespace Ui
+{
+    class MainWindow;
 }
 QT_END_NAMESPACE
 
@@ -27,8 +28,9 @@ private:
 private slots:
     void login();
     void on_btnRegister_clicked();
-    void on_pushButton_clicked();
     void on_btnRegister_2_clicked();
     void on_btnBack_clicked();
+    void on_btnLogin_clicked();
+    void on_btnLogoutTeacherDashboard_clicked();
 };
 #endif // MAINWINDOW_H

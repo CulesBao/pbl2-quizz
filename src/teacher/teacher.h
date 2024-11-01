@@ -2,6 +2,7 @@
 #define TEACHER_H
 
 #include <string>
+#include "../currentUser/currentUser.h"
 using namespace std;
 
 class teacher {
@@ -37,7 +38,7 @@ private:
 public:
     teacherManager();
     bool registerTeacher(const string &fullname, const string &username, const string &password);
-    bool login(const std::string& username, const std::string& password);
+    bool login(const std::string& username, const std::string& password, currentUser& user);
 };
 
 #endif // TEACHER_H

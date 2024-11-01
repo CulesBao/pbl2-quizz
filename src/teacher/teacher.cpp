@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include "../currentUser/currentUser.h"
 using namespace std;
 
 int teacherManager::idCounter = 0;
@@ -72,9 +73,10 @@ bool teacherManager::registerTeacher(const string &fullname, const string &usern
     return true;
 }
 
-bool teacherManager::login(const string& username, const string& password) {
+bool teacherManager::login(const string& username, const string& password, currentUser& user) {
     for (int i = 0; i < idCounter; i++) {
         if (teacherArray[i].getUsername() == username && teacherArray[i].getPassword() == password) {
+            user = currentUser(teacherArray[i].getId(), teacherArray[i].getUsername(), teacherArray[i].getPassword(),teacherArray[i].getName(), "teacher");
             return true;
         }
     }
@@ -82,7 +84,7 @@ bool teacherManager::login(const string& username, const string& password) {
 }
 
 void teacherManager::saveToFile() const {
-    ofstream outFile("G:\\DUT\\quizz\\teachers.txt");
+    ofstream outFile("G:\\DUT\\quizz\\src\\teacher\\teachers.txt");
     if (!outFile.is_open()) {
         return;
     }
@@ -98,7 +100,7 @@ void teacherManager::saveToFile() const {
 }
 
 void teacherManager::loadFromFile() {
-    ifstream inFile("G:\\DUT\\quizz\\teachers.txt");
+    ifstream inFile("G:\\DUT\\quizz\\src\teacher\teachers.txt");
     if (!inFile.is_open()) {
         return;
     }

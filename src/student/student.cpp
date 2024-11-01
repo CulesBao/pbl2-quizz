@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include "../currentUser/currentUser.h"
 using namespace std;
 
 int studentManager::idCounter = 0;
@@ -17,49 +18,64 @@ string student::getPassword() const { return password; }
 string student::getName() const { return name; }
 void student::setId(int id) { this->id = id; }
 
-studentManager::studentManager() {
+studentManager::studentManager()
+{
     loadFromFile();
 }
 
-bool studentManager::isUsernameUnique(const string& username) const {
-    for (int i = 0; i < idCounter; i++) {
-        if (studentArray[i].getUsername() == username) {
+bool studentManager::isUsernameUnique(const string &username) const
+{
+    for (int i = 0; i < idCounter; i++)
+    {
+        if (studentArray[i].getUsername() == username)
+        {
             return false;
         }
     }
     return true;
 }
 
-bool studentManager::isValidPassword(const string& password) const {
+bool studentManager::isValidPassword(const string &password) const
+{
     return password.length() > 6;
 }
 
-bool studentManager::isValidName(const string& name) const {
-    for (char c : name) {
-        if (!isalpha(c) && c != ' ') {
+bool studentManager::isValidName(const string &name) const
+{
+    for (char c : name)
+    {
+        if (!isalpha(c) && c != ' ')
+        {
             return false;
         }
     }
     return true;
 }
 
-bool studentManager::registerStudent(const string &fullname, const string &username, const string &password) {
-    if (idCounter >= 100) {
+bool studentManager::registerStudent(const string &fullname, const string &username, const string &password)
+{
+    if (idCounter >= 100)
+    {
         return false;
     }
 
-    if (!isValidName(fullname)) {
+    if (!isValidName(fullname))
+    {
         return false;
     }
 
-    do {
-        if (!isUsernameUnique(username)) {
+    do
+    {
+        if (!isUsernameUnique(username))
+        {
             return false;
         }
     } while (!isUsernameUnique(username));
 
-    do {
-        if (!isValidPassword(password)) {
+    do
+    {
+        if (!isValidPassword(password))
+        {
             return false;
         }
     } while (!isValidPassword(password));
@@ -72,22 +88,29 @@ bool studentManager::registerStudent(const string &fullname, const string &usern
     return true;
 }
 
-bool studentManager::login(const string& username, const string& password) {
-    for (int i = 0; i < idCounter; i++) {
-        if (studentArray[i].getUsername() == username && studentArray[i].getPassword() == password) {
+bool studentManager::login(const string &username, const string &password, currentUser &user)
+{
+    for (int i = 0; i < idCounter; i++)
+    {
+        if (studentArray[i].getUsername() == username && studentArray[i].getPassword() == password)
+        {
+            user = currentUser(studentArray[i].getId(), studentArray[i].getUsername(), studentArray[i].getPassword(), studentArray[i].getName(), "student");
             return true;
         }
     }
     return false;
 }
 
-void studentManager::saveToFile() const {
-    ofstream outFile("G:\\DUT\\quizz\\students.txt");
-    if (!outFile.is_open()) {
+void studentManager::saveToFile() const
+{
+    ofstream outFile("G:\\DUT\\quizz\\src\\student\\students.txt");
+    if (!outFile.is_open())
+    {
         return;
     }
 
-    for (int i = 0; i < idCounter; i++) {
+    for (int i = 0; i < idCounter; i++)
+    {
         outFile << studentArray[i].getId() << ","
                 << studentArray[i].getName() << ","
                 << studentArray[i].getUsername() << ","
@@ -97,14 +120,17 @@ void studentManager::saveToFile() const {
     outFile.close();
 }
 
-void studentManager::loadFromFile() {
-    ifstream inFile("G:\\DUT\\quizz\\students.txt");
-    if (!inFile.is_open()) {
+void studentManager::loadFromFile()
+{
+    ifstream inFile("G:\\DUT\\quizz\\src\\student\\students.txt");
+    if (!inFile.is_open())
+    {
         return;
     }
 
     string line;
-    while (getline(inFile, line)) {
+    while (getline(inFile, line))
+    {
         stringstream ss(line);
         string idStr, name, username, password;
         getline(ss, idStr, ',');

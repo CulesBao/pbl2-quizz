@@ -1,7 +1,8 @@
 <RCC>
     <qresource prefix="/images"/>
     <qresource prefix="/data">
-        <file>teachers.txt</file>
-        <file>student.txt</file>
+        <file>images/a.jpg</file>
+        <file>src/student/students.txt</file>
+        <file>src/teacher/teachers.txt</file>
     </qresource>
 </RCC>
