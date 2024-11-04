@@ -32,6 +32,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         src/student/student.h
         src/student/student.cpp
         src/currentUser/currentUser.cpp src/currentUser/currentUser.h
+        src/testInfo/testInfo.cpp src/testInfo/testInfo.h
+
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET temp APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
