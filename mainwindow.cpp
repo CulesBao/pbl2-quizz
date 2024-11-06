@@ -3,10 +3,9 @@
 #include "./src/student/student.h"
 #include "./src/teacher/teacher.h"
 #include "./src/currentUser/currentUser.h"
+#include "./src/testInfo/testInfo.h"
 #include <QMessageBox>
 using namespace std;
-
-currentUser logged(1, "", "", "", "");
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -25,21 +24,18 @@ void MainWindow::login()
     std::string username = qUsername.toStdString();
     std::string password = qPassword.toStdString();
 
-    // if (managerTeacher.login(username, password) or managerStudent.login(username, password)) {
-    //     QMessageBox::information(this, "Login", "Login successful!");
-    //     ui->stackedWidget->setCurrentIndex(1);
-    // } else {
-    //     QMessageBox::warning(this, "Login", "Username or password incorrect. Please try again!");
-    // }
     if (managerTeacher.login(username, password, logged))
     {
         QMessageBox::information(this, "Login", "Login successful!");
         ui->stackedWidget->setCurrentIndex(1);
+        setUpTeacherDashboard();
     }
     else if (managerStudent.login(username, password, logged))
     {
         QMessageBox::information(this, "Login", "Login successful!");
+        qDebug() << "Welcome, " << QString::fromStdString(logged.getFullname());
         ui->stackedWidget->setCurrentIndex(1);
+        setUpTeacherDashboard();
     }
     else
     {
@@ -85,13 +81,53 @@ void MainWindow::on_btnRegister_2_clicked()
     }
 }
 
+void MainWindow::setUpTeacherDashboard()
+{
+    QLabel *label = ui->lbTeacherName;
+    label->setText(QString::fromStdString(logged.getFullname()));
+    QTableWidget *table = ui->tbTeacherDashboard;
+    qDebug() << "Number of tests:" << managerTest.getTestCount();
+    if (managerTest.getTestCount() == 0)
+    {
+        qDebug() << "No tests available in testManager.";
+        return;
+    }
+
+    table->setColumnCount(8);
+    table->setHorizontalHeaderLabels({"ID", "Teacher ID", "Title", "Total Question", "Duration", "Starts At", "Ends At", "Status"});
+    table->setRowCount(managerTest.getTestCount());
+    for (int i = 0; i < managerTest.getTestCount(); i++)
+    {
+        Test *test = managerTest.getTestById(i + 1);
+        if (test == nullptr)
+        {
+            qDebug() << "Test not found for ID:" << (i + 1);
+            continue;
+        }
+
+        table->setItem(i, 0, new QTableWidgetItem(QString::number(test->getId())));
+        table->setItem(i, 1, new QTableWidgetItem(QString::number(test->getTeacherId())));
+        table->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(test->getTitle())));
+        table->setItem(i, 3, new QTableWidgetItem(QString::number(test->getTotalQuestion())));
+        table->setItem(i, 4, new QTableWidgetItem(QString::number(test->getDuration())));
+        table->setItem(i, 5, new QTableWidgetItem(QString::fromStdString(test->getStartsAt())));
+        table->setItem(i, 6, new QTableWidgetItem(QString::fromStdString(test->getEndsAt())));
+        table->setItem(i, 7, new QTableWidgetItem(test->getStatus() == 0 ? "Incoming" : test->getStatus() == 1 ? "Running"
+                                                                                                               : "Finished"));
+    }
+    table->show();
+}
+
 void MainWindow::on_btnLogin_clicked()
 {
-    cout << 0;
 }
 
 void MainWindow::on_btnLogoutTeacherDashboard_clicked()
 {
     logged = currentUser(0, "", "", "", "");
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_btnDashboard_clicked()
+{
 }

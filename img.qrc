@@ -5,4 +5,7 @@
         <file>src/student/students.txt</file>
         <file>src/teacher/teachers.txt</file>
     </qresource>
+    <qresource prefix="/">
+        <file>src/testInfo/testInfo.txt</file>
+    </qresource>
 </RCC>
