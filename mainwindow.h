@@ -38,5 +38,8 @@ private slots:
     void on_btnLogoutTeacherDashboard_clicked();
     void setUpTeacherDashboard();
     void on_btnDashboard_clicked();
+    void on_btnAddNewTest_clicked();
+    void on_pushButton_2_clicked();
+    void on_btnAddNewTextNext_clicked();
 };
 #endif // MAINWINDOW_H

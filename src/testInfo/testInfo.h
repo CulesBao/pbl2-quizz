@@ -1,10 +1,6 @@
 #ifndef TEST_H
 #define TEST_H
-
-#include <iostream>
-#include <fstream>
 #include <string>
-#include <vector>
 using namespace std;
 
 class Test
@@ -85,6 +81,10 @@ public:
                     const int &duration, const string &startsAt, const string &endsAt);
     bool updateTest(const int &testId, const int &teacherId, const string &title, const int &totalQuestion,
                     const string &password, const int &duration, const string &startsAt, const string &endsAt);
+    int countIncomingTest(int teacherId);
+    int countRunningTest(int teacherId);
+    int countCompletedTest(int teacherId);
+    Test *getTestByTeacherId(const int &teacherId, int &count);
 };
 
 #endif

@@ -103,7 +103,7 @@ bool studentManager::login(const string &username, const string &password, curre
 
 void studentManager::saveToFile() const
 {
-    ofstream outFile("G:\\DUT\\quizz\\src\\student\\students.txt");
+    ofstream outFile("G:\\DUT\\pbl2-quizz\\src\\student\\students.txt");
     if (!outFile.is_open())
     {
         return;
@@ -122,7 +122,7 @@ void studentManager::saveToFile() const
 
 void studentManager::loadFromFile()
 {
-    ifstream inFile("G:\\DUT\\quizz\\src\\student\\students.txt");
+    ifstream inFile("G:\\DUT\\pbl2-quizz\\src\\student\\students.txt");
     if (!inFile.is_open())
     {
         return;

@@ -51,7 +51,7 @@ TestManager::TestManager()
 // HAM LUU VAO TEP
 void TestManager::saveToFile() const
 {
-    ofstream outFile("G:\\DUT\\quizz\\src\\testInfo\\testInfo.txt");
+    ofstream outFile("G:\\DUT\\pbl2-quizz\\src\\testInfo\\testInfo.txt");
     if (!outFile.is_open())
     {
         return;
@@ -75,7 +75,7 @@ void TestManager::saveToFile() const
 // HAM DOC TEP
 void TestManager::loadFromFile()
 {
-    ifstream inFile("G:\\DUT\\quizz\\src\\testInfo\\testInfo.txt");
+    ifstream inFile("G:\\DUT\\pbl2-quizz\\src\\testInfo\\testInfo.txt");
     if (!inFile.is_open())
     {
         return;
@@ -116,18 +116,13 @@ bool TestManager::validatePassword(const string &password) const
 {
     if (password.length() <= 5)
         return false;
-    for (char c : password)
-    {
-        if (!isalnum(c))
-            return false;
-    }
     return true;
 }
 
 // KTRA TEACHERID
 bool TestManager::validateTeacherId(const int &teacherId) const
 {
-    return teacherId > 0;
+    return teacherId >= 0;
 }
 
 // KTRA THOI GIAN LAM BAI
@@ -143,20 +138,13 @@ bool TestManager::validateTitle(const string &title) const
     {
         return false;
     }
-    for (char c : title)
-    {
-        if (!isalnum(c) && c != ' ')
-        {
-            return false;
-        }
-    }
     return true;
 }
 
 // KTRA SO LUONG CAU HOI
 bool TestManager::validateTotalQuestion(const int &totalQuestion) const
 {
-    return totalQuestion > 0;
+    return totalQuestion > 4;
 }
 
 // KTRA THOI GIAN BAT DAU
@@ -424,8 +412,66 @@ void Test::updateStatus()
     }
 }
 
+// DEM TEST CHUA LAM
+int TestManager::countIncomingTest(int teacherId)
+{
+    int count = 0;
+    for (int i = 0; i < testCount; ++i)
+    {
+        managerTest[i].updateStatus();
+        if (managerTest[i].getStatus() == 0 && managerTest[i].getTeacherId() == teacherId)
+        {
+            ++count;
+        }
+    }
+    return count;
+}
+
+// DEM TEST DANG LAM
+int TestManager::countRunningTest(int teacherId)
+{
+    int count = 0;
+    for (int i = 0; i < testCount; ++i)
+    {
+        managerTest[i].updateStatus();
+        if (managerTest[i].getStatus() == 1 && managerTest[i].getTeacherId() == teacherId)
+        {
+            ++count;
+        }
+    }
+    return count;
+}
+// DEM TEST DA LAM
+int TestManager::countCompletedTest(int teacherId)
+{
+    int count = 0;
+    for (int i = 0; i < testCount; ++i)
+    {
+        managerTest[i].updateStatus();
+        if (managerTest[i].getStatus() == 2 && managerTest[i].getTeacherId() == teacherId)
+        {
+            ++count;
+        }
+    }
+    return count;
+}
 // SO LUONG BAI KIEM TRA
 int TestManager::getTestCount() const
 {
     return testCount;
+}
+// TIM BAI KIEM TRA THEO TEACHERID
+Test *TestManager::getTestByTeacherId(const int &teacherId, int &count)
+{
+    Test *teacherTests = new Test[1000];
+    count = 0;
+    for (int i = 0; i < testCount; ++i)
+    {
+        if (managerTest[i].getTeacherId() == teacherId)
+        {
+            teacherTests[count] = managerTest[i];
+            ++count;
+        }
+    }
+    return teacherTests;
 }

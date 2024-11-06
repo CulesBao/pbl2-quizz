@@ -18,49 +18,64 @@ string teacher::getPassword() const { return password; }
 string teacher::getName() const { return name; }
 void teacher::setId(int id) { this->id = id; }
 
-teacherManager::teacherManager() {
+teacherManager::teacherManager()
+{
     loadFromFile();
 }
 
-bool teacherManager::isUsernameUnique(const string& username) const {
-    for (int i = 0; i < idCounter; i++) {
-        if (teacherArray[i].getUsername() == username) {
+bool teacherManager::isUsernameUnique(const string &username) const
+{
+    for (int i = 0; i < idCounter; i++)
+    {
+        if (teacherArray[i].getUsername() == username)
+        {
             return false;
         }
     }
     return true;
 }
 
-bool teacherManager::isValidPassword(const string& password) const {
+bool teacherManager::isValidPassword(const string &password) const
+{
     return password.length() > 6;
 }
 
-bool teacherManager::isValidName(const string& name) const {
-    for (char c : name) {
-        if (!isalpha(c) && c != ' ') {
+bool teacherManager::isValidName(const string &name) const
+{
+    for (char c : name)
+    {
+        if (!isalpha(c) && c != ' ')
+        {
             return false;
         }
     }
     return true;
 }
 
-bool teacherManager::registerTeacher(const string &fullname, const string &username, const string &password) {
-    if (idCounter >= 100) {
+bool teacherManager::registerTeacher(const string &fullname, const string &username, const string &password)
+{
+    if (idCounter >= 100)
+    {
         return false;
     }
 
-    if (!isValidName(fullname)) {
+    if (!isValidName(fullname))
+    {
         return false;
     }
 
-    do {
-        if (!isUsernameUnique(username)) {
+    do
+    {
+        if (!isUsernameUnique(username))
+        {
             return false;
         }
     } while (!isUsernameUnique(username));
 
-    do {
-        if (!isValidPassword(password)) {
+    do
+    {
+        if (!isValidPassword(password))
+        {
             return false;
         }
     } while (!isValidPassword(password));
@@ -73,23 +88,29 @@ bool teacherManager::registerTeacher(const string &fullname, const string &usern
     return true;
 }
 
-bool teacherManager::login(const string& username, const string& password, currentUser& user) {
-    for (int i = 0; i < idCounter; i++) {
-        if (teacherArray[i].getUsername() == username && teacherArray[i].getPassword() == password) {
-            user = currentUser(teacherArray[i].getId(), teacherArray[i].getUsername(), teacherArray[i].getPassword(),teacherArray[i].getName(), "teacher");
+bool teacherManager::login(const string &username, const string &password, currentUser &user)
+{
+    for (int i = 0; i < idCounter; i++)
+    {
+        if (teacherArray[i].getUsername() == username && teacherArray[i].getPassword() == password)
+        {
+            user = currentUser(teacherArray[i].getId(), teacherArray[i].getUsername(), teacherArray[i].getPassword(), teacherArray[i].getName(), "teacher");
             return true;
         }
     }
     return false;
 }
 
-void teacherManager::saveToFile() const {
-    ofstream outFile("G:\\DUT\\quizz\\src\\teacher\\teachers.txt");
-    if (!outFile.is_open()) {
+void teacherManager::saveToFile() const
+{
+    ofstream outFile("G:\\DUT\\pbl2-quizz\\src\\teacher\\teachers.txt");
+    if (!outFile.is_open())
+    {
         return;
     }
 
-    for (int i = 0; i < idCounter; i++) {
+    for (int i = 0; i < idCounter; i++)
+    {
         outFile << teacherArray[i].getId() << ","
                 << teacherArray[i].getName() << ","
                 << teacherArray[i].getUsername() << ","
@@ -99,14 +120,17 @@ void teacherManager::saveToFile() const {
     outFile.close();
 }
 
-void teacherManager::loadFromFile() {
-    ifstream inFile("G:\\DUT\\quizz\\src\teacher\teachers.txt");
-    if (!inFile.is_open()) {
+void teacherManager::loadFromFile()
+{
+    ifstream inFile("G:\\DUT\\pbl2-quizz\\src\\teacher\\teachers.txt");
+    if (!inFile.is_open())
+    {
         return;
     }
 
     string line;
-    while (getline(inFile, line)) {
+    while (getline(inFile, line))
+    {
         stringstream ss(line);
         string idStr, name, username, password;
         getline(ss, idStr, ',');
