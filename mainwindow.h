@@ -28,7 +28,7 @@ private:
     teacherManager managerTeacher;
     studentManager managerStudent;
     TestManager managerTest;
-    currentUser logged = currentUser(0, "", "", "", "");
+    currentUser logged = currentUser("", "", "", "", "");
 private slots:
     void login();
     void on_btnRegister_clicked();
@@ -41,5 +41,7 @@ private slots:
     void on_btnAddNewTest_clicked();
     void on_pushButton_2_clicked();
     void on_btnAddNewTextNext_clicked();
+    void on_btnEditProfile_clicked();
+    void on_btnEditProfileSubmit_clicked();
 };
 #endif // MAINWINDOW_H

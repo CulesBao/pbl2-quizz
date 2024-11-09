@@ -8,15 +8,21 @@ using namespace std;
 int studentManager::idCounter = 0;
 
 student::student(string name, string username, string password)
-    : name(name), username(username), password(password), id(-1) {}
+    : name(name), username(username), password(password) {}
 
 student::~student() {}
 
-int student::getId() const { return id; }
+string student::getId() const { return id; }
 string student::getUsername() const { return username; }
 string student::getPassword() const { return password; }
 string student::getName() const { return name; }
-void student::setId(int id) { this->id = id; }
+void student::setId(int id) { formattedId(id); }
+void student::formattedId(int id)
+{
+    stringstream tmp;
+    tmp << "STD" << setw(3) << setfill('0') << id;
+    this->id = tmp.str();
+}
 
 studentManager::studentManager()
 {
@@ -54,7 +60,7 @@ bool studentManager::isValidName(const string &name) const
 
 bool studentManager::registerStudent(const string &fullname, const string &username, const string &password)
 {
-    if (idCounter >= 100)
+    if (idCounter >= 1000)
     {
         return false;
     }
@@ -144,4 +150,29 @@ void studentManager::loadFromFile()
     }
 
     inFile.close();
+}
+
+bool studentManager::update(const string id, const string &newPassword, const string &newName)
+{
+    for (int i = 0; i < idCounter; i++)
+    {
+        if (studentArray[i].getId() == id && isValidName(newName) && isValidPassword(newPassword))
+        {
+            studentArray[i].setPassword(newPassword);
+            studentArray[i].setName(newName);
+            this->saveToFile();
+            return true;
+        }
+    }
+    return false;
+}
+bool student::setName(const string &name)
+{
+    this->name = name;
+    return true;
+}
+bool student::setPassword(const string &password)
+{
+    this->password = password;
+    return true;
 }

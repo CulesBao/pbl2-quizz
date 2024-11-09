@@ -1,28 +1,42 @@
 #include "teacher.h"
 #include <fstream>
-#include <iostream>
 #include <sstream>
-#include "../currentUser/currentUser.h"
+#include <iomanip>
 using namespace std;
 
 int teacherManager::idCounter = 0;
 
 teacher::teacher(string name, string username, string password)
-    : name(name), username(username), password(password), id(-1) {}
+    : name(name), username(username), password(password) {}
 
 teacher::~teacher() {}
 
-int teacher::getId() const { return id; }
+string teacher::getId() const { return id; }
 string teacher::getUsername() const { return username; }
 string teacher::getPassword() const { return password; }
 string teacher::getName() const { return name; }
-void teacher::setId(int id) { this->id = id; }
+void teacher::setId(int id) { formattedId(id); }
+void teacher::formattedId(int id)
+{
+    stringstream tmp;
+    tmp << "TEA" << setw(3) << setfill('0') << id;
+    this->id = tmp.str();
+}
+bool teacher::setName(string name)
+{
+    this->name = name;
+    return true;
+}
 
+bool teacher::setPassword(string password)
+{
+    this->password = password;
+    return true;
+}
 teacherManager::teacherManager()
 {
     loadFromFile();
 }
-
 bool teacherManager::isUsernameUnique(const string &username) const
 {
     for (int i = 0; i < idCounter; i++)
@@ -48,6 +62,10 @@ bool teacherManager::isValidName(const string &name) const
         {
             return false;
         }
+    }
+    if (name.length() < 3)
+    {
+        return false;
     }
     return true;
 }
@@ -144,4 +162,17 @@ void teacherManager::loadFromFile()
     }
 
     inFile.close();
+}
+
+bool teacherManager::update(const string id, const string &newPassword, const string &newName)
+{
+    for (int i = 0; i < this->idCounter; i++)
+        if (teacherArray[i].getId() == id && isValidName(newName) && isValidPassword(newPassword))
+        {
+            teacherArray[i].setName(newName);
+            teacherArray[i].setPassword(newPassword);
+            saveToFile();
+            return true;
+        }
+    return false;
 }

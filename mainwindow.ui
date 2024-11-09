@@ -238,9 +238,9 @@ padding: 5px;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>370</y>
+         <y>292</y>
          <width>221</width>
-         <height>183</height>
+         <height>261</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="btnGroup">
@@ -281,6 +281,26 @@ QPushButton:hover {
           </property>
           <property name="text">
            <string>Add New Test</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #2D2D3B;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    text-align: center;
+}
+QPushButton:hover {
+    background-color: #444457; /* Hiệu ứng hover */
+    border-left: 3px solid #FF4757; /* Đường highlight màu đỏ */
+}</string>
+          </property>
+          <property name="text">
+           <string>My Question Bank</string>
           </property>
          </widget>
         </item>
@@ -538,10 +558,10 @@ QLabel {
       <widget class="QTableWidget" name="tbTeacherDashboard">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>10</x>
          <y>270</y>
-         <width>591</width>
-         <height>281</height>
+         <width>631</width>
+         <height>291</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -598,10 +618,10 @@ text-align: center;</string>
      <widget class="QGroupBox" name="groupBox_4">
       <property name="geometry">
        <rect>
-        <x>720</x>
-        <y>230</y>
-        <width>120</width>
-        <height>80</height>
+        <x>229</x>
+        <y>-1</y>
+        <width>651</width>
+        <height>581</height>
        </rect>
       </property>
       <property name="title">
@@ -843,9 +863,187 @@ QPushButton:pressed {
        </property>
       </widget>
      </widget>
+     <widget class="QGroupBox" name="groupBoxEditProfile">
+      <property name="geometry">
+       <rect>
+        <x>229</x>
+        <y>-1</y>
+        <width>651</width>
+        <height>581</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+    border: 2px solid #8B0000;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+</string>
+      </property>
+      <property name="title">
+       <string>Edit Profile</string>
+      </property>
+      <widget class="QWidget" name="horizontalLayoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>180</y>
+         <width>381</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QLabel" name="label_17">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>User Id:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_14">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Fullname:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_15">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Username:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_16">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Password:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QLineEdit" name="txtEditProfileId">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtEditProfileFullname">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtEditProfileUsername">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtEditProfilePassword">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="btnEditProfileSubmit">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>470</y>
+         <width>83</width>
+         <height>29</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    border: 2px solid #8B0000;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #D9534F;
+    color: #FFF;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #C9302C;
+}
+QPushButton:pressed {
+    background-color: #A52A2A;
+}</string>
+       </property>
+       <property name="text">
+        <string>Submit</string>
+       </property>
+      </widget>
+     </widget>
      <zorder>groupBox_4</zorder>
      <zorder>leftSidebar</zorder>
      <zorder>groupBoxAddNewTest</zorder>
+     <zorder>groupBoxEditProfile</zorder>
      <zorder>groupBoxDashboard</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">

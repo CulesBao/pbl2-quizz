@@ -1,27 +1,28 @@
 #include <bits/stdc++.h>
 #include "testInfo.h"
-
 using namespace std;
 
 // Constructor
 Test::Test()
-    : id(0), teacherId(0), title(""), totalQuestion(0), password(""),
-      duration(0), startsAt(""), endsAt(""), status(INCOMING)
+    : id(""), teacherId(""), title(""), totalQuestion(0), password(""),
+    duration(0), startsAt(""), endsAt(""), status(INCOMING)
 {
 }
 
-Test::Test(int teacherId, string title, int totalQuestion, string password,
+Test::Test(string teacherId, string title, int totalQuestion, string password,
            int duration, string startsAt, string endsAt, Status status)
     : teacherId(teacherId), title(title), totalQuestion(totalQuestion), password(password),
-      duration(duration), startsAt(startsAt), endsAt(endsAt), status(status)
+    duration(duration), startsAt(startsAt), endsAt(endsAt), status(status)
 {
-    id = ++currentId;
+    stringstream ss;
+    ss << "TID" << setw(3) << setfill('0') << currentId++;
+    id = ss.str();
 }
 
 // Cac ham GET
 Test::~Test() {}
-int Test::getId() const { return id; }
-int Test::getTeacherId() const { return teacherId; }
+string Test::getId() const { return id; }
+string Test::getTeacherId() const { return teacherId; }
 string Test::getTitle() const { return title; }
 int Test::getTotalQuestion() const { return totalQuestion; }
 string Test::getPassword() const { return password; }
@@ -31,8 +32,8 @@ string Test::getEndsAt() const { return endsAt; }
 Test::Status Test::getStatus() const { return status; }
 
 // Cac ham SET
-void Test::setId(int id) { this->id = id; }
-void Test::setTeacherId(int teacherId) { this->teacherId = teacherId; }
+void Test::setId(string id) { this->id = id; }
+void Test::setTeacherId(string teacherId) { this->teacherId = teacherId; }
 void Test::setTitle(string title) { this->title = title; }
 void Test::setTotalQuestion(int totalQuestion) { this->totalQuestion = totalQuestion; }
 void Test::setPassword(string password) { this->password = password; }
@@ -41,7 +42,7 @@ void Test::setStartsAt(string startsAt) { this->startsAt = startsAt; }
 void Test::setEndsAt(string endsAt) { this->endsAt = endsAt; }
 void Test::setStatus(Status newStatus) { this->status = newStatus; }
 
-int Test::currentId = 0;
+int Test::currentId = 1;
 
 TestManager::TestManager()
 {
@@ -84,10 +85,10 @@ void TestManager::loadFromFile()
     while (getline(inFile, line))
     {
         stringstream ss(line);
-        string idStr, teacherIdStr, title, totalQuestionStr, password, durationStr, startsAt, endsAt, statusStr;
+        string id, teacherId, title, totalQuestionStr, password, durationStr, startsAt, endsAt, statusStr;
 
-        if (!getline(ss, idStr, ',') ||
-            !getline(ss, teacherIdStr, ',') ||
+        if (!getline(ss, id, ',') ||
+            !getline(ss, teacherId, ',') ||
             !getline(ss, title, ',') ||
             !getline(ss, totalQuestionStr, ',') ||
             !getline(ss, password, ',') ||
@@ -99,30 +100,46 @@ void TestManager::loadFromFile()
             continue;
         }
 
-        int teacherId = stoi(teacherIdStr);
         int duration = stoi(durationStr);
         int totalQuestion = stoi(totalQuestionStr);
         Test::Status status = static_cast<Test::Status>(stoi(statusStr));
 
         managerTest[testCount] = Test(teacherId, title, totalQuestion, password, duration, startsAt, endsAt, status);
-        managerTest[testCount].setId(stoi(idStr));
+        managerTest[testCount].setId(id);
         testCount++;
     }
     inFile.close();
 }
+
 
 // KTRA MAT KHAU
 bool TestManager::validatePassword(const string &password) const
 {
     if (password.length() <= 5)
         return false;
+    for (char c : password)
+    {
+        if (!isalnum(c))
+            return false;
+    }
     return true;
 }
 
 // KTRA TEACHERID
-bool TestManager::validateTeacherId(const int &teacherId) const
+bool TestManager::validateTeacherId(const string &teacherId) const
 {
-    return teacherId >= 0;
+    if (teacherId.length() != 6) {
+        return false;
+    }
+    if (teacherId.substr(0, 3) != "TEA") {
+        return false;
+    }
+    for (int i = 3; i < 6; ++i) {
+        if (!isdigit(teacherId[i])) {
+            return false;
+        }
+    }
+    return true;
 }
 
 // KTRA THOI GIAN LAM BAI
@@ -138,13 +155,20 @@ bool TestManager::validateTitle(const string &title) const
     {
         return false;
     }
+    for (char c : title)
+    {
+        if (!isalnum(c) && c != ' ')
+        {
+            return false;
+        }
+    }
     return true;
 }
 
-// KTRA SO LUONG CAU HOI
+//KTRA SO LUONG CAU HOI
 bool TestManager::validateTotalQuestion(const int &totalQuestion) const
 {
-    return totalQuestion > 4;
+    return totalQuestion > 0;
 }
 
 // KTRA THOI GIAN BAT DAU
@@ -190,7 +214,7 @@ bool TestManager::validateStartsAt(const std::string &startsAt) const
     return true;
 }
 
-// KTRA THOI GIAN KET THUC
+//KTRA THOI GIAN KET THUC
 bool TestManager::validateEndsAt(const std::string &endsAt) const
 {
 
@@ -235,7 +259,7 @@ bool TestManager::validateEndsAt(const std::string &endsAt) const
 }
 
 // TAO BAI THI
-bool TestManager::createTest(const int &teacherId, const string &title, const int &totalQuestion,
+bool TestManager::createTest(const string &teacherId, const string &title, const int &totalQuestion,
                              const string &password, const int &duration, const string &startsAt, const string &endsAt)
 {
     if (testCount >= 1000)
@@ -277,7 +301,7 @@ bool TestManager::createTest(const int &teacherId, const string &title, const in
 }
 
 // CAP NHAT BAI THI
-bool TestManager::updateTest(const int &testId, const int &teacherId, const string &title, const int &totalQuestion,
+bool TestManager::updateTest(const string &testId, const string &teacherId, const string &title, const int &totalQuestion,
                              const string &password, const int &duration, const string &startsAt, const string &endsAt)
 {
 
@@ -304,8 +328,7 @@ bool TestManager::updateTest(const int &testId, const int &teacherId, const stri
     {
         return false;
     }
-    if (!validateTotalQuestion(totalQuestion))
-    {
+    if (!validateTotalQuestion(totalQuestion)){
         return false;
     }
     if (!validatePassword(password))
@@ -342,7 +365,7 @@ bool TestManager::checkPassword(const Test &test, const string &pass) const
     return test.getPassword() == pass;
 }
 
-// THEM BAI KIEM TRA
+//THEM BAI KIEM TRA
 bool TestManager::addTest(const Test &newTest)
 {
     if (testCount < 1000)
@@ -354,13 +377,10 @@ bool TestManager::addTest(const Test &newTest)
     return false;
 }
 
-// TIM KIEM BAI KTRA
-Test *TestManager::getTestById(const int testId)
-{
-    for (int i = 0; i < testCount; ++i)
-    {
-        if (managerTest[i].getId() == testId)
-        {
+//TIM KIEM BAI KTRA
+Test* TestManager::getTestById(const string testId) {
+    for (int i = 0; i < testCount; ++i) {
+        if (managerTest[i].getId() == testId) {
             managerTest[i].updateStatus();
             return &managerTest[i];
         }
@@ -368,15 +388,30 @@ Test *TestManager::getTestById(const int testId)
     return nullptr;
 }
 
-// CAP NHAT TRANG THAI
-void Test::updateStatus()
-{
+//XOA BAI KIEM TRA
+bool TestManager::deleteTestById(const string testId) {
+    int index = -1;
+    for (int i = 0; i < testCount; ++i) {
+        if (managerTest[i].getId() == testId) {
+            index = i;
+            break;
+        }
+    }
+    if (index == -1) {
+        return false;
+    }
+    managerTest[index] = Test();
+    saveToFile();
+    return true;
+}
+
+//CAP NHAT TRANG THAI
+void Test::updateStatus() {
     auto now = chrono::system_clock::now();
     time_t currentTime = chrono::system_clock::to_time_t(now);
-    tm *currentLocalTime = localtime(&currentTime);
+    tm* currentLocalTime = localtime(&currentTime);
 
-    auto parseDateTime = [](const string &dateTimeStr) -> tm
-    {
+    auto parseDateTime = [](const string &dateTimeStr) -> tm {
         tm timeStruct = {};
 
         int hour, minute, second, day, month, year;
@@ -398,80 +433,69 @@ void Test::updateStatus()
     time_t start_time = mktime(&start);
     time_t end_time = mktime(&end);
 
-    if (currentTime < start_time)
-    {
+    if (currentTime < start_time) {
         status = INCOMING;
-    }
-    else if (currentTime >= start_time && currentTime <= end_time)
-    {
+    } else if (currentTime >= start_time && currentTime <= end_time) {
         status = RUNNING;
-    }
-    else
-    {
+    } else {
         status = COMPLETE;
     }
 }
 
-// DEM TEST CHUA LAM
-int TestManager::countIncomingTest(int teacherId)
-{
+//DEM TEST CHUA LAM
+int TestManager::countIncomingTest(string id) {
     int count = 0;
-    for (int i = 0; i < testCount; ++i)
-    {
+    for (int i = 0; i < testCount; ++i) {
         managerTest[i].updateStatus();
-        if (managerTest[i].getStatus() == 0 && managerTest[i].getTeacherId() == teacherId)
-        {
+        if (managerTest[i].getStatus() == 0 && managerTest[i].getTeacherId() == id) {
             ++count;
         }
     }
     return count;
 }
 
-// DEM TEST DANG LAM
-int TestManager::countRunningTest(int teacherId)
-{
+//DEM TEST DANG LAM
+int TestManager::countRunningTest(string id) {
     int count = 0;
-    for (int i = 0; i < testCount; ++i)
-    {
+    for (int i = 0; i < testCount; ++i) {
         managerTest[i].updateStatus();
-        if (managerTest[i].getStatus() == 1 && managerTest[i].getTeacherId() == teacherId)
-        {
+        if (managerTest[i].getStatus() == 1 && managerTest[i].getTeacherId() == id) {
             ++count;
         }
     }
     return count;
 }
-// DEM TEST DA LAM
-int TestManager::countCompletedTest(int teacherId)
-{
+
+//DEM TEST DA LAM
+int TestManager::countCompletedTest(string id) {
     int count = 0;
-    for (int i = 0; i < testCount; ++i)
-    {
+    for (int i = 0; i < testCount; ++i) {
         managerTest[i].updateStatus();
-        if (managerTest[i].getStatus() == 2 && managerTest[i].getTeacherId() == teacherId)
-        {
+        if (managerTest[i].getStatus() == 2 && managerTest[i].getTeacherId() == id) {
             ++count;
         }
     }
     return count;
 }
-// SO LUONG BAI KIEM TRA
-int TestManager::getTestCount() const
-{
-    return testCount;
-}
-// TIM BAI KIEM TRA THEO TEACHERID
-Test *TestManager::getTestByTeacherId(const int &teacherId, int &count)
-{
-    Test *teacherTests = new Test[1000];
+
+//TIM BAI KIEM TRA THEO TEACHERID
+Test* TestManager::getTestByTeacherId(const string &teacherId, int &count) {
+    static Test teacherTests[1000];
     count = 0;
-    for (int i = 0; i < testCount; ++i)
-    {
-        if (managerTest[i].getTeacherId() == teacherId)
-        {
+    for (int i = 0; i < testCount; ++i) {
+        if (managerTest[i].getTeacherId() == teacherId) {
             teacherTests[count] = managerTest[i];
             ++count;
         }
     }
+    if (count == 0) {
+        return nullptr;
+    }
     return teacherTests;
+}
+
+//SO LUONG BAI KIEM TRA
+int TestManager::getTestCount() const
+{
+    return testCount;
 }

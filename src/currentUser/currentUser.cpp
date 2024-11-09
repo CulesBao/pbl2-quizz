@@ -3,10 +3,10 @@
 
 using namespace std;
 
-currentUser::currentUser(int id, const string& username, const string& password, const string& fullname, const string& role)
+currentUser::currentUser(string id, const string& username, const string& password, const string& fullname, const string& role)
     : id(id), username(username), password(password), fullname(fullname), role(role) {}
 
-int currentUser::getId() const {
+string currentUser::getId() const {
     return id;
 }
 
