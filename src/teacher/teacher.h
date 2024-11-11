@@ -5,32 +5,37 @@
 #include "../currentUser/currentUser.h"
 using namespace std;
 
-class teacher {
+class teacher
+{
 private:
-    int id;
-    std::string name;
-    std::string username;
-    std::string password;
+    string id;
+    string name;
+    string username;
+    string password;
 
 public:
-    teacher(std::string name = "", std::string username = "", std::string password = "");
+    teacher(string name = "", string username = "", string password = "");
     ~teacher();
 
-    int getId() const;
-    std::string getUsername() const;
-    std::string getPassword() const;
-    std::string getName() const;
+    string getId() const;
+    string getUsername() const;
+    string getPassword() const;
+    string getName() const;
+    bool setName(string name);
+    bool setPassword(string password);
     void setId(int id);
+    void formattedId(int id);
 };
 
-class teacherManager {
+class teacherManager
+{
 private:
-    teacher teacherArray[100];
+    teacher teacherArray[1000];
     static int idCounter;
 
-    bool isValidName(const std::string& name) const;
-    bool isUsernameUnique(const std::string& username) const;
-    bool isValidPassword(const std::string& password) const;
+    bool isValidName(const string &name) const;
+    bool isUsernameUnique(const string &username) const;
+    bool isValidPassword(const string &password) const;
 
     void saveToFile() const;
     void loadFromFile();
@@ -38,7 +43,8 @@ private:
 public:
     teacherManager();
     bool registerTeacher(const string &fullname, const string &username, const string &password);
-    bool login(const std::string& username, const std::string& password, currentUser& user);
+    bool login(const string &username, const string &password, currentUser &user);
+    bool update(const string id, const string &newPassword, const string &newName);
 };
 
 #endif // TEACHER_H

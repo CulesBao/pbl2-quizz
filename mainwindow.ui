@@ -223,7 +223,7 @@ padding: 5px;</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>-30</y>
+        <y>0</y>
         <width>221</width>
         <height>611</height>
        </rect>
@@ -232,15 +232,15 @@ padding: 5px;</string>
        <string notr="true">background-color: #2D2D3B;</string>
       </property>
       <property name="title">
-       <string>GroupBox</string>
+       <string>Menu</string>
       </property>
       <widget class="QWidget" name="verticalLayoutWidget">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>370</y>
+         <y>292</y>
          <width>221</width>
-         <height>183</height>
+         <height>261</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="btnGroup">
@@ -265,7 +265,7 @@ QPushButton:hover {
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnManageQuizz">
+         <widget class="QPushButton" name="btnAddNewTest">
           <property name="styleSheet">
            <string notr="true">QPushButton {
     background-color: #2D2D3B;
@@ -280,7 +280,27 @@ QPushButton:hover {
 }</string>
           </property>
           <property name="text">
-           <string>Manage Quizz</string>
+           <string>Add New Test</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #2D2D3B;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    text-align: center;
+}
+QPushButton:hover {
+    background-color: #444457; /* Hiệu ứng hover */
+    border-left: 3px solid #FF4757; /* Đường highlight màu đỏ */
+}</string>
+          </property>
+          <property name="text">
+           <string>My Question Bank</string>
           </property>
          </widget>
         </item>
@@ -330,9 +350,9 @@ QPushButton:hover {
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>300</y>
-         <width>211</width>
-         <height>41</height>
+         <y>240</y>
+         <width>221</width>
+         <height>51</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -345,68 +365,69 @@ text-align: center;</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Teacher 1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>221</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/data/images/a.jpg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
      </widget>
-     <widget class="QWidget" name="mainWidget" native="true">
+     <widget class="QGroupBox" name="groupBoxDashboard">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>0</y>
+        <x>229</x>
+        <y>-1</y>
         <width>651</width>
         <height>581</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QGroupBox {
+    border: 2px solid #8B0000;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+</string>
       </property>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>741</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: #B63DF2;
-    border: 2px solid #B63DF2;
-color: white;
-    font-size: 18px;
-    font-weight: bold;</string>
-       </property>
-       <property name="text">
-        <string>Dashboard</string>
-       </property>
-      </widget>
+      <property name="title">
+       <string>Dashboard</string>
+      </property>
       <widget class="QWidget" name="horizontalLayoutWidget">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>60</y>
-         <width>471</width>
+         <x>90</x>
+         <y>50</y>
+         <width>499</width>
          <height>91</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="stat">
         <item>
-         <widget class="QLabel" name="label_6">
-          <property name="styleSheet">
-           <string notr="true">color: #2D2D3B;
-font-size: 28px;
-font-weight: bold;
-text-align: center;</string>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:17pt;&quot;&gt;3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLabel" name="label_4">
           <property name="styleSheet">
-           <string notr="true">color: #2D2D3B;
-    font-size: 28px;
-    font-weight: bold;</string>
+           <string notr="true">QLabel {
+    padding: 5px 15px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo tròn góc */
+    font-size: 14px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ in đậm */
+    color: #ffffff; /* Màu chữ */
+    margin: 5px; /* Khoảng cách giữa các QLabel */
+    text-align: center; /* Căn giữa chữ */
+	font-size: 20px;
+}
+QLabel {
+    background-color: #ffc107; /* Màu vàng cho trạng thái Incoming */
+}</string>
           </property>
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:17pt;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -416,12 +437,44 @@ text-align: center;</string>
         <item>
          <widget class="QLabel" name="label_5">
           <property name="styleSheet">
-           <string notr="true">color: #2D2D3B;
-    font-size: 28px;
-    font-weight: bold;</string>
+           <string notr="true">QLabel {
+    padding: 5px 15px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo tròn góc */
+    font-size: 14px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ in đậm */
+    color: #ffffff; /* Màu chữ */
+    margin: 5px; /* Khoảng cách giữa các QLabel */
+    text-align: center; /* Căn giữa chữ */
+font-size: 20px;
+}
+QLabel {
+    background-color: #17a2b8; /* Màu xanh biển cho trạng thái Running */
+}</string>
           </property>
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:17pt;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    padding: 5px 15px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo tròn góc */
+    font-size: 14px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ in đậm */
+    color: #ffffff; /* Màu chữ */
+    margin: 5px; /* Khoảng cách giữa các QLabel */
+    text-align: center; /* Căn giữa chữ */
+	font-size: 20px;
+}
+QLabel {
+    background-color: #28a745; /* Màu xanh lá cho trạng thái Finished */
+}</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:17pt;&quot;&gt;3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -430,29 +483,49 @@ text-align: center;</string>
       <widget class="QWidget" name="horizontalLayoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>160</y>
-         <width>471</width>
-         <height>41</height>
+         <x>90</x>
+         <y>150</y>
+         <width>501</width>
+         <height>89</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="statInfo">
         <item>
          <widget class="QLabel" name="label_7">
           <property name="styleSheet">
-           <string notr="true">color: #555555;
-    font-size: 14px;</string>
+           <string notr="true">QLabel {
+    padding: 5px 15px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo tròn góc */
+    font-size: 14px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ in đậm */
+    color: #ffffff; /* Màu chữ */
+    margin: 5px; /* Khoảng cách giữa các QLabel */
+    text-align: center; /* Căn giữa chữ */
+}
+QLabel {
+    background-color: #ffc107; /* Màu vàng cho trạng thái Incoming */
+}</string>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Completed Quizzes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Incoming Quizzes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_9">
           <property name="styleSheet">
-           <string notr="true">color: #555555;
-    font-size: 14px;</string>
+           <string notr="true">QLabel {
+    padding: 5px 15px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo tròn góc */
+    font-size: 14px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ in đậm */
+    color: #ffffff; /* Màu chữ */
+    margin: 5px; /* Khoảng cách giữa các QLabel */
+    text-align: center; /* Căn giữa chữ */
+}
+QLabel {
+    background-color: #17a2b8; /* Màu xanh biển cho trạng thái Running */
+}</string>
           </property>
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Running Quizzes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -462,11 +535,21 @@ text-align: center;</string>
         <item>
          <widget class="QLabel" name="label_8">
           <property name="styleSheet">
-           <string notr="true">color: #555555;
-    font-size: 14px;</string>
+           <string notr="true">QLabel {
+    padding: 5px 15px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo tròn góc */
+    font-size: 14px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ in đậm */
+    color: #ffffff; /* Màu chữ */
+    margin: 5px; /* Khoảng cách giữa các QLabel */
+    text-align: center; /* Căn giữa chữ */
+}
+QLabel {
+    background-color: #28a745; /* Màu xanh lá cho trạng thái Finished */
+}</string>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Upcoming Quizzes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Finished Quizzes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -475,48 +558,493 @@ text-align: center;</string>
       <widget class="QTableWidget" name="tbTeacherDashboard">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>240</y>
-         <width>601</width>
-         <height>311</height>
+         <x>10</x>
+         <y>270</y>
+         <width>631</width>
+         <height>291</height>
         </rect>
        </property>
        <property name="styleSheet">
         <string notr="true">QTableWidget {
-    background-color: #FFFFFF; /* Màu nền của bảng */
-    border: 2px solid #B63DF2; /* Viền của bảng */
-    gridline-color: #CCCCCC; /* Màu đường kẻ */
-    font-size: 14px; /* Kích thước chữ */
-    color: #333333; /* Màu chữ */
-    selection-background-color: #B63DF2; /* Màu nền khi được chọn */
-    selection-color: #FFFFFF; /* Màu chữ khi được chọn */
-}
-
-QHeaderView::section {
-    background-color: #B63DF2; /* Màu nền tiêu đề */
-    color: #FFFFFF; /* Màu chữ của tiêu đề */
-    padding: 8px; /* Khoảng cách bên trong tiêu đề */
-    font-weight: bold; /* In đậm chữ */
-    border: 1px solid #B63DF2; /* Viền tiêu đề */
+    background-color: #ffffff; /* Màu nền của bảng */
+    border: 1px solid #ddd;
+    gridline-color: #ccc;
+    font-size: 14px;
+	color: black;
 }
 
 QTableWidget::item {
-    border-bottom: 1px solid #CCCCCC; /* Đường kẻ dưới mỗi ô */
-    padding: 5px; /* Khoảng cách bên trong ô */
+    padding: 5px; /* Khoảng cách giữa các item */
 }
 
+/* Dòng đã chọn */
 QTableWidget::item:selected {
-    background-color: #B63DF2; /* Màu nền khi ô được chọn */
-    color: #FFFFFF; /* Màu chữ khi ô được chọn */
+    background-color: #d0e7ff; /* Màu nền của dòng được chọn */
+    color: #000; /* Màu chữ của dòng được chọn */
 }
 
+/* Thay đổi giao diện khi di chuột vào hàng */
+QTableWidget::item:hover {
+    background-color: #f5f5f5; /* Màu nền khi di chuột */
+}
+
+/* Các đường viền của bảng */
 QTableCornerButton::section {
-    background-color: #B63DF2; /* Màu nền góc trên cùng bên trái */
-    border: 1px solid #B63DF2; /* Viền của góc */
+    background-color: #f0f0f0; /* Màu nền của góc bảng */
+    border: 1px solid #ccc;
 }</string>
        </property>
       </widget>
+      <widget class="QLabel" name="lbWarning">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>400</y>
+         <width>241</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: red;
+font-size: 15px;
+font-weight: 600;
+text-align: center;</string>
+       </property>
+       <property name="text">
+        <string>You have not created any tests yet</string>
+       </property>
+      </widget>
      </widget>
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="geometry">
+       <rect>
+        <x>229</x>
+        <y>-1</y>
+        <width>651</width>
+        <height>581</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBoxAddNewTest">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>0</y>
+        <width>651</width>
+        <height>581</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+    border: 2px solid #8B0000;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+</string>
+      </property>
+      <property name="title">
+       <string>Add New Tesst</string>
+      </property>
+      <widget class="QWidget" name="horizontalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>130</y>
+         <width>431</width>
+         <height>281</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Name of Test:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Duaration</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Total Question</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_10">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Start At</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_11">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>End At</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Password</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLineEdit" name="txtAddNewTestNameOfTest">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtAddNewTestDuaration">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtAddNewTestTotalQuestion">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateTimeEdit" name="dtStartAt">
+            <property name="styleSheet">
+             <string notr="true">QDateTimeEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: #F0F0F0;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateTimeEdit" name="dtEndAt">
+            <property name="styleSheet">
+             <string notr="true">QDateTimeEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: #F0F0F0;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtAddNewTestPassword">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="btnAddNewTextNext">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>470</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    border: 2px solid #8B0000;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #D9534F;
+    color: #FFF;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #C9302C;
+}
+QPushButton:pressed {
+    background-color: #A52A2A;
+}</string>
+       </property>
+       <property name="text">
+        <string>Next</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBoxEditProfile">
+      <property name="geometry">
+       <rect>
+        <x>229</x>
+        <y>-1</y>
+        <width>651</width>
+        <height>581</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+    border: 2px solid #8B0000;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+</string>
+      </property>
+      <property name="title">
+       <string>Edit Profile</string>
+      </property>
+      <widget class="QWidget" name="horizontalLayoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>180</y>
+         <width>381</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QLabel" name="label_17">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>User Id:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_14">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Fullname:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_15">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Username:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_16">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Password:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QLineEdit" name="txtEditProfileId">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtEditProfileFullname">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtEditProfileUsername">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtEditProfilePassword">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="btnEditProfileSubmit">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>470</y>
+         <width>83</width>
+         <height>29</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    border: 2px solid #8B0000;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #D9534F;
+    color: #FFF;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #C9302C;
+}
+QPushButton:pressed {
+    background-color: #A52A2A;
+}</string>
+       </property>
+       <property name="text">
+        <string>Submit</string>
+       </property>
+      </widget>
+     </widget>
+     <zorder>groupBox_4</zorder>
+     <zorder>leftSidebar</zorder>
+     <zorder>groupBoxAddNewTest</zorder>
+     <zorder>groupBoxEditProfile</zorder>
+     <zorder>groupBoxDashboard</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">
      <widget class="QGroupBox" name="groupBox_2">

@@ -1,66 +1,99 @@
 #include "teacher.h"
 #include <fstream>
-#include <iostream>
 #include <sstream>
-#include "../currentUser/currentUser.h"
+#include <iomanip>
 using namespace std;
 
 int teacherManager::idCounter = 0;
 
 teacher::teacher(string name, string username, string password)
-    : name(name), username(username), password(password), id(-1) {}
+    : name(name), username(username), password(password) {}
 
 teacher::~teacher() {}
 
-int teacher::getId() const { return id; }
+string teacher::getId() const { return id; }
 string teacher::getUsername() const { return username; }
 string teacher::getPassword() const { return password; }
 string teacher::getName() const { return name; }
-void teacher::setId(int id) { this->id = id; }
-
-teacherManager::teacherManager() {
-    loadFromFile();
+void teacher::setId(int id) { formattedId(id); }
+void teacher::formattedId(int id)
+{
+    stringstream tmp;
+    tmp << "TEA" << setw(3) << setfill('0') << id;
+    this->id = tmp.str();
+}
+bool teacher::setName(string name)
+{
+    this->name = name;
+    return true;
 }
 
-bool teacherManager::isUsernameUnique(const string& username) const {
-    for (int i = 0; i < idCounter; i++) {
-        if (teacherArray[i].getUsername() == username) {
+bool teacher::setPassword(string password)
+{
+    this->password = password;
+    return true;
+}
+teacherManager::teacherManager()
+{
+    loadFromFile();
+}
+bool teacherManager::isUsernameUnique(const string &username) const
+{
+    for (int i = 0; i < idCounter; i++)
+    {
+        if (teacherArray[i].getUsername() == username)
+        {
             return false;
         }
     }
     return true;
 }
 
-bool teacherManager::isValidPassword(const string& password) const {
+bool teacherManager::isValidPassword(const string &password) const
+{
     return password.length() > 6;
 }
 
-bool teacherManager::isValidName(const string& name) const {
-    for (char c : name) {
-        if (!isalpha(c) && c != ' ') {
+bool teacherManager::isValidName(const string &name) const
+{
+    for (char c : name)
+    {
+        if (!isalpha(c) && c != ' ')
+        {
             return false;
         }
+    }
+    if (name.length() < 3)
+    {
+        return false;
     }
     return true;
 }
 
-bool teacherManager::registerTeacher(const string &fullname, const string &username, const string &password) {
-    if (idCounter >= 100) {
+bool teacherManager::registerTeacher(const string &fullname, const string &username, const string &password)
+{
+    if (idCounter >= 100)
+    {
         return false;
     }
 
-    if (!isValidName(fullname)) {
+    if (!isValidName(fullname))
+    {
         return false;
     }
 
-    do {
-        if (!isUsernameUnique(username)) {
+    do
+    {
+        if (!isUsernameUnique(username))
+        {
             return false;
         }
     } while (!isUsernameUnique(username));
 
-    do {
-        if (!isValidPassword(password)) {
+    do
+    {
+        if (!isValidPassword(password))
+        {
             return false;
         }
     } while (!isValidPassword(password));
@@ -73,23 +106,29 @@ bool teacherManager::registerTeacher(const string &fullname, const string &usern
     return true;
 }
 
-bool teacherManager::login(const string& username, const string& password, currentUser& user) {
-    for (int i = 0; i < idCounter; i++) {
-        if (teacherArray[i].getUsername() == username && teacherArray[i].getPassword() == password) {
-            user = currentUser(teacherArray[i].getId(), teacherArray[i].getUsername(), teacherArray[i].getPassword(),teacherArray[i].getName(), "teacher");
+bool teacherManager::login(const string &username, const string &password, currentUser &user)
+{
+    for (int i = 0; i < idCounter; i++)
+    {
+        if (teacherArray[i].getUsername() == username && teacherArray[i].getPassword() == password)
+        {
+            user = currentUser(teacherArray[i].getId(), teacherArray[i].getUsername(), teacherArray[i].getPassword(), teacherArray[i].getName(), "teacher");
             return true;
         }
     }
     return false;
 }
 
-void teacherManager::saveToFile() const {
-    ofstream outFile("G:\\DUT\\quizz\\src\\teacher\\teachers.txt");
-    if (!outFile.is_open()) {
+void teacherManager::saveToFile() const
+{
+    ofstream outFile("G:\\DUT\\pbl2-quizz\\src\\teacher\\teachers.txt");
+    if (!outFile.is_open())
+    {
         return;
     }
 
-    for (int i = 0; i < idCounter; i++) {
+    for (int i = 0; i < idCounter; i++)
+    {
         outFile << teacherArray[i].getId() << ","
                 << teacherArray[i].getName() << ","
                 << teacherArray[i].getUsername() << ","
@@ -99,14 +138,17 @@ void teacherManager::saveToFile() const {
     outFile.close();
 }
 
-void teacherManager::loadFromFile() {
-    ifstream inFile("G:\\DUT\\quizz\\src\teacher\teachers.txt");
-    if (!inFile.is_open()) {
+void teacherManager::loadFromFile()
+{
+    ifstream inFile("G:\\DUT\\pbl2-quizz\\src\\teacher\\teachers.txt");
+    if (!inFile.is_open())
+    {
         return;
     }
 
     string line;
-    while (getline(inFile, line)) {
+    while (getline(inFile, line))
+    {
         stringstream ss(line);
         string idStr, name, username, password;
         getline(ss, idStr, ',');
@@ -120,4 +162,17 @@ void teacherManager::loadFromFile() {
     }
 
     inFile.close();
+}
+
+bool teacherManager::update(const string id, const string &newPassword, const string &newName)
+{
+    for (int i = 0; i < this->idCounter; i++)
+        if (teacherArray[i].getId() == id && isValidName(newName) && isValidPassword(newPassword))
+        {
+            teacherArray[i].setName(newName);
+            teacherArray[i].setPassword(newPassword);
+            saveToFile();
+            return true;
+        }
+    return false;
 }

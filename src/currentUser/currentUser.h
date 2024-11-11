@@ -6,7 +6,7 @@ using namespace std;
 
 class currentUser {
 private:
-    int id;
+    string id;
     string username;
     string password;
     string fullname;
@@ -15,8 +15,8 @@ private:
     // Constructor 
 
 public:
-    currentUser(int id, const string& username, const string& password, const string& fullname, const string& role);
-    int getId() const;
+    currentUser(string id, const string& username, const string& password, const string& fullname, const string& role);
+    string getId() const;
     string getUsername() const;
     string getPassword() const;
     string getFullname() const;
