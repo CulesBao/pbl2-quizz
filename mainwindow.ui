@@ -10,13 +10,13 @@
     <x>0</x>
     <y>0</y>
     <width>869</width>
-    <height>579</height>
+    <height>609</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
-    <width>869</width>
-    <height>579</height>
+    <width>4534534</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="cursor">
@@ -40,8 +40,8 @@
      <rect>
       <x>-10</x>
       <y>0</y>
-      <width>901</width>
-      <height>581</height>
+      <width>941</width>
+      <height>821</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -52,8 +52,8 @@
     </property>
     <property name="maximumSize">
      <size>
-      <width>901</width>
-      <height>591</height>
+      <width>16777215</width>
+      <height>4564565</height>
      </size>
     </property>
     <property name="styleSheet">
@@ -66,8 +66,8 @@
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>120</y>
+        <x>240</x>
+        <y>130</y>
         <width>411</width>
         <height>291</height>
        </rect>
@@ -383,9 +383,9 @@ text-align: center;</string>
       <property name="geometry">
        <rect>
         <x>229</x>
-        <y>-1</y>
+        <y>-11</y>
         <width>651</width>
-        <height>581</height>
+        <height>621</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -615,26 +615,13 @@ text-align: center;</string>
        </property>
       </widget>
      </widget>
-     <widget class="QGroupBox" name="groupBox_4">
+     <widget class="QGroupBox" name="groupBoxAdvancedSetup">
       <property name="geometry">
        <rect>
         <x>229</x>
-        <y>-1</y>
+        <y>-11</y>
         <width>651</width>
-        <height>581</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>GroupBox</string>
-      </property>
-     </widget>
-     <widget class="QGroupBox" name="groupBoxAddNewTest">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>0</y>
-        <width>651</width>
-        <height>581</height>
+        <height>621</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -649,214 +636,67 @@ text-align: center;</string>
 </string>
       </property>
       <property name="title">
-       <string>Add New Tesst</string>
+       <string>Advanced Set Up</string>
       </property>
-      <widget class="QWidget" name="horizontalLayoutWidget_3">
+      <widget class="QPushButton" name="pushButton_2">
        <property name="geometry">
         <rect>
-         <x>100</x>
-         <y>130</y>
-         <width>431</width>
-         <height>281</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QLabel" name="label_2">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>Name of Test:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>Duaration</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_12">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>Total Question</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_10">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>Start At</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_11">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>End At</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>Password</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3"/>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2"/>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QLineEdit" name="txtAddNewTestNameOfTest">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #F8F8F8;
-	color: black;
-}</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="txtAddNewTestDuaration">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #F8F8F8;
-	color: black;
-}</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="txtAddNewTestTotalQuestion">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #F8F8F8;
-	color: black;
-}</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QDateTimeEdit" name="dtStartAt">
-            <property name="styleSheet">
-             <string notr="true">QDateTimeEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 3px;
-    background-color: #F0F0F0;
-	color: black;
-}</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QDateTimeEdit" name="dtEndAt">
-            <property name="styleSheet">
-             <string notr="true">QDateTimeEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 3px;
-    background-color: #F0F0F0;
-	color: black;
-}</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="txtAddNewTestPassword">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #F8F8F8;
-	color: black;
-}</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QPushButton" name="btnAddNewTextNext">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>470</y>
-         <width>131</width>
-         <height>31</height>
+         <x>140</x>
+         <y>460</y>
+         <width>121</width>
+         <height>41</height>
         </rect>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    border: 2px solid #8B0000;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #D9534F;
-    color: #FFF;
-    font-weight: bold;
-}
-QPushButton:hover {
-    background-color: #C9302C;
-}
-QPushButton:pressed {
-    background-color: #A52A2A;
-}</string>
+        background-color: #fbfbff;
+        color: #27ff64;
+        font: bold 14px 'Arial';
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    /* Khi nhấn vào nút đăng nhập */
+    QPushButton:pressed {
+        background-color: #27ff64;
+		color: #fbfbff;
+    }</string>
+       </property>
+       <property name="text">
+        <string>Back</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnAdvancedSetupNext">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>460</y>
+         <width>111</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+        background-color: #4CAF50;
+        color: white;
+        font: bold 14px 'Arial';
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    /* Khi di chuột qua nút đăng nhập */
+    QPushButton:hover {
+        background-color: #45a049;
+    }
+
+    /* Khi nhấn vào nút đăng nhập */
+    QPushButton:pressed {
+        background-color: #388E3C;
+    }</string>
        </property>
        <property name="text">
         <string>Next</string>
@@ -867,9 +707,9 @@ QPushButton:pressed {
       <property name="geometry">
        <rect>
         <x>229</x>
-        <y>-1</y>
+        <y>-11</y>
         <width>651</width>
-        <height>581</height>
+        <height>621</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1040,10 +880,297 @@ QPushButton:pressed {
        </property>
       </widget>
      </widget>
-     <zorder>groupBox_4</zorder>
+     <widget class="QGroupBox" name="groupBoxAddNewTest">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>-10</y>
+        <width>651</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+    border: 2px solid #8B0000;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+</string>
+      </property>
+      <property name="title">
+       <string>Add New Tesst</string>
+      </property>
+      <widget class="QWidget" name="horizontalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>30</y>
+         <width>431</width>
+         <height>244</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Name of Test:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Duaration</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_10">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Start At</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_11">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>End At</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Password</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLineEdit" name="txtAddNewTestNameOfTest">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtAddNewTestDuaration">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateTimeEdit" name="dtStartAt">
+            <property name="styleSheet">
+             <string notr="true">QDateTimeEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: #F0F0F0;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateTimeEdit" name="dtEndAt">
+            <property name="styleSheet">
+             <string notr="true">QDateTimeEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: #F0F0F0;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtAddNewTestPassword">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QTableWidget" name="tbSetNumberQuestion">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>280</y>
+         <width>441</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+    background-color: #ffffff; /* Màu nền của bảng */
+    border: 1px solid #ddd;
+    gridline-color: #ccc;
+    font-size: 14px;
+	color: black;
+}
+
+QTableWidget::item {
+    padding: 5px; /* Khoảng cách giữa các item */
+}
+
+/* Dòng đã chọn */
+QTableWidget::item:selected {
+    background-color: #d0e7ff; /* Màu nền của dòng được chọn */
+    color: #000; /* Màu chữ của dòng được chọn */
+}
+
+/* Thay đổi giao diện khi di chuột vào hàng */
+QTableWidget::item:hover {
+    background-color: #f5f5f5; /* Màu nền khi di chuột */
+}
+
+/* Các đường viền của bảng */
+QTableCornerButton::section {
+    background-color: #f0f0f0; /* Màu nền của góc bảng */
+    border: 1px solid #ccc;
+}</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnAddNewTextNext">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>570</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    border: 2px solid #8B0000;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #D9534F;
+    color: #FFF;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #C9302C;
+}
+QPushButton:pressed {
+    background-color: #A52A2A;
+}</string>
+       </property>
+       <property name="text">
+        <string>Next</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_12">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>500</y>
+         <width>89</width>
+         <height>34</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    color: #444;
+    font-size: 14px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Total Question</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtAddNewTestTotalQuestion">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>500</y>
+         <width>317</width>
+         <height>34</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #F8F8F8;
+	color: black;
+}</string>
+       </property>
+      </widget>
+     </widget>
+     <zorder>groupBoxAdvancedSetup</zorder>
      <zorder>leftSidebar</zorder>
-     <zorder>groupBoxAddNewTest</zorder>
      <zorder>groupBoxEditProfile</zorder>
+     <zorder>groupBoxAddNewTest</zorder>
      <zorder>groupBoxDashboard</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">

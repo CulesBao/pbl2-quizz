@@ -101,11 +101,8 @@ void MainWindow::setUpTeacherDashboard()
     label = ui->lbWarning;
     label->hide();
     QTableWidget *table = ui->tbTeacherDashboard;
-    qDebug() << "Number of tests:" << managerTest.getTestCount();
     int count = 0;
     Test *teacherTests = managerTest.getTestByTeacherId(logged.getId(), count);
-    // Test *tmp = managerTest.getTestById("TID001");
-    // qDebug() << tmp->getTeacherId();
     table->setColumnCount(10);
     table->setHorizontalHeaderLabels({"ID", "Teacher ID", "Title", "Total Question", "Duration", "Password", "Starts At", "Ends At", "Detail", "Delete"});
     table->setColumnWidth(0, 70);  // ID
@@ -232,6 +229,42 @@ void MainWindow::on_btnAddNewTest_clicked()
     grBox->hide();
     grBox = ui->groupBoxEditProfile;
     grBox->hide();
+
+    QTableWidget *table = ui->tbSetNumberQuestion;
+    table->setColumnCount(2);
+    table->setHorizontalHeaderLabels({"Chapter", "Number of Questions"});
+    table->setColumnWidth(0, 200);
+    table->setColumnWidth(1, 200);
+
+    QHeaderView *header = table->horizontalHeader();
+    header->setStyleSheet("QHeaderView::section { background-color: black; color: white; }");
+
+    qDebug() << "Number of chapters:" << chapterManager.getChapterCount();
+    for (int i = 0; i < chapterManager.getChapterCount(); i++)
+    {
+        Chapter *chapter = chapterManager.getChapterById(i);
+        table->insertRow(i);
+        table->setRowHeight(i, 70);
+        table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(chapter->getName())));
+
+        QLineEdit *lineEdit = new QLineEdit();
+        lineEdit->setText("0");
+        lineEdit->setAlignment(Qt::AlignCenter);
+
+        table->setCellWidget(i, 1, lineEdit);
+        lineEdit->setStyleSheet("border: 1px solid #888; border-radius: 5px; padding: 5px; background-color: #F8F8F8; color: black;");
+
+        connect(lineEdit, &QLineEdit::textChanged, this, [this, lineEdit, chapter]
+                {
+                    int tmpCount = 0;
+                    for (int i = 0; i < ui->tbSetNumberQuestion->rowCount(); i++)
+                    {
+                        QLineEdit *lineEdit = qobject_cast<QLineEdit *>(ui->tbSetNumberQuestion->cellWidget(i, 1));
+                        tmpCount += lineEdit->text().toInt();
+                    }
+                    ui->txtAddNewTestTotalQuestion->setText(QString::number(tmpCount)); });
+    }
+    ui->txtAddNewTestTotalQuestion->setReadOnly(true);
 }
 
 void MainWindow::on_btnAddNewTextNext_clicked()
@@ -252,16 +285,14 @@ void MainWindow::on_btnAddNewTextNext_clicked()
     string endsAt = qEndAt.toStdString();
     string password = qPassword.toStdString();
 
-    if (managerTest.createTest(logged.getId(), title, totalQuestion, password, duration, startsAt, endsAt))
-    {
-        QMessageBox::information(this, "Add New Test", "Add new test successful!");
-        on_btnDashboard_clicked();
-        setUpTeacherDashboard();
-    }
-    else
-    {
-        QMessageBox::warning(this, "Add New Test", "Form is incorrect. Please try again!");
-    }
+    Test newTest;
+    newTest.setTeacherId(logged.getId());
+    newTest.setTitle(title);
+    newTest.setTotalQuestion(totalQuestion);
+    newTest.setDuration(duration);
+    newTest.setPassword(password);
+    newTest.setStartsAt(startsAt);
+    newTest.setEndsAt(endsAt);
 }
 
 void MainWindow::on_btnEditProfile_clicked()
@@ -272,7 +303,6 @@ void MainWindow::on_btnEditProfile_clicked()
     grBox->hide();
     grBox = ui->groupBoxAddNewTest;
     grBox->hide();
-
     QLineEdit *txtFullname = ui->txtEditProfileFullname;
     QLineEdit *txtUsername = ui->txtEditProfileUsername;
     QLineEdit *txtPassword = ui->txtEditProfilePassword;
@@ -307,4 +337,16 @@ void MainWindow::on_btnEditProfileSubmit_clicked()
     {
         QMessageBox::warning(this, "Edit Profile", "Form is incorrect. Please try again!");
     }
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QGroupBox *grBox = ui->groupBoxAddNewTest;
+    grBox->show();
+    grBox = ui->groupBoxAdvancedSetup;
+    grBox->hide();
+}
+
+void MainWindow::on_btnAdvancedSetupNext_clicked()
+{
 }
