@@ -66,7 +66,7 @@ string TestQuestionSelection::getId()
 void TestQuestionSelectionManager::loadFromFile()
 {
     ifstream file;
-    file.open("TestQuestionSelection.txt");
+    file.open("G:\\DUT\\pbl2-quizz\\src\\testQuestionSelection\\TestQuestionSelection.txt");
     if (!file)
     {
         cout << "File not found" << endl;
@@ -175,7 +175,7 @@ TestQuestionSelection *TestQuestionSelectionManager::getTestQuestionSelectionByT
 void TestQuestionSelectionManager::saveToFile()
 {
     ofstream file;
-    file.open("TestQuestionSelection.txt");
+    file.open("G:\\DUT\\pbl2-quizz\\src\\testQuestionSelection\\TestQuestionSelection.txt");
     for (int i = 0; i < count; i++)
     {
         file << manager[i].getId() << "|" << manager[i].getTestId() << "|" << manager[i].getChapterId() << "|" << manager[i].getNumberOfQuestions() << endl;

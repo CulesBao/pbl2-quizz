@@ -4,6 +4,7 @@
 #include "./src/teacher/teacher.h"
 #include "./src/currentUser/currentUser.h"
 #include "./src/testInfo/testInfo.h"
+#include "./src/testQuestionSelection/testQuestionSelection.h"
 #include <QMessageBox>
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
@@ -270,7 +271,6 @@ void MainWindow::on_btnAddNewTest_clicked()
 void MainWindow::on_btnAddNewTextNext_clicked()
 {
     QString qTitle = ui->txtAddNewTestNameOfTest->text();
-    QString qTotalQuestion = ui->txtAddNewTestTotalQuestion->text();
     QString qDuration = ui->txtAddNewTestDuaration->text();
     QString qPassword = ui->txtAddNewTestPassword->text();
     QDateTime qStartsAt = ui->dtStartAt->dateTime();
@@ -278,21 +278,50 @@ void MainWindow::on_btnAddNewTextNext_clicked()
     QString qstartAt = qStartsAt.toString("hh:mm:ss dd/MM/yyyy");
     QString qEndAt = qEndsAt.toString("hh:mm:ss dd/MM/yyyy");
 
-    int totalQuestion = qTotalQuestion.toInt();
     int duration = qDuration.toInt();
     string title = qTitle.toStdString();
     string startsAt = qstartAt.toStdString();
     string endsAt = qEndAt.toStdString();
     string password = qPassword.toStdString();
 
-    Test newTest;
-    newTest.setTeacherId(logged.getId());
-    newTest.setTitle(title);
-    newTest.setTotalQuestion(totalQuestion);
-    newTest.setDuration(duration);
-    newTest.setPassword(password);
-    newTest.setStartsAt(startsAt);
-    newTest.setEndsAt(endsAt);
+    int questionCount = 0;
+    for (int i = 0; i < ui->tbSetNumberQuestion->rowCount(); i++)
+    {
+        QLineEdit *lineEdit = qobject_cast<QLineEdit *>(ui->tbSetNumberQuestion->cellWidget(i, 1));
+        questionCount += lineEdit->text().toInt();
+    }
+    if (questionCount == 0)
+    {
+        QMessageBox::warning(this, "Add New Test", "Total question must be greater than 0. Please try again!");
+        return;
+    }
+    else
+    {
+        if (managerTest.createTest(logged.getId(), title, questionCount, password, duration, startsAt, endsAt))
+        {
+            QMessageBox::information(this, "Add New Test", "Add new test successful!");
+            for (int i = 0; i < ui->tbSetNumberQuestion->rowCount(); i++)
+            {
+                QLineEdit *lineEdit = qobject_cast<QLineEdit *>(ui->tbSetNumberQuestion->cellWidget(i, 1));
+                int count = lineEdit->text().toInt();
+                if (count > 0)
+                {
+                    Chapter *chapter = chapterManager.getChapterById(i);
+                    Test *test = managerTest.getLastTest();
+                    if (test != nullptr)
+                    {
+                        testQuestionSelectionManager.addTestQuestionSelection(test->getId(), chapter->getId(), count);
+                    }
+                }
+            }
+            on_btnDashboard_clicked();
+            setUpTeacherDashboard();
+        }
+        else
+        {
+            QMessageBox::warning(this, "Add New Test", "Form is incorrect. Please try again!");
+        }
+    }
 }
 
 void MainWindow::on_btnEditProfile_clicked()

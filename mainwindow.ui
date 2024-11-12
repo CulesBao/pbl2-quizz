@@ -1170,8 +1170,8 @@ QPushButton:pressed {
      <zorder>groupBoxAdvancedSetup</zorder>
      <zorder>leftSidebar</zorder>
      <zorder>groupBoxEditProfile</zorder>
-     <zorder>groupBoxAddNewTest</zorder>
      <zorder>groupBoxDashboard</zorder>
+     <zorder>groupBoxAddNewTest</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">
      <widget class="QGroupBox" name="groupBox_2">

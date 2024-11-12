@@ -8,6 +8,7 @@
 #include "./src/testInfo/testInfo.h"
 #include "./src/currentUser/currentUser.h"
 #include "./src/chapter/chapter.h"
+#include "./src/testQuestionSelection/testQuestionSelection.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -31,6 +32,7 @@ private:
     TestManager managerTest;
     currentUser logged = currentUser("", "", "", "", "");
     ChapterManager chapterManager;
+    TestQuestionSelectionManager testQuestionSelectionManager;
 private slots:
     void login();
     void on_btnRegister_clicked();

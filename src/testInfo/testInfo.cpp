@@ -530,3 +530,7 @@ int TestManager::getTestCount() const
 {
     return testCount;
 }
+Test *TestManager::getLastTest()
+{
+    return &managerTest[testCount - 1];
+}
