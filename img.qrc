@@ -7,6 +7,7 @@
         <file>src/testInfo/testInfo.txt</file>
         <file>src/testQuestionSelection/TestQuestionSelection.txt</file>
         <file>src/chapter/chapters.txt</file>
+        <file>src/questionBank/questions.txt</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

@@ -9,7 +9,7 @@
 #include "./src/currentUser/currentUser.h"
 #include "./src/chapter/chapter.h"
 #include "./src/testQuestionSelection/testQuestionSelection.h"
-
+#include "./src/questionBank/question.h"
 QT_BEGIN_NAMESPACE
 namespace Ui
 {
@@ -33,6 +33,7 @@ private:
     currentUser logged = currentUser("", "", "", "", "");
     ChapterManager chapterManager;
     TestQuestionSelectionManager testQuestionSelectionManager;
+    QuestionBank questionBankManager;
 private slots:
     void login();
     void on_btnRegister_clicked();
@@ -46,6 +47,12 @@ private slots:
     void on_btnAddNewTextNext_clicked();
     void on_btnEditProfile_clicked();
     void on_btnEditProfileSubmit_clicked();
-    void on_btnAdvancedSetupNext_clicked();
+    void on_btnMyQuestionBank_clicked();
+    void on_btnMyQuestionBankAddNewQuestion_clicked();
+    void on_btnAddNewQuestionBack_clicked();
+    void on_btnAddNewQuestionAdd_clicked();
+    void showQuestionDetails(string questionId);
+    void on_btnAddNewQuestionBack_2_clicked();
+    void on_btnAddNewQuestionAdd_2_clicked();
 };
 #endif // MAINWINDOW_H

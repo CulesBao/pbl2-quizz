@@ -40,6 +40,7 @@ public:
     Chapter *getChapterById(const int id);
     bool updateChapter(const string &id, const string &newName);
     bool deleteChapter(const string &id);
+    string getChapterIdByName(const string &name);
 };
 
 #endif // CHAPTER_H

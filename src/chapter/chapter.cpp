@@ -172,3 +172,14 @@ int ChapterManager::getChapterCount() const
 {
     return chapterCount;
 }
+string ChapterManager::getChapterIdByName(const string &name)
+{
+    for (int i = 0; i < chapterCount; i++)
+    {
+        if (chapters[i].getName() == name)
+        {
+            return chapters[i].getId();
+        }
+    }
+    return "";
+}

@@ -35,6 +35,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         src/testInfo/testInfo.cpp src/testInfo/testInfo.h
         src/chapter/chapter.cpp src/chapter/chapter.h
         src/testQuestionSelection/testQuestionSelection.cpp src/testQuestionSelection/testQuestionSelection.h
+        src/questionBank/question.cpp src/questionBank/question.h
+
 
 
 
