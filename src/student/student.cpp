@@ -171,6 +171,7 @@ bool student::setName(const string &name)
     this->name = name;
     return true;
 }
+
 bool student::setPassword(const string &password)
 {
     this->password = password;
