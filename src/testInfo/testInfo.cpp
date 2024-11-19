@@ -534,3 +534,21 @@ Test *TestManager::getLastTest()
 {
     return &managerTest[testCount - 1];
 }
+Test *TestManager::getRunningTest(int &count)
+{
+    Test *runningTests = new Test[1000];
+    count = 0;
+    for (int i = 0; i < testCount; ++i)
+    {
+        if (managerTest[i].getStatus() == 1)
+        {
+            runningTests[count] = managerTest[i];
+            ++count;
+        }
+    }
+    if (count == 0)
+    {
+        return nullptr;
+    }
+    return runningTests;
+}

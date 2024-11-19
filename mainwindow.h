@@ -10,6 +10,7 @@
 #include "./src/chapter/chapter.h"
 #include "./src/testQuestionSelection/testQuestionSelection.h"
 #include "./src/questionBank/question.h"
+#include "./studentform.h"
 QT_BEGIN_NAMESPACE
 namespace Ui
 {

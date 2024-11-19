@@ -7,6 +7,7 @@
 #include "./src/testQuestionSelection/testQuestionSelection.h"
 #include "./src/questionBank/question.h"
 #include <QMessageBox>
+#include "studentform.h"
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -23,7 +24,6 @@ MainWindow::MainWindow(QWidget *parent)
         } });
     connect(ui->btnLogin, &QPushButton::clicked, this, &MainWindow::login);
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -54,9 +54,9 @@ void MainWindow::login()
     }
     else if (managerStudent.login(username, password, logged))
     {
-        QMessageBox::information(this, "Login", "Login successful!");
-        // ui->stackedWidget->setCurrentIndex(1);
-        // setUpTeacherDashboard();
+        StudentForm *secWindow = new StudentForm();
+        secWindow->show();
+        this->close();
     }
     else
     {
