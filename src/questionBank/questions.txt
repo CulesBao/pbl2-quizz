@@ -1,10 +1,300 @@
-||||0|-1|
-||||0|-1|
-||||0|-1|
-||||0|-1|
-||||0|-1|
-QUE005|TEA001|CHA006|There is _ chair|4|2|none|an|a|some|
-QUE006|TEA000|CHA002|Choose the correct answer:\nHow old are you?|4|1|I'm fine Thank you|I'm eleven|1|2|
-||||0|-1|
-QUE008|TEA000|CHA000|4124|3|1|124123|123|123|
-||||0|-1|
+QUE000|TEA000|CHA000|My television is ______ his television.|4|3|modern than|more morden than|mordener than|more mordener than|
+QUE001|TEA001|CHA001|I am having a math lesson, but I forgot my ________. I had some difficulty.|4|1|calculator|bicycle|pencil case|pencil sharpener|
+QUE002|TEA001|CHA001|They often play soccer in the ______.|4|2|school gate|school yard|schoolmate|schoolbag|
+QUE003|TEA001|CHA001|It has two wheels. Many students ride it to school. What is it?|4|4|bus|picture|letter|bicycle|
+QUE004|TEA001|CHA001|It has many letters and words. You use it to look up new words. What is it?|4|3|comic book|textbook|dictionary|notebook|
+QUE005|TEA001|CHA001|It’s a room at your school where there are books, newspapers, etc. for you to read, study, or borrow. You can read books and study here. What is it?|4|2|playground|library|classroom|school yard|
+QUE006|TEA001|CHA001|What is your ___________subject at school?|4|2|nice|favourite|liking|excited|
+QUE007|TEA001|CHA001|Students live and study in a/an ___________school. They only go home at weekends.|4|3|international|small|boarding|overseas|
+QUE008|TEA001|CHA001|I study 7 _______ at school: Maths, English, Music, Art, Literature, History, Geography.|4|1|subjects|lessons|teachers|exercises|
+QUE009|TEA001|CHA001|I have Math lessons ______Monday and Friday.|4|1|on|in|at|from|
+QUE010|TEA001|CHA001|At lunchtime, you can ________ lunch in the school canteen.|4|4|be|go|do|have|
+QUE011|TEA001|CHA001|My friends do  _______ to protect themselves.|4|2|computer|judo|football|homework|
+QUE012|TEA001|CHA001|I stick new words on the wall to learn ______.|4|4|uniform|projector|Physics|vocabulary|
+QUE013|TEA001|CHA001|Everyday, I ride my ______ to school.|4|2|calculator|bicycle|computer|guitar|
+QUE014|TEA001|CHA002|I usually ______ to school by bike, and my mother _______ to work by motorbike.|4|3|go/go|goes/goes|go/goes|goes/go|
+QUE015|TEA001|CHA002|Every morning, I always ______ to school at 6.30 and ______ home at about 11.30.|4|3|go/comes|go/come|go/come|going/coming|
+QUE016|TEA001|CHA002|My classmates ________ on picnic every month.|4|4|went|goes|going|go|
+QUE017|TEA001|CHA002|______ he ______ three children?|4|2|Does/have|Does/has|Do/have|Is/have|
+QUE018|TEA001|CHA002|He  ________ a glass of lemonade before breakfast.|4|3|is|have|has|does|
+QUE019|TEA001|CHA002|_______ she _____ French?|4|3|Do/ speaks|Does/speaks|Does/speak|Is/speak|
+QUE020|TEA001|CHA002|When I ______ books, I always _____ very happy.|4|1|read/feel|reads/feel|read/feels|reads/feels|
+QUE021|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|1|favorite|lemonade|chocolate|interesting|
+QUE022|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|1|beautiful|careful|wonderful|comfortable|
+QUE023|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|2|holiday|important|interview|exercise|
+QUE024|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|3|tomorrow|present|vacation|family|
+QUE025|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|3|computer|dictionary|beautiful|camera|
+QUE026|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|4|information|education|interesting|activity|
+QUE027|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|1|apple|banana|carrot|potato|
+QUE028|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|4|student|teacher|school|activity|
+QUE029|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|2|important|teacher|family|friendship|
+QUE030|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|4|holiday|vacation|relaxation|adventure|
+QUE031|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|1|together|everything|teacher|student|
+QUE032|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|3|chocolate|vanilla|lemonade|caramel|
+QUE033|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|2|different|similar|interesting|beautiful|
+QUE034|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|3|music|dancing|reading|singing|
+QUE035|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|2|family|friends|classmate|teacher|
+QUE036|TEA001|CHA003|Choose the word whose stress pattern is different from the others:|4|1|environment|celebrate|memory|imagine|
+QUE037|TEA001|CHA000|I need to bring a _______ to my art class for painting.|4|3|book|brush|pen|pencil|
+QUE038|TEA001|CHA002|Find which word does not belong in each group.|4|4|ruler|dishwasher|fridge|sink|
+QUE039|TEA001|CHA002|We use a __________ to put the clothes in.|4|2|wardrobe|microwave|sink|cooker|
+QUE040|TEA001|CHA002|Find which word does not belong in each group.|4|4|sofa|chair|cooker|table|
+QUE041|TEA001|CHA002|Find which word does not belong in each group.|4|3|bedroom|toilet|library|kitchen|
+QUE042|TEA001|CHA002|Find which word does not belong in each group.|4|4|calculator|pillow|blanket|bed|
+QUE043|TEA001|CHA002|My mum wants me to put all the food in the ______.|4|3|washing machine|table|fridge|tub|
+QUE044|TEA001|CHA002|My bedroom is small but it has a ___________window.|4|1|big|small|interesting|old|
+QUE045|TEA001|CHA002|We live in a town house, but our grandparents live in a/ an  ________ house.|4|2|villa|country|apartment|city|
+QUE046|TEA001|CHA002|Find which word does not belong in each group.|4|4|bed|lamp|fan|villa|
+QUE047|TEA001|CHA002|I sit _______ Sarah at school.|4|2|on|next to|between||
+QUE048|TEA001|CHA002|Our family stays _____ a villa.|4|1|in|on|in front of||
+QUE049|TEA001|CHA002|There are four students at each table. My friend Justine sits_____ me.|4|3|in front of|near to|opposite||
+QUE050|TEA001|CHA002|Tom sits______ Lucy and James.|4|1|between|in front|near to||
+QUE051|TEA001|CHA003|Choose the word which has the underlined part pronounced differently from the rest.|4|2|fix|exam|six|next|
+QUE052|TEA001|CHA003|Choose the word which has the underlined part pronounced differently from the rest.|4|1|cover|pencil|place|police|
+QUE053|TEA001|CHA003|Choose the word which has the underlined part pronounced differently from the rest.|4|3|Russia|class|glass|pass|
+QUE054|TEA001|CHA003|Find which word does not belong in each group.|4|4|ruler|dishwasher|fridge|sink|
+QUE055|TEA001|CHA003|We use a __________ to put the clothes in.|4|2|wardrobe|microwave|sink|cooker|
+QUE056|TEA001|CHA003|Find which word does not belong in each group.|4|4|sofa|chair|cooker|table|
+QUE057|TEA001|CHA003|Find which word does not belong in each group.|4|3|bedroom|toilet|library|kitchen|
+QUE058|TEA001|CHA003|Find which word does not belong in each group.|4|4|calculator|pillow|blanket|bed|
+QUE059|TEA001|CHA003|My mum wants me to put all the food in the ______.|4|3|washing machine|table|fridge|tub|
+QUE060|TEA001|CHA003|My bedroom is small but it has a ___________window.|4|1|big|small|interesting|old|
+QUE061|TEA001|CHA003|We live in a town house, but our grandparents live in a/ an  ________ house.|4|2|villa|country|apartment|city|
+QUE062|TEA001|CHA003|Find which word does not belong in each group.|4|4|bed|lamp|fan|villa|
+QUE063|TEA001|CHA003|Look! the girls are _________ rope in the playground.|4|3|are skipping|skips|skipping|to skip|
+QUE064|TEA001|CHA003|Nam _______ football now. He’s tired.|4|2|are playing|isn’t playing|is playing|aren’t playing|
+QUE065|TEA001|CHA003|Please be quiet! I ________ my book.|4|3|ain’t reading|are reading|am reading|is reading|
+QUE066|TEA001|CHA003|We ________ our bicycles to school now.|4|1|are riding|is riding|ride|rides|
+QUE067|TEA001|CHA003|My brother _________ a video clip on Youtube now.|4|3|is playing|is having|is watching|is listening|
+QUE068|TEA001|CHA003|Nam and Minh ______ playing soccer in the yard at the moment.|4|4|do|is|does|are|
+QUE069|TEA001|CHA003|Look! David and Max ________ English to a foreigner.|4|3|is speaking|speak|are speaking|speaks|
+QUE070|TEA001|CHA003|She _____ English at the moment.|4|2|study|is studying|studies|studying|
+QUE071|TEA001|CHA003|I’m ______ physics.|4|3|playing|having|doing|going|
+QUE072|TEA001|CHA003|He is in the garden. He ______ the flowers.|4|2|are watering|is watering|waters|water|
+QUE073|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|1|practice|big|block|blend|
+QUE074|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|2|pass|apple|black|pen|
+QUE075|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|book|bus|party|buy|
+QUE076|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|1|party|boat|sporty|play|
+QUE077|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|blond|blue|big|pig|
+QUE078|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|4|pain|pick|spoon|brown|
+QUE079|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|2|home|old|how|go|
+QUE080|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|help|ending|equip|setting|
+QUE081|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|2|stove|cold|worry|hold|
+QUE082|TEA001|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|visible|bring|building|bomb|
+QUE083|TEA001|CHA000|In the spring, the place is _______ with the visitors.|4|2|crowd|crowded|crowding|crowds|
+QUE084|TEA001|CHA000|It is ­____ to have the school so near.|4|3|inconvenience|inconvenient|convenient|convenience|
+QUE085|TEA001|CHA000|Life in countryside is ______. There aren’t many things to do there.|4|2|noisy|boring|fantastic|polluted|
+QUE086|TEA001|CHA000|Heavy traffic flow is a major source of noise ______ in urban areas.|4|4|polluting|pollute|polluted|pollution|
+QUE087|TEA001|CHA000|Max is ____ than Mike.|4|1|more careful|careful|more care|care|
+QUE088|TEA001|CHA000|Jill is _____than his sister.|4|4|thought|more thoght|thoughtful|more thoughtful|
+QUE089|TEA001|CHA000|We've got _______ time than I thought.|4|2|much|more|few||
+QUE090|TEA001|CHA000|People are usually ____ in the countryside than in the big cities.|4|2|friendly|more friendly|friendlier||
+QUE091|TEA001|CHA000|The road is _____ than the motorway.|4|2|narrow|narrower|more narrow||
+QUE092|TEA001|CHA000|The road is _____ than the motorway.|4|2|narrow|narrower|narrowest||
+QUE093|TEA001|CHA000|New York's population is_____ than San Francisco's.|4|2|large|larger|more large||
+QUE094|TEA001|CHA000|This building is _______ than that one.|4|3|beautifuler|beautiful|more beautiful||
+QUE095|TEA001|CHA000|John is ______ today than he was yesterday.|4|4|hapier|more happier|more happy|happier|
+QUE096|TEA001|CHA000|My mother’s cooking is _______ your mother’s cooking.|4|2|bad than|worse than|bad|worse|
+QUE097|TEA001|CHA000|She is coming ________ than I.|4|1|earlier|more early|early than|more earlier|
+QUE098|TEA001|CHA000|Health is ________ money.|4|3|important|important than|more important|more important than|
+QUE099|TEA001|CHA000|The weather today is _____ it was yesterday.|4|3|bad than|bader than|worse than|worst than|
+QUE100|TEA001|CHA000|My television is ______ his television.|4|3|modern than|more morden than|mordener than|more mordener than|
+QUE101|TEA002|CHA001|I am having a math lesson, but I forgot my ________. I had some difficulty.|4|1|calculator|bicycle|pencil case|pencil sharpener|
+QUE102|TEA002|CHA001|They often play soccer in the ______.|4|2|school gate|school yard|schoolmate|schoolbag|
+QUE103|TEA002|CHA001|It has two wheels. Many students ride it to school. What is it?|4|4|bus|picture|letter|bicycle|
+QUE104|TEA002|CHA001|It has many letters and words. You use it to look up new words. What is it?|4|3|comic book|textbook|dictionary|notebook|
+QUE105|TEA002|CHA001|It’s a room at your school where there are books, newspapers, etc. for you to read, study, or borrow. You can read books and study here. What is it?|4|2|playground|library|classroom|school yard|
+QUE106|TEA002|CHA001|What is your ___________subject at school?|4|2|nice|favourite|liking|excited|
+QUE107|TEA002|CHA001|Students live and study in a/an ___________school. They only go home at weekends.|4|3|international|small|boarding|overseas|
+QUE108|TEA002|CHA001|I study 7 _______ at school: Maths, English, Music, Art, Literature, History, Geography.|4|1|subjects|lessons|teachers|exercises|
+QUE109|TEA002|CHA001|I have Math lessons ______Monday and Friday.|4|1|on|in|at|from|
+QUE110|TEA002|CHA001|At lunchtime, you can ________ lunch in the school canteen.|4|4|be|go|do|have|
+QUE111|TEA002|CHA001|My friends do  _______ to protect themselves.|4|2|computer|judo|football|homework|
+QUE112|TEA002|CHA001|I stick new words on the wall to learn ______.|4|4|uniform|projector|Physics|vocabulary|
+QUE113|TEA002|CHA001|Everyday, I ride my ______ to school.|4|2|calculator|bicycle|computer|guitar|
+QUE114|TEA002|CHA002|I usually ______ to school by bike, and my mother _______ to work by motorbike.|4|3|go/go|goes/goes|go/goes|goes/go|
+QUE115|TEA002|CHA002|Every morning, I always ______ to school at 6.30 and ______ home at about 11.30.|4|3|go/comes|go/come|go/come|going/coming|
+QUE116|TEA002|CHA002|My classmates ________ on picnic every month.|4|4|went|goes|going|go|
+QUE117|TEA002|CHA002|______ he ______ three children?|4|2|Does/have|Does/has|Do/have|Is/have|
+QUE118|TEA002|CHA002|He  ________ a glass of lemonade before breakfast.|4|3|is|have|has|does|
+QUE119|TEA002|CHA002|_______ she _____ French?|4|3|Do/ speaks|Does/speaks|Does/speak|Is/speak|
+QUE120|TEA002|CHA002|When I ______ books, I always _____ very happy.|4|1|read/feel|reads/feel|read/feels|reads/feels|
+QUE121|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|1|favorite|lemonade|chocolate|interesting|
+QUE122|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|1|beautiful|careful|wonderful|comfortable|
+QUE123|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|2|holiday|important|interview|exercise|
+QUE124|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|3|tomorrow|present|vacation|family|
+QUE125|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|3|computer|dictionary|beautiful|camera|
+QUE126|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|4|information|education|interesting|activity|
+QUE127|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|1|apple|banana|carrot|potato|
+QUE128|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|4|student|teacher|school|activity|
+QUE129|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|2|important|teacher|family|friendship|
+QUE130|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|4|holiday|vacation|relaxation|adventure|
+QUE131|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|1|together|everything|teacher|student|
+QUE132|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|3|chocolate|vanilla|lemonade|caramel|
+QUE133|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|2|different|similar|interesting|beautiful|
+QUE134|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|3|music|dancing|reading|singing|
+QUE135|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|2|family|friends|classmate|teacher|
+QUE136|TEA002|CHA003|Choose the word whose stress pattern is different from the others:|4|1|environment|celebrate|memory|imagine|
+QUE137|TEA002|CHA000|I need to bring a _______ to my art class for painting.|4|3|book|brush|pen|pencil|
+QUE138|TEA002|CHA002|Find which word does not belong in each group.|4|4|ruler|dishwasher|fridge|sink|
+QUE139|TEA002|CHA002|We use a __________ to put the clothes in.|4|2|wardrobe|microwave|sink|cooker|
+QUE140|TEA002|CHA002|Find which word does not belong in each group.|4|4|sofa|chair|cooker|table|
+QUE141|TEA002|CHA002|Find which word does not belong in each group.|4|3|bedroom|toilet|library|kitchen|
+QUE142|TEA002|CHA002|Find which word does not belong in each group.|4|4|calculator|pillow|blanket|bed|
+QUE143|TEA002|CHA002|My mum wants me to put all the food in the ______.|4|3|washing machine|table|fridge|tub|
+QUE144|TEA002|CHA002|My bedroom is small but it has a ___________window.|4|1|big|small|interesting|old|
+QUE145|TEA002|CHA002|We live in a town house, but our grandparents live in a/ an  ________ house.|4|2|villa|country|apartment|city|
+QUE146|TEA002|CHA002|Find which word does not belong in each group.|4|4|bed|lamp|fan|villa|
+QUE147|TEA002|CHA002|I sit _______ Sarah at school.|4|2|on|next to|between||
+QUE148|TEA002|CHA002|Our family stays _____ a villa.|4|1|in|on|in front of||
+QUE149|TEA002|CHA002|There are four students at each table. My friend Justine sits_____ me.|4|3|in front of|near to|opposite||
+QUE150|TEA002|CHA002|Tom sits______ Lucy and James.|4|1|between|in front|near to||
+QUE151|TEA002|CHA003|Choose the word which has the underlined part pronounced differently from the rest.|4|2|fix|exam|six|next|
+QUE152|TEA002|CHA003|Choose the word which has the underlined part pronounced differently from the rest.|4|1|cover|pencil|place|police|
+QUE153|TEA002|CHA003|Choose the word which has the underlined part pronounced differently from the rest.|4|3|Russia|class|glass|pass|
+QUE154|TEA002|CHA003|Find which word does not belong in each group.|4|4|ruler|dishwasher|fridge|sink|
+QUE155|TEA002|CHA003|We use a __________ to put the clothes in.|4|2|wardrobe|microwave|sink|cooker|
+QUE156|TEA002|CHA003|Find which word does not belong in each group.|4|4|sofa|chair|cooker|table|
+QUE157|TEA002|CHA003|Find which word does not belong in each group.|4|3|bedroom|toilet|library|kitchen|
+QUE158|TEA002|CHA003|Find which word does not belong in each group.|4|4|calculator|pillow|blanket|bed|
+QUE159|TEA002|CHA003|My mum wants me to put all the food in the ______.|4|3|washing machine|table|fridge|tub|
+QUE160|TEA002|CHA003|My bedroom is small but it has a ___________window.|4|1|big|small|interesting|old|
+QUE161|TEA002|CHA003|We live in a town house, but our grandparents live in a/ an  ________ house.|4|2|villa|country|apartment|city|
+QUE162|TEA002|CHA003|Find which word does not belong in each group.|4|4|bed|lamp|fan|villa|
+QUE163|TEA002|CHA003|Look! the girls are _________ rope in the playground.|4|3|are skipping|skips|skipping|to skip|
+QUE164|TEA002|CHA003|Nam _______ football now. He’s tired.|4|2|are playing|isn’t playing|is playing|aren’t playing|
+QUE165|TEA002|CHA003|Please be quiet! I ________ my book.|4|3|ain’t reading|are reading|am reading|is reading|
+QUE166|TEA002|CHA003|We ________ our bicycles to school now.|4|1|are riding|is riding|ride|rides|
+QUE167|TEA002|CHA003|My brother _________ a video clip on Youtube now.|4|3|is playing|is having|is watching|is listening|
+QUE168|TEA002|CHA003|Nam and Minh ______ playing soccer in the yard at the moment.|4|4|do|is|does|are|
+QUE169|TEA002|CHA003|Look! David and Max ________ English to a foreigner.|4|3|is speaking|speak|are speaking|speaks|
+QUE170|TEA002|CHA003|She _____ English at the moment.|4|2|study|is studying|studies|studying|
+QUE171|TEA002|CHA003|I’m ______ physics.|4|3|playing|having|doing|going|
+QUE172|TEA002|CHA003|He is in the garden. He ______ the flowers.|4|2|are watering|is watering|waters|water|
+QUE173|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|1|practice|big|block|blend|
+QUE174|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|2|pass|apple|black|pen|
+QUE175|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|book|bus|party|buy|
+QUE176|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|1|party|boat|sporty|play|
+QUE177|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|blond|blue|big|pig|
+QUE178|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|4|pain|pick|spoon|brown|
+QUE179|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|2|home|old|how|go|
+QUE180|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|help|ending|equip|setting|
+QUE181|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|2|stove|cold|worry|hold|
+QUE182|TEA002|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|visible|bring|building|bomb|
+QUE183|TEA002|CHA000|In the spring, the place is _______ with the visitors.|4|2|crowd|crowded|crowding|crowds|
+QUE184|TEA002|CHA000|It is ­____ to have the school so near.|4|3|inconvenience|inconvenient|convenient|convenience|
+QUE185|TEA002|CHA000|Life in countryside is ______. There aren’t many things to do there.|4|2|noisy|boring|fantastic|polluted|
+QUE186|TEA002|CHA000|Heavy traffic flow is a major source of noise ______ in urban areas.|4|4|polluting|pollute|polluted|pollution|
+QUE187|TEA002|CHA000|Max is ____ than Mike.|4|1|more careful|careful|more care|care|
+QUE188|TEA002|CHA000|Jill is _____than his sister.|4|4|thought|more thoght|thoughtful|more thoughtful|
+QUE189|TEA002|CHA000|We've got _______ time than I thought.|4|2|much|more|few||
+QUE190|TEA002|CHA000|People are usually ____ in the countryside than in the big cities.|4|2|friendly|more friendly|friendlier||
+QUE191|TEA002|CHA000|The road is _____ than the motorway.|4|2|narrow|narrower|more narrow||
+QUE192|TEA002|CHA000|The road is _____ than the motorway.|4|2|narrow|narrower|narrowest||
+QUE193|TEA002|CHA000|New York's population is_____ than San Francisco's.|4|2|large|larger|more large||
+QUE194|TEA002|CHA000|This building is _______ than that one.|4|3|beautifuler|beautiful|more beautiful||
+QUE195|TEA002|CHA000|John is ______ today than he was yesterday.|4|4|hapier|more happier|more happy|happier|
+QUE196|TEA002|CHA000|My mother’s cooking is _______ your mother’s cooking.|4|2|bad than|worse than|bad|worse|
+QUE197|TEA002|CHA000|She is coming ________ than I.|4|1|earlier|more early|early than|more earlier|
+QUE198|TEA002|CHA000|Health is ________ money.|4|3|important|important than|more important|more important than|
+QUE199|TEA002|CHA000|The weather today is _____ it was yesterday.|4|3|bad than|bader than|worse than|worst than|
+QUE200|TEA002|CHA000|My television is ______ his television.|4|3|modern than|more morden than|mordener than|more mordener than|
+QUE201|TEA000|CHA001|I am having a math lesson, but I forgot my ________. I had some difficulty.|4|1|calculator|bicycle|pencil case|pencil sharpener|
+QUE202|TEA000|CHA001|They often play soccer in the ______.|4|2|school gate|school yard|schoolmate|schoolbag|
+QUE203|TEA000|CHA001|It has two wheels. Many students ride it to school. What is it?|4|4|bus|picture|letter|bicycle|
+QUE204|TEA000|CHA001|It has many letters and words. You use it to look up new words. What is it?|4|3|comic book|textbook|dictionary|notebook|
+QUE205|TEA000|CHA001|It’s a room at your school where there are books, newspapers, etc. for you to read, study, or borrow. You can read books and study here. What is it?|4|2|playground|library|classroom|school yard|
+QUE206|TEA000|CHA001|What is your ___________subject at school?|4|2|nice|favourite|liking|excited|
+QUE207|TEA000|CHA001|Students live and study in a/an ___________school. They only go home at weekends.|4|3|international|small|boarding|overseas|
+QUE208|TEA000|CHA001|I study 7 _______ at school: Maths, English, Music, Art, Literature, History, Geography.|4|1|subjects|lessons|teachers|exercises|
+QUE209|TEA000|CHA001|I have Math lessons ______Monday and Friday.|4|1|on|in|at|from|
+QUE210|TEA000|CHA001|At lunchtime, you can ________ lunch in the school canteen.|4|4|be|go|do|have|
+QUE211|TEA000|CHA001|My friends do  _______ to protect themselves.|4|2|computer|judo|football|homework|
+QUE212|TEA000|CHA001|I stick new words on the wall to learn ______.|4|4|uniform|projector|Physics|vocabulary|
+QUE213|TEA000|CHA001|Everyday, I ride my ______ to school.|4|2|calculator|bicycle|computer|guitar|
+QUE214|TEA000|CHA002|I usually ______ to school by bike, and my mother _______ to work by motorbike.|4|3|go/go|goes/goes|go/goes|goes/go|
+QUE215|TEA000|CHA002|Every morning, I always ______ to school at 6.30 and ______ home at about 11.30.|4|3|go/comes|go/come|go/come|going/coming|
+QUE216|TEA000|CHA002|My classmates ________ on picnic every month.|4|4|went|goes|going|go|
+QUE217|TEA000|CHA002|______ he ______ three children?|4|2|Does/have|Does/has|Do/have|Is/have|
+QUE218|TEA000|CHA002|He  ________ a glass of lemonade before breakfast.|4|3|is|have|has|does|
+QUE219|TEA000|CHA002|_______ she _____ French?|4|3|Do/ speaks|Does/speaks|Does/speak|Is/speak|
+QUE220|TEA000|CHA002|When I ______ books, I always _____ very happy.|4|1|read/feel|reads/feel|read/feels|reads/feels|
+QUE221|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|1|favorite|lemonade|chocolate|interesting|
+QUE222|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|1|beautiful|careful|wonderful|comfortable|
+QUE223|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|2|holiday|important|interview|exercise|
+QUE224|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|3|tomorrow|present|vacation|family|
+QUE225|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|3|computer|dictionary|beautiful|camera|
+QUE206|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|4|information|education|interesting|activity|
+QUE227|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|1|apple|banana|carrot|potato|
+QUE228|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|4|student|teacher|school|activity|
+QUE229|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|2|important|teacher|family|friendship|
+QUE230|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|4|holiday|vacation|relaxation|adventure|
+QUE231|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|1|together|everything|teacher|student|
+QUE232|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|3|chocolate|vanilla|lemonade|caramel|
+QUE233|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|2|different|similar|interesting|beautiful|
+QUE234|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|3|music|dancing|reading|singing|
+QUE235|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|2|family|friends|classmate|teacher|
+QUE236|TEA000|CHA003|Choose the word whose stress pattern is different from the others:|4|1|environment|celebrate|memory|imagine|
+QUE237|TEA000|CHA000|I need to bring a _______ to my art class for painting.|4|3|book|brush|pen|pencil|
+QUE238|TEA000|CHA002|Find which word does not belong in each group.|4|4|ruler|dishwasher|fridge|sink|
+QUE239|TEA000|CHA002|We use a __________ to put the clothes in.|4|2|wardrobe|microwave|sink|cooker|
+QUE240|TEA000|CHA002|Find which word does not belong in each group.|4|4|sofa|chair|cooker|table|
+QUE241|TEA000|CHA002|Find which word does not belong in each group.|4|3|bedroom|toilet|library|kitchen|
+QUE242|TEA000|CHA002|Find which word does not belong in each group.|4|4|calculator|pillow|blanket|bed|
+QUE243|TEA000|CHA002|My mum wants me to put all the food in the ______.|4|3|washing machine|table|fridge|tub|
+QUE244|TEA000|CHA002|My bedroom is small but it has a ___________window.|4|1|big|small|interesting|old|
+QUE245|TEA000|CHA002|We live in a town house, but our grandparents live in a/ an  ________ house.|4|2|villa|country|apartment|city|
+QUE246|TEA000|CHA002|Find which word does not belong in each group.|4|4|bed|lamp|fan|villa|
+QUE247|TEA000|CHA002|I sit _______ Sarah at school.|4|2|on|next to|between||
+QUE248|TEA000|CHA002|Our family stays _____ a villa.|4|1|in|on|in front of||
+QUE249|TEA000|CHA002|There are four students at each table. My friend Justine sits_____ me.|4|3|in front of|near to|opposite||
+QUE250|TEA000|CHA002|Tom sits______ Lucy and James.|4|1|between|in front|near to||
+QUE251|TEA000|CHA003|Choose the word which has the underlined part pronounced differently from the rest.|4|2|fix|exam|six|next|
+QUE252|TEA000|CHA003|Choose the word which has the underlined part pronounced differently from the rest.|4|1|cover|pencil|place|police|
+QUE253|TEA000|CHA003|Choose the word which has the underlined part pronounced differently from the rest.|4|3|Russia|class|glass|pass|
+QUE254|TEA000|CHA003|Find which word does not belong in each group.|4|4|ruler|dishwasher|fridge|sink|
+QUE255|TEA000|CHA003|We use a __________ to put the clothes in.|4|2|wardrobe|microwave|sink|cooker|
+QUE256|TEA000|CHA003|Find which word does not belong in each group.|4|4|sofa|chair|cooker|table|
+QUE257|TEA000|CHA003|Find which word does not belong in each group.|4|3|bedroom|toilet|library|kitchen|
+QUE258|TEA000|CHA003|Find which word does not belong in each group.|4|4|calculator|pillow|blanket|bed|
+QUE259|TEA000|CHA003|My mum wants me to put all the food in the ______.|4|3|washing machine|table|fridge|tub|
+QUE260|TEA000|CHA003|My bedroom is small but it has a ___________window.|4|1|big|small|interesting|old|
+QUE261|TEA000|CHA003|We live in a town house, but our grandparents live in a/ an  ________ house.|4|2|villa|country|apartment|city|
+QUE262|TEA000|CHA003|Find which word does not belong in each group.|4|4|bed|lamp|fan|villa|
+QUE263|TEA000|CHA003|Look! the girls are _________ rope in the playground.|4|3|are skipping|skips|skipping|to skip|
+QUE264|TEA000|CHA003|Nam _______ football now. He’s tired.|4|2|are playing|isn’t playing|is playing|aren’t playing|
+QUE265|TEA000|CHA003|Please be quiet! I ________ my book.|4|3|ain’t reading|are reading|am reading|is reading|
+QUE266|TEA000|CHA003|We ________ our bicycles to school now.|4|1|are riding|is riding|ride|rides|
+QUE267|TEA000|CHA003|My brother _________ a video clip on Youtube now.|4|3|is playing|is having|is watching|is listening|
+QUE268|TEA000|CHA003|Nam and Minh ______ playing soccer in the yard at the moment.|4|4|do|is|does|are|
+QUE269|TEA000|CHA003|Look! David and Max ________ English to a foreigner.|4|3|is speaking|speak|are speaking|speaks|
+QUE270|TEA000|CHA003|She _____ English at the moment.|4|2|study|is studying|studies|studying|
+QUE271|TEA000|CHA003|I’m ______ physics.|4|3|playing|having|doing|going|
+QUE272|TEA000|CHA003|He is in the garden. He ______ the flowers.|4|2|are watering|is watering|waters|water|
+QUE273|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|1|practice|big|block|blend|
+QUE274|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|2|pass|apple|black|pen|
+QUE275|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|book|bus|party|buy|
+QUE276|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|1|party|boat|sporty|play|
+QUE277|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|blond|blue|big|pig|
+QUE278|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|4|pain|pick|spoon|brown|
+QUE279|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|2|home|old|how|go|
+QUE280|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|help|ending|equip|setting|
+QUE281|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|2|stove|cold|worry|hold|
+QUE282|TEA000|CHA000|Choose the word which has the underlined part pronounced differently from the rest.|4|3|visible|bring|building|bomb|
+QUE283|TEA000|CHA000|In the spring, the place is _______ with the visitors.|4|2|crowd|crowded|crowding|crowds|
+QUE284|TEA000|CHA000|It is ­____ to have the school so near.|4|3|inconvenience|inconvenient|convenient|convenience|
+QUE285|TEA000|CHA000|Life in countryside is ______. There aren’t many things to do there.|4|2|noisy|boring|fantastic|polluted|
+QUE286|TEA000|CHA000|Heavy traffic flow is a major source of noise ______ in urban areas.|4|4|polluting|pollute|polluted|pollution|
+QUE287|TEA000|CHA000|Max is ____ than Mike.|4|1|more careful|careful|more care|care|
+QUE288|TEA000|CHA000|Jill is _____than his sister.|4|4|thought|more thoght|thoughtful|more thoughtful|
+QUE289|TEA000|CHA000|We've got _______ time than I thought.|4|2|much|more|few||
+QUE290|TEA000|CHA000|People are usually ____ in the countryside than in the big cities.|4|2|friendly|more friendly|friendlier||
+QUE291|TEA000|CHA000|The road is _____ than the motorway.|4|2|narrow|narrower|more narrow||
+QUE292|TEA000|CHA000|The road is _____ than the motorway.|4|2|narrow|narrower|narrowest||
+QUE293|TEA000|CHA000|New York's population is_____ than San Francisco's.|4|2|large|larger|more large||
+QUE294|TEA000|CHA000|This building is _______ than that one.|4|3|beautifuler|beautiful|more beautiful||
+QUE295|TEA000|CHA000|John is ______ today than he was yesterday.|4|4|hapier|more happier|more happy|happier|
+QUE296|TEA000|CHA000|My mother’s cooking is _______ your mother’s cooking.|4|2|bad than|worse than|bad|worse|
+QUE297|TEA000|CHA000|She is coming ________ than I.|4|1|earlier|more early|early than|more earlier|
+QUE298|TEA000|CHA000|Health is ________ money.|4|3|important|important than|more important|more important than|
+QUE299|TEA000|CHA000|The weather today is _____ it was yesterday.|4|3|bad than|bader than|worse than|worst than|

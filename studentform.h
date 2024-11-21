@@ -1,7 +1,11 @@
 #ifndef STUDENTFORM_H
 #define STUDENTFORM_H
 #include <QWidget>
+#include "QLCDNumber"
 #include "./src/currentUser/currentUser.h"
+#include "./src/testInfo/testInfo.h"
+#include "./src/studentAttempt/studentAttempt.h"
+#include "./src/questionBank/question.h"
 
 namespace Ui
 {
@@ -19,10 +23,21 @@ public:
 private slots:
     void on_btnDashboard_clicked();
     void on_btnLogoutTeacherDashboard_clicked();
+    void CountdownTimer(int);
+    void setUpTestForm(Test test);
+    void setHistoryTable();
+
+    void on_pushButton_clicked();
 
 private:
+    QLCDNumber *lcdDisplay;
+    QTimer *timer;
+    int timeRemaining;
     Ui::StudentForm *ui;
     currentUser logged;
+    TestManager testManager;
+    StudentAttemptManager studentAttemptManager;
+    QuestionBank questionBankManager;
 };
 
 #endif // STUDENTFORM_H

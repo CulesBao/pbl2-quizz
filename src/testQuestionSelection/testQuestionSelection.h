@@ -44,5 +44,4 @@ public:
     void saveToFile();
     void loadFromFile();
 };
-
 #endif

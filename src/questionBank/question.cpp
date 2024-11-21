@@ -232,6 +232,20 @@ Question *QuestionBank::getAllQuestions() const
     return const_cast<Question *>(questions);
 }
 
+Question *QuestionBank::getQuestionByChapterId(const string &chapterId, int &foundCount) const
+{
+    Question *foundQuestions = new Question[questionCount];
+    foundCount = 0;
+    for (int i = 0; i < questionCount; ++i)
+    {
+        if (questions[i].getChapterId() == chapterId)
+        {
+            foundQuestions[foundCount++] = questions[i];
+        }
+    }
+    return foundQuestions;
+}
+
 void QuestionBank::loadFromFile()
 {
     ifstream inFile("G:\\DUT\\pbl2-quizz\\src\\questionBank\\questions.txt");

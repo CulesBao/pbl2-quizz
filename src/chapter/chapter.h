@@ -41,6 +41,7 @@ public:
     bool updateChapter(const string &id, const string &newName);
     bool deleteChapter(const string &id);
     string getChapterIdByName(const string &name);
+    string getChapterNameById(const string &id);
 };
 
-#endif // CHAPTER_H
+#endif

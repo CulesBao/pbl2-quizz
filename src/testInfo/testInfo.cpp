@@ -540,6 +540,7 @@ Test *TestManager::getRunningTest(int &count)
     count = 0;
     for (int i = 0; i < testCount; ++i)
     {
+        managerTest[i].updateStatus();
         if (managerTest[i].getStatus() == 1)
         {
             runningTests[count] = managerTest[i];

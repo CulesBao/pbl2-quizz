@@ -37,6 +37,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         src/testQuestionSelection/testQuestionSelection.cpp src/testQuestionSelection/testQuestionSelection.h
         src/questionBank/question.cpp src/questionBank/question.h
         studentform.h studentform.cpp studentform.ui
+        src/studentAttempt/studentAttempt.cpp src/studentAttempt/studentAttempt.h
 
 
 

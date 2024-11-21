@@ -54,9 +54,9 @@ void MainWindow::login()
     }
     else if (managerStudent.login(username, password, logged))
     {
+        this->hide();
         StudentForm *secWindow = new StudentForm();
         secWindow->show();
-        this->close();
     }
     else
     {
@@ -643,6 +643,11 @@ void MainWindow::showQuestionDetails(string questionId)
         Chapter *chapter = chapterManager.getChapterById(i);
         cmbChapter->addItem(QString::fromStdString(chapter->getName()));
         cmbChapter->setStyleSheet("color: black;");
+
+        if (chapter->getId() == question->getChapterId())
+        {
+            cmbChapter->setCurrentIndex(i);
+        }
     }
 
     QLineEdit *txt;

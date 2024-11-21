@@ -44,7 +44,15 @@ void currentUser::loadFromFile()
         string line;
         while (getline(file, line))
         {
-            cout << line << endl;
+            id = line;
+            getline(file, line);
+            username = line;
+            getline(file, line);
+            password = line;
+            getline(file, line);
+            fullname = line;
+            getline(file, line);
+            role = line;
         }
         file.close();
     }
