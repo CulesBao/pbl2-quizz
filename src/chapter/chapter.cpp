@@ -101,6 +101,10 @@ void ChapterManager::saveToFile() const
     }
     for (int i = 0; i < chapterCount; ++i)
     {
+        if (chapters[i].getId().empty())
+        {
+            continue;
+        }
         outputFile << chapters[i].getId() << "|" << chapters[i].getName() << "|" << endl;
     }
 }

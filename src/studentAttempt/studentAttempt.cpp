@@ -367,16 +367,18 @@ StudentAttempt *StudentAttemptManager::getAttemptsByStudentId(const string &stud
 }
 
 // LAY BAI THI THEO ID BAI KIEM TRA
-StudentAttempt *StudentAttemptManager::getAttemptByTestId(const string &testId)
+StudentAttempt *StudentAttemptManager::getAttemptByTestId(const string &testId, int &foundCount) const
 {
+    StudentAttempt *foundAttempts = new StudentAttempt[MAX_ATTEMPTS];
+    foundCount = 0;
     for (int i = 0; i < attemptCount; ++i)
     {
         if (attempts[i].getTestId() == testId)
         {
-            return &attempts[i];
+            foundAttempts[foundCount++] = attempts[i];
         }
     }
-    return nullptr;
+    return foundAttempts;
 }
 
 // LAY BAI THI THEO ID CAU HOI

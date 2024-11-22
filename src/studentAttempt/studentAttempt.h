@@ -76,7 +76,7 @@ public:
     StudentAttempt operator[](int index);
     StudentAttempt *getAttemptsByStudentId(const string &studentId, int &foundCount) const;
     StudentAttempt *getAttemptById(const string &id);
-    StudentAttempt *getAttemptByTestId(const string &testId);
+    StudentAttempt *getAttemptByTestId(const string &testId, int &foundCount) const;
     StudentAttempt *getAttemptByQuestionId(const string &questionId);
     bool setStudentAnswer(StudentAttempt *attempt, int index, int studentAnswer);
     StudentAttempt *createAttempt(const string &testId, const string &studentId, int totalQuestion, int time);

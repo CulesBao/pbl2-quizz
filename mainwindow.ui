@@ -1831,6 +1831,40 @@ QPlainTextEdit:disabled {
        </property>
       </widget>
      </widget>
+     <widget class="QGroupBox" name="groupBoxTestDetails">
+      <property name="geometry">
+       <rect>
+        <x>229</x>
+        <y>-11</y>
+        <width>651</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+    border: 2px solid #8B0000;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+</string>
+      </property>
+      <property name="title">
+       <string>Details</string>
+      </property>
+      <widget class="QTableWidget" name="tbTestDetails">
+       <property name="geometry">
+        <rect>
+         <x>45</x>
+         <y>61</y>
+         <width>561</width>
+         <height>531</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
      <zorder>leftSidebar</zorder>
      <zorder>groupBoxEditProfile</zorder>
      <zorder>groupBoxAddNewTest</zorder>
@@ -1838,6 +1872,7 @@ QPlainTextEdit:disabled {
      <zorder>groupBoxAddNewQuestion</zorder>
      <zorder>groupBoxDetailsQuestion</zorder>
      <zorder>groupBoxDashboard</zorder>
+     <zorder>groupBoxTestDetails</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">
      <widget class="QGroupBox" name="groupBox_2">

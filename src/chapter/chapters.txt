@@ -2,23 +2,3 @@ CHA000|Chapter 1: Greetings|
 CHA001|Chapter 2: At School|
 CHA002|Chapter 3: My Friends|
 CHA003|Chapter 4: My Home|
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
-||
