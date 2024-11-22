@@ -5,6 +5,7 @@
 #include "./src/testInfo/testInfo.h"
 #include "./src/studentAttempt/studentAttempt.h"
 #include "./src/questionBank/question.h"
+#include "./src/student/student.h"
 #include <QDebug>
 #include <QInputDialog>
 #include <thread>
@@ -25,6 +26,9 @@ StudentForm::StudentForm(QWidget *parent)
     grBox->hide();
 
     logged.loadFromFile();
+    QLabel *label = ui->lbTeacherName;
+    label->setText(QString::fromStdString(logged.getFullname()));
+    label->setAlignment(Qt::AlignCenter);
     on_btnDashboard_clicked();
 
     qDebug() << "StudentForm" << logged.getUsername();
@@ -65,9 +69,12 @@ void StudentForm::on_btnDashboard_clicked()
     header->setStretchLastSection(true);
 
     int runningTestCount = 0;
-    Test *runningTest = testManager.getRunningTest(runningTestCount);
-    qDebug() << "runningTestCount" << runningTestCount;
-
+    Test *runningTest = testManager.getRunningTest(logged.getId(), runningTestCount);
+    if (runningTestCount == 0)
+    {
+        label->show();
+        return;
+    }
     for (int i = 0; i < runningTestCount; i++)
     {
         table->insertRow(i);
@@ -226,6 +233,7 @@ void StudentForm::CountdownTimer(int startTime)
         }
         QMetaObject::invokeMethod(this, [this]() {
             ui->lcdNumber->display("00:00");
+            QMessageBox::information(this, "Time's up", "Time's up!");
             studentAttemptManager.setFinishedAtForLastAttempt();
             setHistoryTable();
         }); })
@@ -283,6 +291,74 @@ void StudentForm::setHistoryTable()
 }
 void StudentForm::on_pushButton_clicked()
 {
-    studentAttemptManager.setFinishedAtForLastAttempt();
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Finish Test", "Are you sure you want to finish the test?", QMessageBox::Yes | QMessageBox::No);
+    if (reply == QMessageBox::Yes)
+    {
+        studentAttemptManager.setFinishedAtForLastAttempt();
+        setHistoryTable();
+    }
+}
+
+void StudentForm::on_btnAddNewTest_clicked()
+{
+    QGroupBox *grBox = ui->groupBoxHistory;
+    grBox->show();
     setHistoryTable();
+    grBox = ui->leftSidebar;
+    grBox->show();
+    grBox = ui->groupBoxDashboard;
+    grBox->hide();
+    grBox = ui->groupBoxEditProfile;
+    grBox->hide();
+    grBox = ui->groupBoxIntoTest;
+    grBox->hide();
+}
+
+void StudentForm::on_btnEditProfile_clicked()
+{
+    QGroupBox *grBox = ui->groupBoxIntoTest;
+    grBox->hide();
+    grBox = ui->groupBoxEditProfile;
+    grBox->show();
+    grBox = ui->leftSidebar;
+    grBox->show();
+    grBox = ui->groupBoxDashboard;
+    grBox->hide();
+    grBox = ui->groupBoxHistory;
+    grBox->hide();
+
+    QLineEdit *txtFullname = ui->txtEditProfileFullname;
+    QLineEdit *txtUsername = ui->txtEditProfileUsername;
+    QLineEdit *txtPassword = ui->txtEditProfilePassword;
+    QLineEdit *txtId = ui->txtEditProfileId;
+
+    txtFullname->setText(QString::fromStdString(logged.getFullname()));
+    txtUsername->setText(QString::fromStdString(logged.getUsername()));
+    txtPassword->setText(QString::fromStdString(logged.getPassword()));
+    txtId->setText(QString::fromStdString(logged.getId()));
+
+    txtUsername->setReadOnly(true);
+    txtId->setReadOnly(true);
+}
+void StudentForm::on_btnEditProfileSubmit_clicked()
+{
+    QString qFullname = ui->txtEditProfileFullname->text();
+    QString qPassword = ui->txtEditProfilePassword->text();
+
+    string fullname = qFullname.toStdString();
+    string password = qPassword.toStdString();
+
+    if (managerStudent.update(logged.getId(), password, fullname))
+    {
+        QMessageBox::information(this, "Edit Profile", "Edit profile successful!");
+        on_btnDashboard_clicked();
+        QLabel *label = ui->lbTeacherName;
+        label->setText(QString::fromStdString(fullname));
+        label->setAlignment(Qt::AlignCenter);
+    }
+    else
+    {
+        QMessageBox::warning(this, "Edit Profile", "Form is incorrect. Please try again!");
+    }
 }

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>872</width>
+    <width>871</width>
     <height>610</height>
    </rect>
   </property>
@@ -167,9 +167,9 @@ text-align: center;</string>
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>0</y>
+     <y>-10</y>
      <width>651</width>
-     <height>621</height>
+     <height>631</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -201,9 +201,9 @@ text-align: center;</string>
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>0</y>
+     <y>-10</y>
      <width>651</width>
-     <height>611</height>
+     <height>621</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -310,9 +310,9 @@ text-align: center;</string>
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>0</y>
+     <y>-10</y>
      <width>651</width>
-     <height>611</height>
+     <height>621</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -650,24 +650,10 @@ QLabel:hover {
    <zorder>lbNumber</zorder>
    <zorder>lbQuestion</zorder>
   </widget>
-  <widget class="QGroupBox" name="groupBox_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>-1</y>
-     <width>861</width>
-     <height>611</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>GroupBox</string>
-   </property>
-  </widget>
-  <zorder>groupBox_2</zorder>
-  <zorder>groupBoxEditProfile</zorder>
-  <zorder>groupBoxHistory</zorder>
   <zorder>groupBoxIntoTest</zorder>
   <zorder>leftSidebar</zorder>
+  <zorder>groupBoxHistory</zorder>
+  <zorder>groupBoxEditProfile</zorder>
   <zorder>groupBoxDashboard</zorder>
  </widget>
  <resources/>

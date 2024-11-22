@@ -88,7 +88,7 @@ public:
     int countIncomingTest(string id);
     int countRunningTest(string id);
     int countCompletedTest(string id);
-    Test *getRunningTest(int &count);
+    Test *getRunningTest(string studentId, int &count);
 };
 
 #endif

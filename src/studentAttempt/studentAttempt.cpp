@@ -348,6 +348,10 @@ StudentAttempt *StudentAttemptManager::getAttemptById(const string &id)
     }
     return nullptr;
 }
+StudentAttempt StudentAttemptManager::operator[](int index)
+{
+    return attempts[index];
+}
 StudentAttempt *StudentAttemptManager::getAttemptsByStudentId(const string &studentId, int &foundCount) const
 {
     StudentAttempt *foundAttempts = new StudentAttempt[MAX_ATTEMPTS];

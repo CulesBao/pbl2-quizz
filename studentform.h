@@ -6,7 +6,7 @@
 #include "./src/testInfo/testInfo.h"
 #include "./src/studentAttempt/studentAttempt.h"
 #include "./src/questionBank/question.h"
-
+#include "./src/student/student.h"
 namespace Ui
 {
     class StudentForm;
@@ -29,6 +29,12 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_btnEditProfileSubmit_clicked();
+
+    void on_btnEditProfile_clicked();
+
+    void on_btnAddNewTest_clicked();
+
 private:
     QLCDNumber *lcdDisplay;
     QTimer *timer;
@@ -38,6 +44,7 @@ private:
     TestManager testManager;
     StudentAttemptManager studentAttemptManager;
     QuestionBank questionBankManager;
+    studentManager managerStudent;
 };
 
 #endif // STUDENTFORM_H

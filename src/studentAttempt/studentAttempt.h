@@ -73,6 +73,7 @@ public:
     bool addAttempt(const StudentAttempt &attempt);
     int getAttemptCount() const;
 
+    StudentAttempt operator[](int index);
     StudentAttempt *getAttemptsByStudentId(const string &studentId, int &foundCount) const;
     StudentAttempt *getAttemptById(const string &id);
     StudentAttempt *getAttemptByTestId(const string &testId);
