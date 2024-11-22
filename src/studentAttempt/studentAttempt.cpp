@@ -176,6 +176,11 @@ void StudentAttempt::setCorrectAnswer()
     }
     correctAnswer = correct;
 }
+bool StudentAttempt::setCorretAnswer(int correctAnswer)
+{
+    this->correctAnswer = correctAnswer;
+    return true;
+}
 
 StudentAttemptManager::StudentAttemptManager() : attemptCount(0)
 {
@@ -277,6 +282,7 @@ void StudentAttemptManager::loadFromFile()
             }
             attempt.setStartsAt(startsAt);
             attempt.setFinishedAt(finishedAt);
+            attempt.setCorretAnswer(correctAnswer);
 
             attempts[attemptCount++] = attempt;
         }
@@ -424,5 +430,9 @@ bool StudentAttemptManager::setStudentAnswer(StudentAttempt *attempt, int index,
 }
 StudentAttemptManager::~StudentAttemptManager()
 {
+}
+void StudentAttemptManager::setFinishedAtForLastAttempt()
+{
+    attempts[attemptCount - 1].setEndsAt();
     saveToFile();
 }

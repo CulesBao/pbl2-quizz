@@ -42,6 +42,7 @@ public:
     void setStudentAnswer(int index, int studentAnswer);
     int getSudentAnswer(int index) const;
     void setCorrectAnswer();
+    bool setCorretAnswer(int correctAnswer);
     int getTotalQuestions() const;
     int getStudentAnswer(int index) const;
     void setId(string id);
@@ -78,6 +79,7 @@ public:
     StudentAttempt *getAttemptByQuestionId(const string &questionId);
     bool setStudentAnswer(StudentAttempt *attempt, int index, int studentAnswer);
     StudentAttempt *createAttempt(const string &testId, const string &studentId, int totalQuestion, int time);
+    void setFinishedAtForLastAttempt();
 };
 
 #endif

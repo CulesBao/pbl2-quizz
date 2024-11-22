@@ -226,6 +226,7 @@ void StudentForm::CountdownTimer(int startTime)
         }
         QMetaObject::invokeMethod(this, [this]() {
             ui->lcdNumber->display("00:00");
+            studentAttemptManager.setFinishedAtForLastAttempt();
             setHistoryTable();
         }); })
         .detach(); // Tách thread để không block main thread
@@ -233,6 +234,7 @@ void StudentForm::CountdownTimer(int startTime)
 void StudentForm::setHistoryTable()
 {
     TestManager testManager;
+
     QGroupBox *grBox = ui->groupBoxHistory;
     grBox->show();
     grBox = ui->leftSidebar;
@@ -281,5 +283,6 @@ void StudentForm::setHistoryTable()
 }
 void StudentForm::on_pushButton_clicked()
 {
+    studentAttemptManager.setFinishedAtForLastAttempt();
     setHistoryTable();
 }
