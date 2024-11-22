@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 #include "testInfo.h"
+#include "../studentAttempt/studentAttempt.h"
+#include <QDebug>
 using namespace std;
 
 // Constructor
@@ -533,4 +535,37 @@ int TestManager::getTestCount() const
 Test *TestManager::getLastTest()
 {
     return &managerTest[testCount - 1];
+}
+Test *TestManager::getRunningTest(string studentId, int &count)
+{
+    Test *runningTests = new Test[1000];
+    StudentAttemptManager studentAttemptManager;
+    count = 0;
+    for (int i = 0; i < testCount; ++i)
+    {
+        managerTest[i].updateStatus();
+        if (managerTest[i].getStatus() == 1)
+        {
+            bool oke = true;
+            for (int j = 0; j < studentAttemptManager.getAttemptCount(); ++j)
+            {
+                if (studentAttemptManager[j].getTestId() == managerTest[i].getId() && studentAttemptManager[j].getStudentId() == studentId)
+                {
+                    oke = false;
+                    break;
+                }
+            }
+            if (oke)
+            {
+                runningTests[count] = managerTest[i];
+                ++count;
+            }
+        }
+    }
+    if (count == 0)
+    {
+        delete[] runningTests;
+        return nullptr;
+    }
+    return runningTests;
 }

@@ -8,6 +8,7 @@
         <file>src/testQuestionSelection/TestQuestionSelection.txt</file>
         <file>src/chapter/chapters.txt</file>
         <file>src/questionBank/questions.txt</file>
+        <file>src/studentAttempt/studentAttempt.txt</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

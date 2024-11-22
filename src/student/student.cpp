@@ -177,3 +177,14 @@ bool student::setPassword(const string &password)
     this->password = password;
     return true;
 }
+string studentManager::getNameById(const string id)
+{
+    for (int i = 0; i < idCounter; i++)
+    {
+        if (studentArray[i].getId() == id)
+        {
+            return studentArray[i].getName();
+        }
+    }
+    return "";
+}

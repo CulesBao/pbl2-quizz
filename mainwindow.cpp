@@ -7,6 +7,7 @@
 #include "./src/testQuestionSelection/testQuestionSelection.h"
 #include "./src/questionBank/question.h"
 #include <QMessageBox>
+#include "studentform.h"
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -23,7 +24,6 @@ MainWindow::MainWindow(QWidget *parent)
         } });
     connect(ui->btnLogin, &QPushButton::clicked, this, &MainWindow::login);
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -51,12 +51,14 @@ void MainWindow::login()
         groupBox->hide();
         groupBox = ui->groupBoxDetailsQuestion;
         groupBox->hide();
+        groupBox = ui->groupBoxTestDetails;
+        groupBox->hide();
     }
     else if (managerStudent.login(username, password, logged))
     {
-        QMessageBox::information(this, "Login", "Login successful!");
-        // ui->stackedWidget->setCurrentIndex(1);
-        // setUpTeacherDashboard();
+        this->hide();
+        StudentForm *secWindow = new StudentForm();
+        secWindow->show();
     }
     else
     {
@@ -200,10 +202,7 @@ void MainWindow::setUpTeacherDashboard()
             "cursor: pointer;"
             "outline: none;");
         connect(btnDetails, &QPushButton::clicked, this, [this, test]()
-                {
-                    qDebug() << "Show details for Test ID:" << QString::fromStdString(test->getId());
-                    // showTestDetails(test);
-                });
+                { setUpTestDetails(test); });
 
         connect(btnDelete, &QPushButton::clicked, this, [this, i, test]()
                 {
@@ -244,6 +243,8 @@ void MainWindow::on_btnDashboard_clicked()
     grBox->hide();
     grBox = ui->groupBoxDetailsQuestion;
     grBox->hide();
+    grBox = ui->groupBoxTestDetails;
+    grBox->hide();
 }
 
 void MainWindow::on_btnAddNewTest_clicked()
@@ -259,6 +260,8 @@ void MainWindow::on_btnAddNewTest_clicked()
     grBox = ui->groupBoxAddNewQuestion;
     grBox->hide();
     grBox = ui->groupBoxDetailsQuestion;
+    grBox->hide();
+    grBox = ui->groupBoxTestDetails;
     grBox->hide();
 
     QTableWidget *table = ui->tbSetNumberQuestion;
@@ -380,6 +383,8 @@ void MainWindow::on_btnEditProfile_clicked()
     grBox->hide();
     grBox = ui->groupBoxDetailsQuestion;
     grBox->hide();
+    grBox = ui->groupBoxTestDetails;
+    grBox->hide();
 
     QLineEdit *txtFullname = ui->txtEditProfileFullname;
     QLineEdit *txtUsername = ui->txtEditProfileUsername;
@@ -403,7 +408,7 @@ void MainWindow::on_btnEditProfileSubmit_clicked()
     string fullname = qFullname.toStdString();
     string password = qPassword.toStdString();
 
-    if (managerTeacher.update(logged.getId(), password, fullname))
+    if (managerStudent.update(logged.getId(), password, fullname))
     {
         QMessageBox::information(this, "Edit Profile", "Edit profile successful!");
         on_btnDashboard_clicked();
@@ -432,6 +437,8 @@ void MainWindow::on_btnMyQuestionBank_clicked()
     grBox = ui->groupBoxAddNewTest;
     grBox->hide();
     grBox = ui->groupBoxDetailsQuestion;
+    grBox->hide();
+    grBox = ui->groupBoxTestDetails;
     grBox->hide();
 
     QTableWidget *table = ui->tbMyQuestionBank;
@@ -548,6 +555,8 @@ void MainWindow::on_btnMyQuestionBankAddNewQuestion_clicked()
     grBox->hide();
     grBox = ui->groupBoxDetailsQuestion;
     grBox->hide();
+    grBox = ui->groupBoxTestDetails;
+    grBox->hide();
 
     QComboBox *cmbChapter = ui->cmbChapter;
     cmbChapter->clear();
@@ -580,6 +589,8 @@ void MainWindow::on_btnAddNewQuestionBack_clicked()
     grBox = ui->groupBoxAddNewTest;
     grBox->hide();
     grBox = ui->groupBoxDetailsQuestion;
+    grBox->hide();
+    grBox = ui->groupBoxTestDetails;
     grBox->hide();
 }
 
@@ -628,6 +639,8 @@ void MainWindow::showQuestionDetails(string questionId)
     grBox->hide();
     grBox = ui->groupBoxAddNewQuestion;
     grBox->hide();
+    grBox = ui->groupBoxTestDetails;
+    grBox->hide();
 
     Question *question = questionBankManager.getQuestionById(questionId);
     if (question == nullptr)
@@ -643,6 +656,11 @@ void MainWindow::showQuestionDetails(string questionId)
         Chapter *chapter = chapterManager.getChapterById(i);
         cmbChapter->addItem(QString::fromStdString(chapter->getName()));
         cmbChapter->setStyleSheet("color: black;");
+
+        if (chapter->getId() == question->getChapterId())
+        {
+            cmbChapter->setCurrentIndex(i);
+        }
     }
 
     QLineEdit *txt;
@@ -706,8 +724,74 @@ void MainWindow::on_btnAddNewQuestionBack_2_clicked()
     grBox->hide();
     grBox = ui->groupBoxDetailsQuestion;
     grBox->hide();
+    grBox = ui->groupBoxTestDetails;
+    grBox->hide();
 }
 
 void MainWindow::on_btnAddNewQuestionAdd_2_clicked()
 {
+}
+void MainWindow::setUpTestDetails(Test *test)
+{
+    QGroupBox *grBox = ui->groupBoxTestDetails;
+    grBox->show();
+    grBox = ui->groupBoxAddNewTest;
+    grBox->hide();
+    grBox = ui->groupBoxAddNewQuestion;
+    grBox->hide();
+    grBox = ui->groupBoxDashboard;
+    grBox->hide();
+    grBox = ui->groupBoxEditProfile;
+    grBox->hide();
+    grBox = ui->groupBoxMyQuestionBank;
+    grBox->hide();
+    grBox = ui->groupBoxDetailsQuestion;
+    grBox->hide();
+
+    QTableWidget *table = ui->tbTestDetails;
+    table->clearContents();
+    table->setColumnCount(6);
+    table->setRowCount(0);
+
+    table->setHorizontalHeaderLabels({"Student ID", "Fullname", "Starts At", "Ends At", "Number of Question", "Correct Answer"});
+    table->setColumnWidth(0, 100); // Student ID
+    table->setColumnWidth(1, 200); // Fullname
+    table->setColumnWidth(2, 150); // Starts At
+    table->setColumnWidth(3, 150); // Ends At
+    table->setColumnWidth(4, 150); // Number of Question
+    table->setColumnWidth(5, 150); // Correct Answer
+
+    QHeaderView *header = table->horizontalHeader();
+    header->setStyleSheet("QHeaderView::section { background-color: black; color: white; }");
+
+    int count = 0;
+    StudentAttempt *studentAttempts = studentAttemptManager.getAttemptByTestId(test->getId(), count);
+
+    if (count == 0)
+    {
+        QMessageBox::warning(this, "Test Details", "No student attempt this test. Please try again!");
+        return;
+    }
+    table->setStyleSheet("QTableWidget::item { border: 1px solid #888; color: black; }");
+    for (int i = 0; i < count; i++)
+    {
+        StudentAttempt *studentAttempt = studentAttempts + i;
+        if (studentAttempt == nullptr)
+        {
+            QMessageBox::warning(this, "Test Details", "Student attempt not found. Please try again!");
+            continue;
+        }
+
+        table->insertRow(i);
+        table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(studentAttempt->getStudentId())));
+        table->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(managerStudent.getNameById(studentAttempt->getStudentId()))));
+        table->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(studentAttempt->getStartsAt())));
+        table->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(studentAttempt->getFinishedAt())));
+        table->setItem(i, 4, new QTableWidgetItem(QString::number(test->getTotalQuestion())));
+        table->setItem(i, 5, new QTableWidgetItem(QString::number(studentAttempt->getCorrectAnswer())));
+        for (int j = 0; j < 6; j++)
+        {
+            table->item(i, j)->setTextAlignment(Qt::AlignCenter);
+        }
+    }
 }

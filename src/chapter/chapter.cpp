@@ -84,9 +84,10 @@ void ChapterManager::loadFromFile()
         stringstream ss(line);
         string id, name;
         getline(ss, id, '|');
-        getline(ss, name);
-        Chapter tmp = Chapter(chapterCount, name);
+        getline(ss, name, '|');
+        Chapter tmp;
         tmp.setId(id);
+        tmp.setName(name);
         chapters[chapterCount++] = tmp;
     }
 }
@@ -100,7 +101,11 @@ void ChapterManager::saveToFile() const
     }
     for (int i = 0; i < chapterCount; ++i)
     {
-        outputFile << chapters[i].getId() << "|" << chapters[i].getName() << endl;
+        if (chapters[i].getId().empty())
+        {
+            continue;
+        }
+        outputFile << chapters[i].getId() << "|" << chapters[i].getName() << "|" << endl;
     }
 }
 
@@ -122,7 +127,6 @@ bool ChapterManager::addChapter(const string &name)
         }
     }
     chapters[chapterCount++] = Chapter(chapterCount, name);
-    saveToFile();
     return true;
 }
 
@@ -147,7 +151,6 @@ bool ChapterManager::updateChapter(const string &id, const string &newName)
         if (chapters[i].getId() == id)
         {
             chapters[i].setName(newName);
-            saveToFile();
             return true;
         }
     }
@@ -162,7 +165,6 @@ bool ChapterManager::deleteChapter(const string &id)
         {
             chapters[i].setId(0);
             chapters[i].setName("");
-            saveToFile();
             return true;
         }
     }
@@ -179,6 +181,17 @@ string ChapterManager::getChapterIdByName(const string &name)
         if (chapters[i].getName() == name)
         {
             return chapters[i].getId();
+        }
+    }
+    return "";
+}
+string ChapterManager::getChapterNameById(const string &id)
+{
+    for (int i = 0; i < chapterCount; i++)
+    {
+        if (chapters[i].getId() == id)
+        {
+            return chapters[i].getName();
         }
     }
     return "";
