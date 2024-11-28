@@ -40,6 +40,7 @@ private:
     Ui::StudentForm *ui;
     currentUser logged;
     TestManager testManager;
+    studentManager managerStudent;
     StudentAttemptManager studentAttemptManager;
     QuestionBank questionBankManager;
     QTimer *timer;

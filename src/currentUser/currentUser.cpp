@@ -36,6 +36,16 @@ string currentUser::getRole() const
 {
     return role;
 }
+void currentUser::setFullname(const string &fullname)
+{
+    this->fullname = fullname;
+    saveToFile();
+}
+void currentUser::setPassword(const string &password)
+{
+    this->password = password;
+    saveToFile();
+}
 void currentUser::loadFromFile()
 {
     ifstream file("G:\\DUT\\pbl2-quizz\\src\\currentUser\\currentUser.txt");

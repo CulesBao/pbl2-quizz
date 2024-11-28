@@ -21,6 +21,8 @@ public:
     string getPassword() const;
     string getFullname() const;
     string getRole() const;
+    void setFullname(const string &fullname);
+    void setPassword(const string &password);
     void loadFromFile();
     void saveToFile();
     ~currentUser();

@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 #include "testInfo.h"
 #include "../studentAttempt/studentAttempt.h"
-#include <QDebug>
 using namespace std;
 
 // Constructor
@@ -48,6 +47,8 @@ int Test::currentId = 1;
 
 TestManager::TestManager()
 {
+    if (testCount != 0)
+        testCount = 0;
     loadFromFile();
 }
 
