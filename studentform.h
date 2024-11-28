@@ -36,15 +36,14 @@ private slots:
     void on_btnAddNewTest_clicked();
 
 private:
-    QLCDNumber *lcdDisplay;
-    QTimer *timer;
     int timeRemaining;
     Ui::StudentForm *ui;
     currentUser logged;
     TestManager testManager;
     StudentAttemptManager studentAttemptManager;
     QuestionBank questionBankManager;
-    studentManager managerStudent;
+    QTimer *timer;
+    QLCDNumber *lcdDisplay;
 };
 
 #endif // STUDENTFORM_H

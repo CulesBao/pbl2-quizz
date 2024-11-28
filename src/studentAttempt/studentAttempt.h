@@ -24,11 +24,11 @@ private:
     time_t startsAt;
     time_t finishedAt;
     void formatId(int id);
-    void generateQuestionId();
+    void generateQuestionId(string teacherId);
 
 public:
     StudentAttempt();
-    StudentAttempt(int id, string testId, string studentId, int totalQuestions, int time);
+    StudentAttempt(int id, string testId, string studentId, int totalQuestions, int time, string teacherId);
     ~StudentAttempt();
 
     string getId() const;
@@ -79,7 +79,7 @@ public:
     StudentAttempt *getAttemptByTestId(const string &testId, int &foundCount) const;
     StudentAttempt *getAttemptByQuestionId(const string &questionId);
     bool setStudentAnswer(StudentAttempt *attempt, int index, int studentAnswer);
-    StudentAttempt *createAttempt(const string &testId, const string &studentId, int totalQuestion, int time);
+    StudentAttempt *createAttempt(const string &testId, const string &studentId, int totalQuestion, int time, string teacherId);
     void setFinishedAtForLastAttempt();
 };
 

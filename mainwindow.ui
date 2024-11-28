@@ -1867,12 +1867,12 @@ QPlainTextEdit:disabled {
      </widget>
      <zorder>leftSidebar</zorder>
      <zorder>groupBoxEditProfile</zorder>
-     <zorder>groupBoxAddNewTest</zorder>
      <zorder>groupBoxMyQuestionBank</zorder>
      <zorder>groupBoxAddNewQuestion</zorder>
      <zorder>groupBoxDetailsQuestion</zorder>
      <zorder>groupBoxDashboard</zorder>
      <zorder>groupBoxTestDetails</zorder>
+     <zorder>groupBoxAddNewTest</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">
      <widget class="QGroupBox" name="groupBox_2">
