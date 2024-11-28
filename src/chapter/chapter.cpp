@@ -62,6 +62,8 @@ Chapter::~Chapter()
 }
 ChapterManager::ChapterManager()
 {
+    if (chapterCount != 0)
+        chapterCount = 0;
     loadFromFile();
 }
 

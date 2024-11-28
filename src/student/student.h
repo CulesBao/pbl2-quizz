@@ -42,6 +42,7 @@ private:
 
 public:
     studentManager();
+    int getIdCounter() const;
     bool registerStudent(const string &fullname, const string &username, const string &password);
     bool login(const string &username, const string &password, currentUser &user);
     bool update(const string id, const string &newPassword, const string &newName);

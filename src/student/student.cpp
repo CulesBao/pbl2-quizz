@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include "../currentUser/currentUser.h"
+#include <QDebug>
 using namespace std;
 
 int studentManager::idCounter = 0;
@@ -26,9 +27,14 @@ void student::formattedId(int id)
 
 studentManager::studentManager()
 {
+    if (idCounter != 0)
+        idCounter = 0;
     loadFromFile();
 }
-
+int studentManager::getIdCounter() const
+{
+    return idCounter;
+}
 bool studentManager::isUsernameUnique(const string &username) const
 {
     for (int i = 0; i < idCounter; i++)
@@ -156,6 +162,7 @@ bool studentManager::update(const string id, const string &newPassword, const st
 {
     for (int i = 0; i < idCounter; i++)
     {
+        qDebug() << "studentArray[i].getId(): " << studentArray[i].getId() << isValidName(newName) << isValidPassword(newPassword);
         if (studentArray[i].getId() == id && isValidName(newName) && isValidPassword(newPassword))
         {
             studentArray[i].setPassword(newPassword);

@@ -95,6 +95,8 @@ void TestQuestionSelectionManager::loadFromFile()
 int TestQuestionSelectionManager::count = 0;
 TestQuestionSelectionManager::TestQuestionSelectionManager(/* args */)
 {
+    if (count != 0)
+        count = 0;
     loadFromFile();
 }
 TestQuestionSelectionManager::~TestQuestionSelectionManager()

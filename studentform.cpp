@@ -381,9 +381,6 @@ void StudentForm::on_btnEditProfileSubmit_clicked()
     string fullname = qFullname.toStdString();
     string password = qPassword.toStdString();
 
-    qDebug() << "ádjaosidjaosidj";
-    studentManager managerStudent;
-    qDebug() << managerStudent.update(logged.getId(), password, fullname);
     if (managerStudent.update(logged.getId(), password, fullname))
     {
         QMessageBox infoBox(this);
@@ -403,6 +400,8 @@ void StudentForm::on_btnEditProfileSubmit_clicked()
         QLabel *label = ui->lbTeacherName;
         label->setText(QString::fromStdString(fullname));
         label->setAlignment(Qt::AlignCenter);
+        logged.setFullname(fullname);
+        logged.setPassword(password);
     }
     else
     {

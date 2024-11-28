@@ -415,13 +415,15 @@ void MainWindow::on_btnEditProfileSubmit_clicked()
     string fullname = qFullname.toStdString();
     string password = qPassword.toStdString();
 
-    if (managerStudent.update(logged.getId(), password, fullname))
+    if (managerTeacher.update(logged.getId(), password, fullname))
     {
         QMessageBox::information(this, "Edit Profile", "Edit profile successful!");
         on_btnDashboard_clicked();
         setUpTeacherDashboard();
         QLabel *label = ui->lbTeacherName;
         label->setText(QString::fromStdString(fullname));
+        logged.setFullname(fullname);
+        logged.setPassword(password);
     }
     else
     {

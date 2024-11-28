@@ -362,5 +362,7 @@ QuestionBank::~QuestionBank()
 }
 QuestionBank::QuestionBank()
 {
+    if (questionCount != 0)
+        questionCount = 0;
     loadFromFile();
 }
