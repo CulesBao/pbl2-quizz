@@ -32,7 +32,6 @@ private slots:
     void on_btnEditProfileSubmit_clicked();
 
     void on_btnEditProfile_clicked();
-
     void on_btnAddNewTest_clicked();
 
 private:

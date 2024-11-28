@@ -30,8 +30,6 @@ StudentForm::StudentForm(QWidget *parent)
     label->setText(QString::fromStdString(logged.getFullname()));
     label->setAlignment(Qt::AlignCenter);
     on_btnDashboard_clicked();
-
-    qDebug() << "StudentForm" << logged.getUsername();
 }
 
 StudentForm::~StudentForm()
@@ -105,13 +103,23 @@ void StudentForm::on_btnDashboard_clicked()
                 dialog->exec();
                 QString inputDialogText = dialog->textValue();
                 if (inputDialogText == QString::fromStdString(runningTest[i].getPassword())) {
-                    QGroupBox *grBox = ui->groupBoxIntoTest;
-                    grBox->show();
-                    grBox = ui->groupBoxDashboard;
-                    grBox->hide();
-                    grBox = ui->leftSidebar;
-                    grBox->hide();
-                    setUpTestForm(runningTest[i]);
+                    QMessageBox qmb;
+                    qmb.setWindowTitle("Enter Test");
+                    qmb.setText("Do you want to start the test?");
+                    qmb.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+                    qmb.setStyleSheet("QMessageBox { background-color: black; color: white; }"
+                                    "QPushButton { background-color: gray; color: black; }");
+                    QMessageBox::StandardButton reply = static_cast<QMessageBox::StandardButton>(qmb.exec());
+                    if (reply == QMessageBox::Yes)
+                    {
+                        QGroupBox *grBox = ui->groupBoxIntoTest;
+                        grBox->show();
+                        grBox = ui->groupBoxDashboard;
+                        grBox->hide();
+                        grBox = ui->leftSidebar;
+                        grBox->hide();
+                        setUpTestForm(runningTest[i]);
+                    }
                 } else {
                     QMessageBox warningBox(this);
                     warningBox.setIcon(QMessageBox::Warning); // Đặt biểu tượng cảnh báo

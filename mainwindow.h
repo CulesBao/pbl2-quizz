@@ -57,5 +57,6 @@ private slots:
     void on_btnAddNewQuestionBack_2_clicked();
     void on_btnAddNewQuestionAdd_2_clicked();
     void setUpTestDetails(Test *test);
+    void detailsStudentAttempt(StudentAttempt *studentAttempt);
 };
 #endif // MAINWINDOW_H
