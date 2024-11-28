@@ -57,7 +57,7 @@ public:
     Question *getAllQuestions() const;
     void loadFromFile();
     void saveToFile() const;
-    Question *getQuestionByChapterId(const string &chapterId, int &foundCount) const;
+    Question *getQuestionByChapterId(const string &chapterId, int &foundCount, string teacherId) const;
     ~QuestionBank();
 };
 

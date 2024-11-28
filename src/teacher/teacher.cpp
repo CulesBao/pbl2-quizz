@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+#include <QDebug>
 using namespace std;
 
 int teacherManager::idCounter = 0;
@@ -51,13 +52,14 @@ bool teacherManager::isUsernameUnique(const string &username) const
 
 bool teacherManager::isValidPassword(const string &password) const
 {
-    return password.length() > 6;
+    return password.length() >= 6;
 }
 
 bool teacherManager::isValidName(const string &name) const
 {
     for (char c : name)
     {
+        qDebug() << c;
         if (!isalpha(c) && c != ' ')
         {
             return false;
@@ -166,13 +168,15 @@ void teacherManager::loadFromFile()
 
 bool teacherManager::update(const string id, const string &newPassword, const string &newName)
 {
+    qDebug() << "Adaoijsdiaosd";
+    qDebug() << this->idCounter;
     for (int i = 0; i < this->idCounter; i++)
-        if (teacherArray[i].getId() == id && isValidName(newName) && isValidPassword(newPassword))
+        if (teacherArray[i].getId() == id)
         {
             teacherArray[i].setName(newName);
             teacherArray[i].setPassword(newPassword);
             saveToFile();
             return true;
         }
-    return false;
+    return true;
 }

@@ -119,7 +119,7 @@ void StudentForm::on_btnDashboard_clicked()
 }
 void StudentForm::setUpTestForm(Test test)
 {
-    StudentAttempt *currentAttempt = studentAttemptManager.createAttempt(test.getId(), logged.getId(), test.getTotalQuestion(), test.getDuration());
+    StudentAttempt *currentAttempt = studentAttemptManager.createAttempt(test.getId(), logged.getId(), test.getTotalQuestion(), test.getDuration(), test.getTeacherId());
     if (currentAttempt->getId() == "")
     {
         QMessageBox::warning(this, "Error", "Cannot create attempt!");
@@ -349,6 +349,9 @@ void StudentForm::on_btnEditProfileSubmit_clicked()
     string fullname = qFullname.toStdString();
     string password = qPassword.toStdString();
 
+    qDebug() << "ádjaosidjaosidj";
+    studentManager managerStudent;
+    qDebug() << managerStudent.update(logged.getId(), password, fullname);
     if (managerStudent.update(logged.getId(), password, fullname))
     {
         QMessageBox::information(this, "Edit Profile", "Edit profile successful!");

@@ -22,7 +22,7 @@ void StudentAttempt::formatId(int id)
     this->id = ss.str();
 }
 
-void StudentAttempt::generateQuestionId()
+void StudentAttempt::generateQuestionId(string teacherId)
 {
     int isNotEnough = 0;
     QuestionBank questionBank;
@@ -43,7 +43,7 @@ void StudentAttempt::generateQuestionId()
     {
         int questionCount = 0;
         Question *questionByChapterId = questionBank.getQuestionByChapterId(
-            testQuestionSelectionByTestId[i].getChapterId(), questionCount);
+            testQuestionSelectionByTestId[i].getChapterId(), questionCount, teacherId);
 
         if (!questionByChapterId || questionCount == 0)
         {
@@ -104,7 +104,7 @@ void StudentAttempt::generateQuestionId()
     delete[] testQuestionSelectionByTestId; // Giải phóng nếu cần
 }
 
-StudentAttempt::StudentAttempt(int id, string testId, string studentId, int totalQuestions, int time)
+StudentAttempt::StudentAttempt(int id, string testId, string studentId, int totalQuestions, int time, string teacherId)
 {
     formatId(id);
     this->testId = testId;
@@ -114,7 +114,7 @@ StudentAttempt::StudentAttempt(int id, string testId, string studentId, int tota
     this->finishedAt = std::time(nullptr);
     this->time = time;
     srand(std::time(0));
-    generateQuestionId();
+    generateQuestionId(teacherId);
     for (int i = 0; i < totalQuestions; i++)
     {
         studentAnswer[i] = 0;
@@ -416,13 +416,13 @@ bool StudentAttemptManager::validateStudentAnswer(const string &studentAnswer) c
 }
 
 // TAO BAI THI
-StudentAttempt *StudentAttemptManager::createAttempt(const string &testId, const string &studentId, int totalQuestion, int time)
+StudentAttempt *StudentAttemptManager::createAttempt(const string &testId, const string &studentId, int totalQuestion, int time, string teacherId)
 {
     if (!validateTestId(testId) || !validateStudentId(studentId))
     {
         return nullptr;
     }
-    StudentAttempt newAttempt(attemptCount, testId, studentId, totalQuestion, time);
+    StudentAttempt newAttempt(attemptCount, testId, studentId, totalQuestion, time, teacherId);
     addAttempt(newAttempt);
     saveToFile();
     return &attempts[attemptCount - 1];

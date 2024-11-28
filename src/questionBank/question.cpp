@@ -232,13 +232,13 @@ Question *QuestionBank::getAllQuestions() const
     return const_cast<Question *>(questions);
 }
 
-Question *QuestionBank::getQuestionByChapterId(const string &chapterId, int &foundCount) const
+Question *QuestionBank::getQuestionByChapterId(const string &chapterId, int &foundCount, string teacherId) const
 {
     Question *foundQuestions = new Question[questionCount];
     foundCount = 0;
     for (int i = 0; i < questionCount; ++i)
     {
-        if (questions[i].getChapterId() == chapterId)
+        if (questions[i].getChapterId() == chapterId && questions[i].getTeacherId() == teacherId)
         {
             foundQuestions[foundCount++] = questions[i];
         }
