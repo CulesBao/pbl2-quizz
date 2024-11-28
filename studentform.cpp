@@ -98,7 +98,7 @@ void StudentForm::on_btnDashboard_clicked()
         connect(btn, &QPushButton::clicked, this, [this, runningTest, i]()
                 {
                 QInputDialog* dialog = new QInputDialog(this);
-                dialog->setStyleSheet("color: #000000; background-color: white");
+                dialog->setStyleSheet("color: white; background-color: black;");
                 dialog->setWindowTitle("Enter Test");
                 dialog->setLabelText("Enter password to start the test:");
                 dialog->setOkButtonText("Enter");
@@ -113,7 +113,19 @@ void StudentForm::on_btnDashboard_clicked()
                     grBox->hide();
                     setUpTestForm(runningTest[i]);
                 } else {
-                    QMessageBox::warning(this, "Fail", "Incorrect password!");
+                    QMessageBox warningBox(this);
+                    warningBox.setIcon(QMessageBox::Warning); // Đặt biểu tượng cảnh báo
+                    warningBox.setWindowTitle("Fail");
+                    warningBox.setText("Incorrect password!");
+                    warningBox.setStyleSheet(
+                        "QMessageBox { background-color: #fff3f3; color: black; }"  // Nền màu đỏ nhạt, chữ màu đen
+                        "QLabel { color: black; font-size: 14px; }"                 // Tùy chỉnh font chữ
+                        "QPushButton { background-color: #ffcccc; color: black; border: 1px solid gray; padding: 5px; }"
+                        "QPushButton:hover { background-color: #ff9999; }"          // Hiệu ứng hover
+                    );
+
+                    warningBox.exec(); // Hiển thị hộp thoại
+
                 } });
     }
 }
@@ -122,7 +134,19 @@ void StudentForm::setUpTestForm(Test test)
     StudentAttempt *currentAttempt = studentAttemptManager.createAttempt(test.getId(), logged.getId(), test.getTotalQuestion(), test.getDuration(), test.getTeacherId());
     if (currentAttempt->getId() == "")
     {
-        QMessageBox::warning(this, "Error", "Cannot create attempt!");
+        QMessageBox warningBox(this);
+        warningBox.setIcon(QMessageBox::Warning); // Đặt biểu tượng cảnh báo
+        warningBox.setWindowTitle("Error");
+        warningBox.setText("Cannot create attempt!");
+        warningBox.setStyleSheet(
+            "QMessageBox { background-color: #fff4e6; color: black; }" // Nền màu cam nhạt, chữ màu đen
+            "QLabel { color: black; font-size: 14px; }"                // Tùy chỉnh font chữ
+            "QPushButton { background-color: #ffd9b3; color: black; border: 1px solid gray; padding: 5px; }"
+            "QPushButton:hover { background-color: #ffc299; }" // Hiệu ứng hover
+        );
+
+        warningBox.exec(); // Hiển thị hộp thoại
+
         return;
     }
     CountdownTimer(test.getDuration() * 60);
@@ -217,7 +241,6 @@ void StudentForm::CountdownTimer(int startTime)
 
     ui->lcdNumber->setDigitCount(5);
 
-    // Tạo thread riêng để chạy bộ đếm
     std::thread([this]()
                 {
         while (timeRemaining > 0) {
@@ -233,7 +256,10 @@ void StudentForm::CountdownTimer(int startTime)
         }
         QMetaObject::invokeMethod(this, [this]() {
             ui->lcdNumber->display("00:00");
-            QMessageBox::information(this, "Time's up", "Time's up!");
+            QMessageBox *qmb = new QMessageBox();
+            qmb->setText("Time's up!");
+            qmb->setStyleSheet("background-color: black; color: white;");
+            qmb->exec();
             studentAttemptManager.setFinishedAtForLastAttempt();
             setHistoryTable();
         }); })
@@ -271,7 +297,6 @@ void StudentForm::setHistoryTable()
 
     int historyTestCount = 0;
     StudentAttempt *historyTest = studentAttemptManager.getAttemptsByStudentId(logged.getId(), historyTestCount);
-    qDebug() << "historyTestCount" << historyTestCount;
 
     for (int i = 0; i < historyTestCount; i++)
     {
@@ -291,8 +316,15 @@ void StudentForm::setHistoryTable()
 }
 void StudentForm::on_pushButton_clicked()
 {
-    QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "Finish Test", "Are you sure you want to finish the test?", QMessageBox::Yes | QMessageBox::No);
+    QMessageBox qmb;
+    qmb.setWindowTitle("Submit Test");
+    qmb.setText("Are you sure you want to submit the test?");
+    qmb.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    qmb.setStyleSheet("QMessageBox { background-color: black; color: white; }"
+                      "QPushButton { background-color: gray; color: black; }");
+
+    QMessageBox::StandardButton reply = static_cast<QMessageBox::StandardButton>(qmb.exec());
+
     if (reply == QMessageBox::Yes)
     {
         studentAttemptManager.setFinishedAtForLastAttempt();
@@ -354,7 +386,19 @@ void StudentForm::on_btnEditProfileSubmit_clicked()
     qDebug() << managerStudent.update(logged.getId(), password, fullname);
     if (managerStudent.update(logged.getId(), password, fullname))
     {
-        QMessageBox::information(this, "Edit Profile", "Edit profile successful!");
+        QMessageBox infoBox(this);
+        infoBox.setIcon(QMessageBox::Information);
+        infoBox.setWindowTitle("Edit Profile");
+        infoBox.setText("Edit profile successful!");
+        infoBox.setStyleSheet(
+            "QMessageBox { background-color: #black; color: white; }" // Nền xanh nhạt, chữ màu đen
+            "QLabel { color: black; font-size: 14px; }"               // Tùy chỉnh font chữ
+            "QPushButton { background-color: #d9f2ff; color: black; border: 1px solid gray; padding: 5px; }"
+            "QPushButton:hover { background-color: #b3e6ff; }" // Hiệu ứng hover
+        );
+
+        infoBox.exec(); // Hiển thị hộp thoại
+
         on_btnDashboard_clicked();
         QLabel *label = ui->lbTeacherName;
         label->setText(QString::fromStdString(fullname));
@@ -362,6 +406,16 @@ void StudentForm::on_btnEditProfileSubmit_clicked()
     }
     else
     {
-        QMessageBox::warning(this, "Edit Profile", "Form is incorrect. Please try again!");
+        QMessageBox warningBox(this);
+        warningBox.setIcon(QMessageBox::Warning);
+        warningBox.setWindowTitle("Edit Profile");
+        warningBox.setText("Form is incorrect. Please try again!");
+        warningBox.setStyleSheet(
+            "QMessageBox { background-color: black; color: white; }" // Nền màu đỏ nhạt
+            "QPushButton { background-color: #f5f5f5; color: black; border: 1px solid gray; }"
+            "QPushButton:hover { background-color: #d6d6d6; }" // Hiệu ứng hover
+        );
+
+        warningBox.exec(); // Hiển thị hộp thoại
     }
 }
