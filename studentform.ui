@@ -645,10 +645,151 @@ QLabel:hover {
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Ready?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnBack1">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>550</y>
+      <width>74</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #007bff; /* Màu viền */
+    border-radius: 5px; /* Bo góc */
+    background-color: #ffffff; /* Màu nền */
+    color: #007bff; /* Màu chữ */
+    min-width: 50px; /* Đặt kích thước tối thiểu */
+background-color: #ffeeba;
+    border-color: #ffeeba;
+    color: #856404;
+}
+
+/* Hiệu ứng khi hover */
+QPushButton:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: #ffffff; /* Màu chữ khi hover */
+}</string>
+    </property>
+    <property name="text">
+     <string>&lt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnBack5">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>550</y>
+      <width>74</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #007bff; /* Màu viền */
+    border-radius: 5px; /* Bo góc */
+    background-color: #ffffff; /* Màu nền */
+    color: #007bff; /* Màu chữ */
+    min-width: 50px; /* Đặt kích thước tối thiểu */
+background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Hiệu ứng khi hover */
+QPushButton:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: #ffffff; /* Màu chữ khi hover */
+}</string>
+    </property>
+    <property name="text">
+     <string>&lt;&lt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnNext1">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>550</y>
+      <width>74</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #007bff; /* Màu viền */
+    border-radius: 5px; /* Bo góc */
+    background-color: #ffffff; /* Màu nền */
+    color: #007bff; /* Màu chữ */
+    min-width: 50px; /* Đặt kích thước tối thiểu */
+background-color: #c3e6cb;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+/* Hiệu ứng khi hover */
+QPushButton:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: #ffffff; /* Màu chữ khi hover */
+}
+</string>
+    </property>
+    <property name="text">
+     <string>&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnNext5">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>550</y>
+      <width>74</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #007bff; /* Màu viền */
+    border-radius: 5px; /* Bo góc */
+    background-color: #ffffff; /* Màu nền */
+    color: #007bff; /* Màu chữ */
+    min-width: 50px; /* Đặt kích thước tối thiểu */
+background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+/* Hiệu ứng khi hover */
+QPushButton:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: #ffffff; /* Màu chữ khi hover */
+}</string>
+    </property>
+    <property name="text">
+     <string>&gt;&gt;</string>
+    </property>
+   </widget>
    <zorder>groupBox</zorder>
    <zorder>verticalLayoutWidget_2</zorder>
    <zorder>lbNumber</zorder>
    <zorder>lbQuestion</zorder>
+   <zorder>btnBack1</zorder>
+   <zorder>btnBack5</zorder>
+   <zorder>btnNext1</zorder>
+   <zorder>btnNext5</zorder>
   </widget>
   <zorder>groupBoxIntoTest</zorder>
   <zorder>leftSidebar</zorder>

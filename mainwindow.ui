@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>869</width>
+    <width>870</width>
     <height>609</height>
    </rect>
   </property>
@@ -953,7 +953,7 @@ QPushButton:pressed {
        <rect>
         <x>230</x>
         <y>-10</y>
-        <width>651</width>
+        <width>641</width>
         <height>621</height>
        </rect>
       </property>
@@ -1857,22 +1857,57 @@ QPlainTextEdit:disabled {
       <widget class="QTableWidget" name="tbTestDetails">
        <property name="geometry">
         <rect>
-         <x>45</x>
+         <x>35</x>
          <y>61</y>
-         <width>561</width>
+         <width>581</width>
          <height>531</height>
         </rect>
        </property>
       </widget>
      </widget>
+     <widget class="QGroupBox" name="groupBoxDetailStudentAttempt">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>-10</y>
+        <width>651</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+    border: 2px solid #8B0000;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+</string>
+      </property>
+      <property name="title">
+       <string>Details Student Attempt</string>
+      </property>
+      <widget class="QTableWidget" name="tbStudentAttempt">
+       <property name="geometry">
+        <rect>
+         <x>15</x>
+         <y>61</y>
+         <width>631</width>
+         <height>481</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <zorder>groupBoxDetailStudentAttempt</zorder>
      <zorder>leftSidebar</zorder>
      <zorder>groupBoxEditProfile</zorder>
      <zorder>groupBoxMyQuestionBank</zorder>
      <zorder>groupBoxAddNewQuestion</zorder>
      <zorder>groupBoxDetailsQuestion</zorder>
      <zorder>groupBoxDashboard</zorder>
-     <zorder>groupBoxTestDetails</zorder>
      <zorder>groupBoxAddNewTest</zorder>
+     <zorder>groupBoxTestDetails</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">
      <widget class="QGroupBox" name="groupBox_2">

@@ -442,3 +442,27 @@ void StudentAttemptManager::setFinishedAtForLastAttempt()
     attempts[attemptCount - 1].setEndsAt();
     saveToFile();
 }
+bool StudentAttemptManager::deleteAttempt(const string &id)
+{
+    for (int i = 0; i < attemptCount; ++i)
+    {
+        if (attempts[i].getId() == id)
+        {
+            attempts[i].setId("");
+            attempts[i].setTestId("");
+            attempts[i].setStudentId("");
+            for (int j = 0; j < attempts[i].getTotalQuestions(); ++j)
+            {
+                attempts[i].setStudentAnswer(j, 0);
+            }
+            attempts[i].setTotalQuestions(0);
+            attempts[i].setCorrectAnswer();
+            attempts[i].setStartsAt(0);
+            attempts[i].setFinishedAt(0);
+            --attemptCount;
+            saveToFile();
+            return true;
+        }
+    }
+    return false;
+}

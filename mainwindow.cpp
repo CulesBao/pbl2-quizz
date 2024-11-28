@@ -343,6 +343,7 @@ void MainWindow::on_btnAddNewTextNext_clicked()
     }
     else
     {
+        bool isFormCorrect = true;
         for (int i = 0; i < ui->tbSetNumberQuestion->rowCount(); i++)
         {
             QLineEdit *lineEdit = qobject_cast<QLineEdit *>(ui->tbSetNumberQuestion->cellWidget(i, 1));
@@ -353,25 +354,35 @@ void MainWindow::on_btnAddNewTextNext_clicked()
                 int totalQuestion = questionBankManager.getNumberOfQuestion(logged.getId(), chapter->getId());
                 if (count > totalQuestion)
                 {
+                    isFormCorrect = false;
                     QMessageBox::warning(this, "Add New Test", QString::fromStdString(chapter->getName()) + " has only " + QString::number(totalQuestion) + " questions. Please try again!");
                     return;
                 }
-                Test *test = managerTest.getLastTest();
-                if (test != nullptr)
+            }
+        }
+        if (managerTest.createTest(logged.getId(), title, questionCount, password, duration, startsAt, endsAt) && isFormCorrect)
+        {
+            for (int i = 0; i < ui->tbSetNumberQuestion->rowCount(); i++)
+            {
+                QLineEdit *lineEdit = qobject_cast<QLineEdit *>(ui->tbSetNumberQuestion->cellWidget(i, 1));
+                int count = lineEdit->text().toInt();
+                if (count > 0)
                 {
-                    testQuestionSelectionManager.addTestQuestionSelection(test->getId(), chapter->getId(), count);
-                }
-                if (managerTest.createTest(logged.getId(), title, questionCount, password, duration, startsAt, endsAt))
-                {
-                    QMessageBox::information(this, "Add New Test", "Add new test successful!");
-                    on_btnDashboard_clicked();
-                    setUpTeacherDashboard();
-                }
-                else
-                {
-                    QMessageBox::warning(this, "Add New Test", "Form is incorrect. Please try again!");
+                    Chapter *chapter = chapterManager.getChapterById(i);
+                    Test *test = managerTest.getLastTest();
+                    if (test != nullptr)
+                    {
+                        testQuestionSelectionManager.addTestQuestionSelection(test->getId(), chapter->getId(), count);
+                    }
                 }
             }
+            QMessageBox::information(this, "Add New Test", "Add new test successful!");
+            on_btnDashboard_clicked();
+            setUpTeacherDashboard();
+        }
+        else
+        {
+            QMessageBox::warning(this, "Add New Test", "Form is incorrect. Please try again!");
         }
     }
 }
@@ -759,16 +770,18 @@ void MainWindow::setUpTestDetails(Test *test)
 
     QTableWidget *table = ui->tbTestDetails;
     table->clearContents();
-    table->setColumnCount(6);
+    table->setColumnCount(8);
     table->setRowCount(0);
 
-    table->setHorizontalHeaderLabels({"Student ID", "Fullname", "Starts At", "Ends At", "Number of Question", "Correct Answer"});
+    table->setHorizontalHeaderLabels({"Student ID", "Fullname", "Starts At", "Ends At", "Number of Question", "Correct Answer", "Details", "Delete"});
     table->setColumnWidth(0, 100); // Student ID
     table->setColumnWidth(1, 200); // Fullname
     table->setColumnWidth(2, 150); // Starts At
     table->setColumnWidth(3, 150); // Ends At
     table->setColumnWidth(4, 150); // Number of Question
     table->setColumnWidth(5, 150); // Correct Answer
+    table->setColumnWidth(6, 60);  // Details
+    table->setColumnWidth(7, 60);  // Delete
 
     QHeaderView *header = table->horizontalHeader();
     header->setStyleSheet("QHeaderView::section { background-color: black; color: white; }");
@@ -802,5 +815,134 @@ void MainWindow::setUpTestDetails(Test *test)
         {
             table->item(i, j)->setTextAlignment(Qt::AlignCenter);
         }
+        QPushButton *btnDetails = new QPushButton("Details");
+        table->setCellWidget(i, 6, btnDetails);
+        btnDetails->setStyleSheet(
+            "padding: 5px 10px;"
+            "font-size: 10px;"
+            "border-radius: 5px;"
+            "border: 1px solid #ddd;"
+            "background-color: #007bff;"
+            "color: white;"
+            "margin: 2px;"
+            "min-width: 30px;"
+            "max-width: 30px;"
+            "min-height: 15px;"
+            "max-height: 15px;"
+            "text-align: center;"
+            "cursor: pointer;"
+            "outline: none;");
+        connect(btnDetails, &QPushButton::clicked, this, [this, studentAttempt]()
+                { detailsStudentAttempt(studentAttempt); });
+
+        QPushButton *btnDelete = new QPushButton("Delete");
+        table->setCellWidget(i, 7, btnDelete);
+        btnDelete->setStyleSheet(
+            "padding: 5px 10px;"
+            "font-size: 10px;"
+            "border-radius: 5px;"
+            "border: 1px solid #ddd;"
+            "background-color: #dc3545;"
+            "color: white;"
+            "margin: 2px;"
+            "min-width: 30px;"
+            "max-width: 30px;"
+            "min-height: 15px;"
+            "max-height: 15px;"
+            "text-align: center;"
+            "cursor: pointer;"
+            "outline: none;");
+        connect(btnDelete, &QPushButton::clicked, this, [this, studentAttempt, i]()
+                {
+                    QMessageBox::StandardButton reply;
+                    reply = QMessageBox::question(this, "Delete Confirmation",
+                                                  "Are you sure you want to delete student attempt: " + QString::fromStdString(studentAttempt->getId()) + "?",
+                                                  QMessageBox::Yes | QMessageBox::No);
+
+                    if (reply == QMessageBox::Yes)
+                    {
+                        qDebug() << "Student attempt deleted with ID:" << QString::fromStdString(studentAttempt->getId());
+                        if (!studentAttemptManager.deleteAttempt(studentAttempt->getId()))
+                            QMessageBox::warning(this, "Delete Attempt", "Failed to delete attempt. Please try again!");
+                        else
+                            ui->tbTestDetails->removeRow(i);
+                    }; });
     }
+}
+
+void MainWindow::detailsStudentAttempt(StudentAttempt *studentAttempt)
+{
+    QGroupBox *grBox = ui->groupBoxTestDetails;
+    grBox->hide();
+    grBox = ui->groupBoxAddNewTest;
+    grBox->hide();
+    grBox = ui->groupBoxAddNewQuestion;
+    grBox->hide();
+    grBox = ui->groupBoxDashboard;
+    grBox->hide();
+    grBox = ui->groupBoxEditProfile;
+    grBox->hide();
+    grBox = ui->groupBoxMyQuestionBank;
+    grBox->hide();
+    grBox = ui->groupBoxDetailStudentAttempt;
+    grBox->show();
+
+    QTableWidget *table = ui->tbStudentAttempt;
+    table->clearContents();
+    table->setColumnCount(4);
+    table->setRowCount(0);
+
+    table->setHorizontalHeaderLabels({"Question ID", "Question", "Your Answer", "Correct Answer"});
+    table->setStyleSheet(
+        "QTableWidget::item:selected {"
+        "    background-color: transparent;" // Giữ màu nền không thay đổi
+        "    color: inherit;"                // Giữ nguyên màu chữ
+        "    border: none;"                  // Không viền
+        "}");
+
+    table->setColumnWidth(0, 100); // Question ID
+    table->setColumnWidth(1, 300); // Question
+    table->setColumnWidth(2, 150); // Your Answer
+    table->setColumnWidth(3, 150); // Correct Answer
+
+    QHeaderView *header = table->horizontalHeader();
+    header->setStyleSheet("QHeaderView::section { background-color: black; color: white; }");
+
+    for (int i = 0; i < studentAttempt->getTotalQuestions(); i++)
+    {
+        Question *tmpQuestion = questionBankManager.getQuestionById(studentAttempt->getQuestionId(i));
+
+        table->insertRow(i);
+        table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(tmpQuestion->getId())));
+        table->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(tmpQuestion->getQuestionText())));
+        if (studentAttempt->getStudentAnswer(i) == 0)
+        {
+            table->setItem(i, 2, new QTableWidgetItem("x"));
+        }
+        else
+        {
+            table->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(tmpQuestion->getOption(studentAttempt->getStudentAnswer(i) - 1))));
+        }
+        table->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(tmpQuestion->getOption(tmpQuestion->getCorrectAnswerId() - 1))));
+        for (int j = 0; j < 4; j++)
+        {
+            table->item(i, j)->setTextAlignment(Qt::AlignCenter);
+        }
+        if (studentAttempt->getStudentAnswer(i) == tmpQuestion->getCorrectAnswerId())
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                table->item(i, j)->setBackground(QBrush(QColor("#28a745"))); // Green
+            }
+        }
+        else
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                table->item(i, j)->setBackground(QBrush(QColor("#dc3545"))); // Red
+            }
+        }
+    }
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers); // Prevent editing
+    table->setSelectionMode(QAbstractItemView::NoSelection);   // Prevent selection
 }

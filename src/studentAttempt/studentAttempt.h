@@ -81,6 +81,7 @@ public:
     bool setStudentAnswer(StudentAttempt *attempt, int index, int studentAnswer);
     StudentAttempt *createAttempt(const string &testId, const string &studentId, int totalQuestion, int time, string teacherId);
     void setFinishedAtForLastAttempt();
+    bool deleteAttempt(const string &id);
 };
 
 #endif
