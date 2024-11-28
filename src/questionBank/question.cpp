@@ -246,6 +246,19 @@ Question *QuestionBank::getQuestionByChapterId(const string &chapterId, int &fou
     return foundQuestions;
 }
 
+int QuestionBank::getNumberOfQuestion(string teacherId, string chapterId)
+{
+    int count = 0;
+    for (int i = 0; i < questionCount; i++)
+    {
+        if (questions[i].getTeacherId() == teacherId && questions[i].getChapterId() == chapterId)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
 void QuestionBank::loadFromFile()
 {
     ifstream inFile("G:\\DUT\\pbl2-quizz\\src\\questionBank\\questions.txt");

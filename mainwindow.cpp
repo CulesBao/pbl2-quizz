@@ -267,10 +267,11 @@ void MainWindow::on_btnAddNewTest_clicked()
     QTableWidget *table = ui->tbSetNumberQuestion;
     table->clearContents();
     table->setRowCount(0);
-    table->setColumnCount(2);
-    table->setHorizontalHeaderLabels({"Chapter", "Number of Questions"});
+    table->setColumnCount(3);
+    table->setHorizontalHeaderLabels({"Chapter", "Number of Questions", "You have"});
     table->setColumnWidth(0, 200);
-    table->setColumnWidth(1, 200);
+    table->setColumnWidth(1, 140);
+    table->setColumnWidth(2, 70);
 
     QHeaderView *header = table->horizontalHeader();
     header->setStyleSheet("QHeaderView::section { background-color: black; color: white; }");
@@ -292,7 +293,7 @@ void MainWindow::on_btnAddNewTest_clicked()
         table->insertRow(i);
         table->setRowHeight(i, 70);
         table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(chapter->getName())));
-
+        table->setItem(i, 2, new QTableWidgetItem(QString::number(questionBankManager.getNumberOfQuestion(logged.getId(), chapter->getId()))));
         QLineEdit *lineEdit = new QLineEdit();
         lineEdit->setText("0");
         lineEdit->setAlignment(Qt::AlignCenter);
@@ -342,29 +343,35 @@ void MainWindow::on_btnAddNewTextNext_clicked()
     }
     else
     {
-        if (managerTest.createTest(logged.getId(), title, questionCount, password, duration, startsAt, endsAt))
+        for (int i = 0; i < ui->tbSetNumberQuestion->rowCount(); i++)
         {
-            QMessageBox::information(this, "Add New Test", "Add new test successful!");
-            for (int i = 0; i < ui->tbSetNumberQuestion->rowCount(); i++)
+            QLineEdit *lineEdit = qobject_cast<QLineEdit *>(ui->tbSetNumberQuestion->cellWidget(i, 1));
+            int count = lineEdit->text().toInt();
+            if (count > 0)
             {
-                QLineEdit *lineEdit = qobject_cast<QLineEdit *>(ui->tbSetNumberQuestion->cellWidget(i, 1));
-                int count = lineEdit->text().toInt();
-                if (count > 0)
+                Chapter *chapter = chapterManager.getChapterById(i);
+                int totalQuestion = questionBankManager.getNumberOfQuestion(logged.getId(), chapter->getId());
+                if (count > totalQuestion)
                 {
-                    Chapter *chapter = chapterManager.getChapterById(i);
-                    Test *test = managerTest.getLastTest();
-                    if (test != nullptr)
-                    {
-                        testQuestionSelectionManager.addTestQuestionSelection(test->getId(), chapter->getId(), count);
-                    }
+                    QMessageBox::warning(this, "Add New Test", QString::fromStdString(chapter->getName()) + " has only " + QString::number(totalQuestion) + " questions. Please try again!");
+                    return;
+                }
+                Test *test = managerTest.getLastTest();
+                if (test != nullptr)
+                {
+                    testQuestionSelectionManager.addTestQuestionSelection(test->getId(), chapter->getId(), count);
+                }
+                if (managerTest.createTest(logged.getId(), title, questionCount, password, duration, startsAt, endsAt))
+                {
+                    QMessageBox::information(this, "Add New Test", "Add new test successful!");
+                    on_btnDashboard_clicked();
+                    setUpTeacherDashboard();
+                }
+                else
+                {
+                    QMessageBox::warning(this, "Add New Test", "Form is incorrect. Please try again!");
                 }
             }
-            on_btnDashboard_clicked();
-            setUpTeacherDashboard();
-        }
-        else
-        {
-            QMessageBox::warning(this, "Add New Test", "Form is incorrect. Please try again!");
         }
     }
 }

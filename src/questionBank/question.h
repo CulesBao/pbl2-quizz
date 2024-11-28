@@ -58,6 +58,7 @@ public:
     void loadFromFile();
     void saveToFile() const;
     Question *getQuestionByChapterId(const string &chapterId, int &foundCount, string teacherId) const;
+    int getNumberOfQuestion(string teacherId, string chapterId);
     ~QuestionBank();
 };
 
