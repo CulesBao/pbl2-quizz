@@ -201,7 +201,7 @@ QUE199|TEA002|CHA000|The weather today is _____ it was yesterday.|4|3|bad than|b
 QUE200|TEA002|CHA000|My television is ______ his television.|4|3|modern than|more morden than|mordener than|more mordener than|
 QUE201|TEA000|CHA001|I am having a math lesson, but I forgot my ________. I had some difficulty.|4|1|calculator|bicycle|pencil case|pencil sharpener|
 QUE202|TEA000|CHA001|They often play soccer in the ______.|4|2|school gate|school yard|schoolmate|schoolbag|
-QUE203|TEA000|CHA001|It has two wheels. Many students ride it to school. What is it?|4|4|bus|picture|letter|bicycle|
+||||0|-1|
 QUE204|TEA000|CHA001|It has many letters and words. You use it to look up new words. What is it?|4|3|comic book|textbook|dictionary|notebook|
 QUE205|TEA000|CHA001|It’s a room at your school where there are books, newspapers, etc. for you to read, study, or borrow. You can read books and study here. What is it?|4|2|playground|library|classroom|school yard|
 QUE206|TEA000|CHA001|What is your ___________subject at school?|4|2|nice|favourite|liking|excited|
@@ -298,3 +298,7 @@ QUE296|TEA000|CHA000|My mother’s cooking is _______ your mother’s cooking.|4
 QUE297|TEA000|CHA000|She is coming ________ than I.|4|1|earlier|more early|early than|more earlier|
 QUE298|TEA000|CHA000|Health is ________ money.|4|3|important|important than|more important|more important than|
 QUE299|TEA000|CHA000|The weather today is _____ it was yesterday.|4|3|bad than|bader than|worse than|worst than|
+||||0|-1|
+||||0|-1|
+||||0|-1|
+QUE303|TEA000|CHA002|this is test|4|2|3|1|2|4|
