@@ -2215,10 +2215,47 @@ QLineEdit:focus {
        <property name="geometry">
         <rect>
          <x>35</x>
-         <y>61</y>
+         <y>91</y>
          <width>581</width>
-         <height>531</height>
+         <height>501</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnGenerateFile">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>40</y>
+         <width>141</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #28a745;  /* Màu xanh lá */
+    color: white;               /* Màu chữ trắng */
+    border-radius: 8px;         /* Bo góc */
+    padding: 10px 20px;         /* Khoảng cách giữa chữ và viền nút */
+    border: none;               /* Bỏ viền */
+    font-size: 14px;            /* Kích thước chữ */
+    font-weight: bold;          /* Chữ đậm */
+}
+
+/* Hiệu ứng hover (khi di chuột vào nút Add) */
+QPushButton:hover {
+    background-color: #218838;  /* Màu xanh lá đậm hơn khi hover */
+    cursor: pointer;            /* Con trỏ chuột chuyển thành hình tay */
+}
+
+/* Hiệu ứng khi bấm vào nút Add */
+QPushButton:pressed {
+    background-color: #1e7e34;  /* Màu xanh lá đậm khi nhấn */
+    padding-left: 12px;         /* Tạo hiệu ứng nút lún xuống */
+    padding-top: 12px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Generate file</string>
        </property>
       </widget>
      </widget>
@@ -2249,22 +2286,59 @@ QLineEdit:focus {
        <property name="geometry">
         <rect>
          <x>15</x>
-         <y>61</y>
+         <y>91</y>
          <width>631</width>
-         <height>481</height>
+         <height>501</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnGenerateFile_2">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>40</y>
+         <width>141</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #28a745;  /* Màu xanh lá */
+    color: white;               /* Màu chữ trắng */
+    border-radius: 8px;         /* Bo góc */
+    padding: 10px 20px;         /* Khoảng cách giữa chữ và viền nút */
+    border: none;               /* Bỏ viền */
+    font-size: 14px;            /* Kích thước chữ */
+    font-weight: bold;          /* Chữ đậm */
+}
+
+/* Hiệu ứng hover (khi di chuột vào nút Add) */
+QPushButton:hover {
+    background-color: #218838;  /* Màu xanh lá đậm hơn khi hover */
+    cursor: pointer;            /* Con trỏ chuột chuyển thành hình tay */
+}
+
+/* Hiệu ứng khi bấm vào nút Add */
+QPushButton:pressed {
+    background-color: #1e7e34;  /* Màu xanh lá đậm khi nhấn */
+    padding-left: 12px;         /* Tạo hiệu ứng nút lún xuống */
+    padding-top: 12px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Generate file</string>
        </property>
       </widget>
      </widget>
      <zorder>groupBoxDetailStudentAttempt</zorder>
      <zorder>groupBoxAddNewTest</zorder>
-     <zorder>groupBoxTestDetails</zorder>
      <zorder>groupBoxAddNewQuestion</zorder>
      <zorder>groupBoxDetailsQuestion</zorder>
      <zorder>leftSidebar</zorder>
      <zorder>groupBoxEditProfile</zorder>
      <zorder>groupBoxMyQuestionBank</zorder>
      <zorder>groupBoxDashboard</zorder>
+     <zorder>groupBoxTestDetails</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">
      <widget class="QGroupBox" name="groupBox_2">

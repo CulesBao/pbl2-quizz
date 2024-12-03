@@ -7,6 +7,8 @@
 #include "./src/testQuestionSelection/testQuestionSelection.h"
 #include "./src/questionBank/question.h"
 #include <QMessageBox>
+#include <QFileDialog>
+#include <QFile>
 #include "studentform.h"
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
@@ -828,6 +830,10 @@ void MainWindow::on_btnAddNewQuestionBack_2_clicked()
 void MainWindow::on_btnAddNewQuestionAdd_2_clicked()
 {
 }
+
+void MainWindow::on_btnGenerateFile_clicked()
+{
+}
 void MainWindow::setUpTestDetails(Test *test)
 {
     QGroupBox *grBox = ui->groupBoxTestDetails;
@@ -946,6 +952,116 @@ void MainWindow::setUpTestDetails(Test *test)
                             ui->tbTestDetails->removeRow(i);
                     }; });
     }
+    disconnect(ui->btnGenerateFile, &QPushButton::clicked, nullptr, nullptr);
+    connect(ui->btnGenerateFile, &QPushButton::clicked, this, [this, test]()
+            { 
+                qDebug() << test->getId();
+                QString filePath = QFileDialog::getSaveFileName(
+                        nullptr,                           // Parent widget (nullptr nếu không có)
+                        "Chọn vị trí lưu file",            // Tiêu đề của hộp thoại
+                        QDir::homePath(),                  // Thư mục mặc định (thư mục Home của người dùng)
+                        "CSV Files (*.csv);;All Files (*)" // Bộ lọc định dạng file
+                    );
+
+                    if (!filePath.isEmpty())
+                    {
+                        QFile file(filePath);
+                        if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+                        {
+                            QTextStream out(&file);
+                            // Write data
+                            out << "TEST DETAILS" << Qt::endl;
+                            out << "Test ID: " << QString::fromStdString(test->getId()) << Qt::endl;
+                            out << "Title: " << QString::fromStdString(test->getTitle()) << Qt::endl;
+                            out << "Number of Questions: " << QString::number(test->getTotalQuestion()) << Qt::endl;
+                            out << "Password: " << QString::fromStdString(test->getPassword()) << Qt::endl;
+                            out << "Duration: " << QString::number(test->getDuration()) << " minutes" << Qt::endl;
+                            out << "Starts At: " << QString::fromStdString(test->getStartsAt()) << Qt::endl;
+                            out << "Ends At: " << QString::fromStdString(test->getEndsAt()) << Qt::endl
+                                << Qt::endl;
+
+                            out << "Student ID, Fullname, Starts At, Ends At, Number of Question, Correct Answer, Score" << Qt::endl;
+                            int count = 0;
+                            StudentAttempt *studentAttempts = studentAttemptManager.getAttemptByTestId(test->getId(), count);
+                            for (int i = 0; i < count; i++)
+                            {
+                                StudentAttempt *studentAttempt = studentAttempts + i;
+                                if (studentAttempt == nullptr)
+                                {
+                                    qDebug() << "Student attempt not found. Please try again!";
+                                    continue;
+                                }
+                                out << QString::fromStdString(studentAttempt->getStudentId()) << ", "
+                                    << QString::fromStdString(managerStudent.getNameById(studentAttempt->getStudentId())) << ", "
+                                    << QString::fromStdString(studentAttempt->getStartsAt()) << ", "
+                                    << QString::fromStdString(studentAttempt->getFinishedAt()) << ", "
+                                    << QString::number(test->getTotalQuestion()) << ", "
+                                    << QString::number(studentAttempt->getCorrectAnswer()) << ", "
+                                    << QString::number((studentAttempt->getCorrectAnswer() * 10.0) / test->getTotalQuestion(), 'f', 2) << Qt::endl;
+                            }
+                            file.close();
+                            QMessageBox::information(this, "File Saved", "File saved successfully!");
+                        }
+                        else
+                        {
+                            QMessageBox::warning(this, "File Error", "Unable to open file for writing.");
+                        }
+                    } });
+}
+
+void MainWindow::btnGenerateFile_clicked(Test *test)
+{
+    QString filePath = QFileDialog::getSaveFileName(
+        nullptr,                           // Parent widget (nullptr nếu không có)
+        "Chọn vị trí lưu file",            // Tiêu đề của hộp thoại
+        QDir::homePath(),                  // Thư mục mặc định (thư mục Home của người dùng)
+        "CSV Files (*.csv);;All Files (*)" // Bộ lọc định dạng file
+    );
+
+    if (!filePath.isEmpty())
+    {
+        QFile file(filePath);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+        {
+            QTextStream out(&file);
+            // Write data
+            out << "TEST DETAILS" << Qt::endl;
+            out << "Test ID: " << QString::fromStdString(test->getId()) << Qt::endl;
+            out << "Title: " << QString::fromStdString(test->getTitle()) << Qt::endl;
+            out << "Number of Questions: " << QString::number(test->getTotalQuestion()) << Qt::endl;
+            out << "Password: " << QString::fromStdString(test->getPassword()) << Qt::endl;
+            out << "Duration: " << QString::number(test->getDuration()) << " minutes" << Qt::endl;
+            out << "Starts At: " << QString::fromStdString(test->getStartsAt()) << Qt::endl;
+            out << "Ends At: " << QString::fromStdString(test->getEndsAt()) << Qt::endl
+                << Qt::endl;
+
+            out << "Student ID, Fullname, Starts At, Ends At, Number of Question, Correct Answer, Score" << Qt::endl;
+            int count = 0;
+            StudentAttempt *studentAttempts = studentAttemptManager.getAttemptByTestId(test->getId(), count);
+            for (int i = 0; i < count; i++)
+            {
+                StudentAttempt *studentAttempt = studentAttempts + i;
+                if (studentAttempt == nullptr)
+                {
+                    qDebug() << "Student attempt not found. Please try again!";
+                    continue;
+                }
+                out << QString::fromStdString(studentAttempt->getStudentId()) << ", "
+                    << QString::fromStdString(managerStudent.getNameById(studentAttempt->getStudentId())) << ", "
+                    << QString::fromStdString(studentAttempt->getStartsAt()) << ", "
+                    << QString::fromStdString(studentAttempt->getFinishedAt()) << ", "
+                    << QString::number(test->getTotalQuestion()) << ", "
+                    << QString::number(studentAttempt->getCorrectAnswer()) << ", "
+                    << QString::number((studentAttempt->getCorrectAnswer() * 10.0) / test->getTotalQuestion(), 'f', 2) << Qt::endl;
+            }
+            file.close();
+            QMessageBox::information(this, "File Saved", "File saved successfully!");
+        }
+        else
+        {
+            QMessageBox::warning(this, "File Error", "Unable to open file for writing.");
+        }
+    }
 }
 
 void MainWindow::detailsStudentAttempt(StudentAttempt *studentAttempt)
@@ -1023,4 +1139,54 @@ void MainWindow::detailsStudentAttempt(StudentAttempt *studentAttempt)
     }
     table->setEditTriggers(QAbstractItemView::NoEditTriggers); // Prevent editing
     table->setSelectionMode(QAbstractItemView::NoSelection);   // Prevent selection
+
+    disconnect(ui->btnGenerateFile_2, &QPushButton::clicked, nullptr, nullptr);
+    connect(ui->btnGenerateFile_2, &QPushButton::clicked, this, [this, studentAttempt]()
+            { 
+                QString filePath = QFileDialog::getSaveFileName(
+                        nullptr,                           // Parent widget (nullptr nếu không có)
+                        "Chọn vị trí lưu file",            // Tiêu đề của hộp thoại
+                        QDir::homePath(),                  // Thư mục mặc định (thư mục Home của người dùng)
+                        "CSV Files (*.csv);;All Files (*)" // Bộ lọc định dạng file
+                    );
+
+                    if (!filePath.isEmpty())
+                    {
+                        QFile file(filePath);
+                        if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+                        {
+                            QTextStream out(&file);
+                            // Write data
+                            out << "STUDENT ATTEMPT DETAILS" << Qt::endl;
+                            out << "Student ID: " << QString::fromStdString(studentAttempt->getStudentId()) << Qt::endl;
+                            out << "Test ID: " << QString::fromStdString(studentAttempt->getTestId()) << Qt::endl;
+                            out << "Starts At: " << QString::fromStdString(studentAttempt->getStartsAt()) << Qt::endl;
+                            out << "Ends At: " << QString::fromStdString(studentAttempt->getFinishedAt()) << Qt::endl;
+                            out << "Number of Questions: " << QString::number(studentAttempt->getTotalQuestions()) << Qt::endl;
+                            out << "Correct Answer: " << QString::number(studentAttempt->getCorrectAnswer()) << Qt::endl
+                                << Qt::endl;
+
+                            out << "Question ID, Question, Your Answer, Correct Answer" << Qt::endl;
+                            for (int i = 0; i < studentAttempt->getTotalQuestions(); i++)
+                            {
+                                Question *tmpQuestion = questionBankManager.getQuestionById(studentAttempt->getQuestionId(i));
+                                out << QString::fromStdString(tmpQuestion->getId()) << ", "
+                                    << QString::fromStdString(tmpQuestion->getQuestionText()) << ", ";
+                                if (studentAttempt->getStudentAnswer(i) == 0)
+                                {
+                                    out << "x, ";
+                                }
+                                else
+                                {
+                                    out << QString::fromStdString(tmpQuestion->getOption(studentAttempt->getStudentAnswer(i) - 1)) << ", ";
+                                }
+                                out << QString::fromStdString(tmpQuestion->getOption(tmpQuestion->getCorrectAnswerId() - 1)) << Qt::endl;
+                            }
+                            file.close();
+                            QMessageBox::information(this, "File Saved", "File saved successfully!");
+                        }
+                        else
+                        {
+                            QMessageBox::warning(this, "File Error", "Unable to open file for writing.");
+                        }} });
 }
