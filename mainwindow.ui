@@ -953,7 +953,7 @@ QPushButton:pressed {
        <rect>
         <x>230</x>
         <y>-10</y>
-        <width>641</width>
+        <width>651</width>
         <height>621</height>
        </rect>
       </property>
@@ -1263,8 +1263,8 @@ QPushButton:pressed {
         <rect>
          <x>100</x>
          <y>50</y>
-         <width>441</width>
-         <height>131</height>
+         <width>431</width>
+         <height>41</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -1280,32 +1280,6 @@ QPushButton:pressed {
             </property>
             <property name="text">
              <string>Chapter: </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_20">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>Number Of Options</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_21">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>Correct Answer iD (from 0 to n)</string>
             </property>
            </widget>
           </item>
@@ -1330,32 +1304,6 @@ color: black;</string>
               <string>New Item</string>
              </property>
             </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="txtAddNewQuestionNumber">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #F8F8F8;
-	color: black;
-}</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="txtEditProfilePassword_2">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #F8F8F8;
-	color: black;
-}</string>
-            </property>
            </widget>
           </item>
          </layout>
@@ -1435,50 +1383,11 @@ QPushButton:pressed {
         <string>Add</string>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="plainTextEdit">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>280</y>
-         <width>441</width>
-         <height>191</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* CSS cho QPlainTextEdit */
-QPlainTextEdit {
-    background-color: #F8F8F8;   /* Màu nền sáng */
-    color: #333333;              /* Màu chữ đen */
-    border: 1px solid #888888;   /* Viền xám */
-    border-radius: 8px;          /* Bo góc */
-    padding: 10px;               /* Khoảng cách bên trong */
-    font-size: 14px;             /* Kích thước chữ */
-    font-family: Arial, sans-serif; /* Phông chữ */
-}
-
-/* Hiệu ứng khi QPlainTextEdit được focus (click vào để nhập liệu) */
-QPlainTextEdit:focus {
-    border: 1px solid #007bff;   /* Viền màu xanh khi focus */
-    background-color: #ffffff;   /* Màu nền sáng hơn khi focus */
-}
-
-/* Hiệu ứng khi QPlainTextEdit bị disable */
-QPlainTextEdit:disabled {
-    background-color: #e9ecef;   /* Màu nền xám nhạt khi bị khóa */
-    color: #6c757d;              /* Màu chữ xám khi bị khóa */
-    border: 1px solid #ced4da;   /* Viền xám nhạt khi bị khóa */
-}
-</string>
-       </property>
-       <property name="plainText">
-        <string/>
-       </property>
-      </widget>
       <widget class="QPlainTextEdit" name="plainTextEditQuestionTest">
        <property name="geometry">
         <rect>
-         <x>300</x>
-         <y>190</y>
+         <x>290</x>
+         <y>110</y>
          <width>235</width>
          <height>85</height>
         </rect>
@@ -1514,7 +1423,7 @@ QPlainTextEdit:disabled {
        <property name="geometry">
         <rect>
          <x>100</x>
-         <y>190</y>
+         <y>130</y>
          <width>193</width>
          <height>47</height>
         </rect>
@@ -1529,6 +1438,279 @@ QPlainTextEdit:disabled {
         <string>Question Text: </string>
        </property>
       </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>240</y>
+         <width>48</width>
+         <height>231</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_11">
+        <item>
+         <widget class="QRadioButton" name="radioButton_3">
+          <property name="styleSheet">
+           <string notr="true">QRadioButton {
+    spacing: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+}
+
+QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string>A.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_2">
+          <property name="styleSheet">
+           <string notr="true">QRadioButton {
+    spacing: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+}
+
+QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string>B.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton">
+          <property name="styleSheet">
+           <string notr="true">QRadioButton {
+    spacing: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+}
+
+QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string>C.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_4">
+          <property name="styleSheet">
+           <string notr="true">QRadioButton {
+    spacing: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+}
+
+QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string>D.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>240</y>
+         <width>371</width>
+         <height>231</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_12">
+        <item>
+         <widget class="QLineEdit" name="lineEdit_2">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+	color: black;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_3">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+color: black;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+color: black;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_4">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+color: black;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <zorder>horizontalLayoutWidget_5</zorder>
+      <zorder>btnAddNewQuestionBack</zorder>
+      <zorder>btnAddNewQuestionAdd</zorder>
+      <zorder>label_19</zorder>
+      <zorder>verticalLayoutWidget_2</zorder>
+      <zorder>verticalLayoutWidget_3</zorder>
+      <zorder>plainTextEditQuestionTest</zorder>
      </widget>
      <widget class="QGroupBox" name="groupBoxDetailsQuestion">
       <property name="geometry">
@@ -1602,7 +1784,7 @@ QPushButton:pressed {
          <x>100</x>
          <y>50</y>
          <width>441</width>
-         <height>131</height>
+         <height>51</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -1618,32 +1800,6 @@ QPushButton:pressed {
             </property>
             <property name="text">
              <string>Chapter: </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_24">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>Number Of Options</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_25">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: #444;
-    font-size: 14px;
-}</string>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Correct Answer ID &lt;/span&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;(from 0 to n - 1)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -1668,32 +1824,6 @@ color: black;</string>
               <string>New Item</string>
              </property>
             </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="txtAddNewQuestionNumber_2">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #F8F8F8;
-	color: black;
-}</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="txtEditProfilePassword_3">
-            <property name="styleSheet">
-             <string notr="true">QLineEdit {
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #F8F8F8;
-	color: black;
-}</string>
-            </property>
            </widget>
           </item>
          </layout>
@@ -1736,50 +1866,11 @@ QPushButton:pressed {
         <string>Back</string>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="plainTextEdit_2">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>310</y>
-         <width>441</width>
-         <height>191</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* CSS cho QPlainTextEdit */
-QPlainTextEdit {
-    background-color: #F8F8F8;   /* Màu nền sáng */
-    color: #333333;              /* Màu chữ đen */
-    border: 1px solid #888888;   /* Viền xám */
-    border-radius: 8px;          /* Bo góc */
-    padding: 10px;               /* Khoảng cách bên trong */
-    font-size: 14px;             /* Kích thước chữ */
-    font-family: Arial, sans-serif; /* Phông chữ */
-}
-
-/* Hiệu ứng khi QPlainTextEdit được focus (click vào để nhập liệu) */
-QPlainTextEdit:focus {
-    border: 1px solid #007bff;   /* Viền màu xanh khi focus */
-    background-color: #ffffff;   /* Màu nền sáng hơn khi focus */
-}
-
-/* Hiệu ứng khi QPlainTextEdit bị disable */
-QPlainTextEdit:disabled {
-    background-color: #e9ecef;   /* Màu nền xám nhạt khi bị khóa */
-    color: #6c757d;              /* Màu chữ xám khi bị khóa */
-    border: 1px solid #ced4da;   /* Viền xám nhạt khi bị khóa */
-}
-</string>
-       </property>
-       <property name="plainText">
-        <string/>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_23">
        <property name="geometry">
         <rect>
          <x>100</x>
-         <y>210</y>
+         <y>130</y>
          <width>180</width>
          <height>44</height>
         </rect>
@@ -1798,7 +1889,7 @@ QPlainTextEdit:disabled {
        <property name="geometry">
         <rect>
          <x>290</x>
-         <y>190</y>
+         <y>120</y>
          <width>251</width>
          <height>85</height>
         </rect>
@@ -1830,6 +1921,272 @@ QPlainTextEdit:disabled {
 </string>
        </property>
       </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>250</y>
+         <width>48</width>
+         <height>231</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_13">
+        <item>
+         <widget class="QRadioButton" name="radioButton_5">
+          <property name="styleSheet">
+           <string notr="true">QRadioButton {
+    spacing: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+}
+
+QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string>A.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_6">
+          <property name="styleSheet">
+           <string notr="true">QRadioButton {
+    spacing: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+}
+
+QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string>B.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_7">
+          <property name="styleSheet">
+           <string notr="true">QRadioButton {
+    spacing: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+}
+
+QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string>C.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_8">
+          <property name="styleSheet">
+           <string notr="true">QRadioButton {
+    spacing: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #888888;
+    background-color: #ffffff;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+}
+
+QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string>D.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>250</y>
+         <width>371</width>
+         <height>231</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_14">
+        <item>
+         <widget class="QLineEdit" name="lineEdit_5">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+	color: black;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_6">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+color: black;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_7">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+color: black;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_8">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #888888;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+color: black;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background-color: #ffffff;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
      <widget class="QGroupBox" name="groupBoxTestDetails">
       <property name="geometry">
@@ -1858,10 +2215,47 @@ QPlainTextEdit:disabled {
        <property name="geometry">
         <rect>
          <x>35</x>
-         <y>61</y>
+         <y>91</y>
          <width>581</width>
-         <height>531</height>
+         <height>501</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnGenerateFile">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>40</y>
+         <width>141</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #28a745;  /* Màu xanh lá */
+    color: white;               /* Màu chữ trắng */
+    border-radius: 8px;         /* Bo góc */
+    padding: 10px 20px;         /* Khoảng cách giữa chữ và viền nút */
+    border: none;               /* Bỏ viền */
+    font-size: 14px;            /* Kích thước chữ */
+    font-weight: bold;          /* Chữ đậm */
+}
+
+/* Hiệu ứng hover (khi di chuột vào nút Add) */
+QPushButton:hover {
+    background-color: #218838;  /* Màu xanh lá đậm hơn khi hover */
+    cursor: pointer;            /* Con trỏ chuột chuyển thành hình tay */
+}
+
+/* Hiệu ứng khi bấm vào nút Add */
+QPushButton:pressed {
+    background-color: #1e7e34;  /* Màu xanh lá đậm khi nhấn */
+    padding-left: 12px;         /* Tạo hiệu ứng nút lún xuống */
+    padding-top: 12px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Generate file</string>
        </property>
       </widget>
      </widget>
@@ -1892,21 +2286,58 @@ QPlainTextEdit:disabled {
        <property name="geometry">
         <rect>
          <x>15</x>
-         <y>61</y>
+         <y>91</y>
          <width>631</width>
-         <height>481</height>
+         <height>501</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnGenerateFile_2">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>40</y>
+         <width>141</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #28a745;  /* Màu xanh lá */
+    color: white;               /* Màu chữ trắng */
+    border-radius: 8px;         /* Bo góc */
+    padding: 10px 20px;         /* Khoảng cách giữa chữ và viền nút */
+    border: none;               /* Bỏ viền */
+    font-size: 14px;            /* Kích thước chữ */
+    font-weight: bold;          /* Chữ đậm */
+}
+
+/* Hiệu ứng hover (khi di chuột vào nút Add) */
+QPushButton:hover {
+    background-color: #218838;  /* Màu xanh lá đậm hơn khi hover */
+    cursor: pointer;            /* Con trỏ chuột chuyển thành hình tay */
+}
+
+/* Hiệu ứng khi bấm vào nút Add */
+QPushButton:pressed {
+    background-color: #1e7e34;  /* Màu xanh lá đậm khi nhấn */
+    padding-left: 12px;         /* Tạo hiệu ứng nút lún xuống */
+    padding-top: 12px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Generate file</string>
        </property>
       </widget>
      </widget>
      <zorder>groupBoxDetailStudentAttempt</zorder>
+     <zorder>groupBoxAddNewTest</zorder>
+     <zorder>groupBoxAddNewQuestion</zorder>
+     <zorder>groupBoxDetailsQuestion</zorder>
      <zorder>leftSidebar</zorder>
      <zorder>groupBoxEditProfile</zorder>
      <zorder>groupBoxMyQuestionBank</zorder>
-     <zorder>groupBoxAddNewQuestion</zorder>
-     <zorder>groupBoxDetailsQuestion</zorder>
      <zorder>groupBoxDashboard</zorder>
-     <zorder>groupBoxAddNewTest</zorder>
      <zorder>groupBoxTestDetails</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">

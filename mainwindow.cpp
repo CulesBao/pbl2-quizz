@@ -7,6 +7,8 @@
 #include "./src/testQuestionSelection/testQuestionSelection.h"
 #include "./src/questionBank/question.h"
 #include <QMessageBox>
+#include <QFileDialog>
+#include <QFile>
 #include "studentform.h"
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
@@ -213,7 +215,6 @@ void MainWindow::setUpTeacherDashboard()
 
             if (reply == QMessageBox::Yes)
             {
-                qDebug() << "Test deleted with ID:" << QString::fromStdString(test->getId());
                 if (!managerTest.deleteTestById(test->getId()))
                     QMessageBox::warning(this, "Delete Test", "Failed to delete test. Please try again!");
                 else
@@ -477,7 +478,6 @@ void MainWindow::on_btnMyQuestionBank_clicked()
 
     int count = 0;
     Question *questions = questionBankManager.getQuestionByTeacherId(logged.getId(), count);
-    qDebug() << "Count:" << count;
     if (count == 0)
     {
         qDebug() << "No question found for teacher ID:" << QString::fromStdString(logged.getId());
@@ -552,7 +552,6 @@ void MainWindow::on_btnMyQuestionBank_clicked()
 
                     if (reply == QMessageBox::Yes)
                     {
-                        qDebug() << "Question deleted with ID:" << QString::fromStdString(question->getId());
                         if (!questionBankManager.deleteQuestion(question->getId()))
                             QMessageBox::warning(this, "Delete Question", "Failed to delete question. Please try again!");
                         else
@@ -586,14 +585,27 @@ void MainWindow::on_btnMyQuestionBankAddNewQuestion_clicked()
         cmbChapter->addItem(QString::fromStdString(chapter->getName()));
         cmbChapter->setStyleSheet("color: black;");
     }
-    QLineEdit *txt;
-    txt = ui->txtAddNewQuestionNumber;
-    txt->clear();
-    txt = ui->txtEditProfilePassword_2;
-    txt->clear();
-    QPlainTextEdit *txtQuestion = ui->plainTextEdit;
+
+    QPlainTextEdit *txtQuestion = ui->plainTextEditQuestionTest;
     txtQuestion->clear();
-    txtQuestion->setPlaceholderText("Please write your question options here. Enter when ending an option...");
+
+    QRadioButton *radioButton = ui->radioButton;
+    radioButton->setChecked(false);
+    radioButton = ui->radioButton_2;
+    radioButton->setChecked(false);
+    radioButton = ui->radioButton_3;
+    radioButton->setChecked(false);
+    radioButton = ui->radioButton_4;
+    radioButton->setChecked(false);
+
+    QLineEdit *lineEdit = ui->lineEdit;
+    lineEdit->clear();
+    lineEdit = ui->lineEdit_2;
+    lineEdit->clear();
+    lineEdit = ui->lineEdit_3;
+    lineEdit->clear();
+    lineEdit = ui->lineEdit_4;
+    lineEdit->clear();
 }
 
 void MainWindow::on_btnAddNewQuestionBack_clicked()
@@ -616,23 +628,46 @@ void MainWindow::on_btnAddNewQuestionBack_clicked()
 
 void MainWindow::on_btnAddNewQuestionAdd_clicked()
 {
-    QString qOptions = ui->plainTextEdit->toPlainText();
     QString qChapter = ui->cmbChapter->currentText();
-    QString qNumberOfOptions = ui->txtAddNewQuestionNumber->text();
-    QString qCorrectAnswer = ui->txtEditProfilePassword_2->text();
-    QPlainTextEdit *txtQuestion = ui->plainTextEditQuestionTest;
 
-    string options = qOptions.toStdString();
     string chapter = qChapter.toStdString();
-    int numberOfOptions = qNumberOfOptions.toInt();
-    int correctAnswer = qCorrectAnswer.toInt();
-    string question = txtQuestion->toPlainText().toStdString();
-    string optionsArr[numberOfOptions];
-    for (int i = 0; i < numberOfOptions; i++)
+    string question = ui->plainTextEditQuestionTest->toPlainText().toStdString();
+    string optionsArr[4];
+
+    QLineEdit *lineEdit = ui->lineEdit;
+    optionsArr[0] = lineEdit->text().toStdString();
+    lineEdit = ui->lineEdit_2;
+    optionsArr[1] = lineEdit->text().toStdString();
+    lineEdit = ui->lineEdit_3;
+    optionsArr[2] = lineEdit->text().toStdString();
+    lineEdit = ui->lineEdit_4;
+    optionsArr[3] = lineEdit->text().toStdString();
+    int numberOfOptions = 4;
+
+    int correctAnswer = 0;
+    if (ui->radioButton_2->isChecked())
     {
-        optionsArr[i] = options.substr(0, options.find("\n"));
-        options = options.substr(options.find("\n") + 1);
+        correctAnswer = 2;
     }
+    else if (ui->radioButton_3->isChecked())
+    {
+        correctAnswer = 1;
+    }
+    else if (ui->radioButton_4->isChecked())
+    {
+        correctAnswer = 4;
+    }
+    else if (ui->radioButton->isChecked())
+    {
+        correctAnswer = 3;
+    }
+
+    if (correctAnswer == 0)
+    {
+        QMessageBox::warning(this, "Add New Question", "Please select correct answer. Please try again!");
+        return;
+    }
+
     string chapterId = chapterManager.getChapterIdByName(chapter);
 
     if (questionBankManager.addQuestion(logged.getId(), chapterId, question, numberOfOptions, optionsArr, correctAnswer))
@@ -682,41 +717,85 @@ void MainWindow::showQuestionDetails(string questionId)
             cmbChapter->setCurrentIndex(i);
         }
     }
-
-    QLineEdit *txt;
-    txt = ui->txtAddNewQuestionNumber_2;
-    txt->setText(QString::number(question->getNumberOfOptions()));
-    txt = ui->txtEditProfilePassword_3;
-    txt->setText(QString::number(question->getCorrectAnswerId()));
-    QPlainTextEdit *txtEditProfilePassword_3 = ui->plainTextEdit_2;
-    txtEditProfilePassword_3->clear();
     QPlainTextEdit *qQuestionTest = ui->plainTextEditQuestionTest_2;
     qQuestionTest->clear();
     qQuestionTest->setPlainText(QString::fromStdString(question->getQuestionText()));
-    for (int i = 0; i < question->getNumberOfOptions(); i++)
+
+    QRadioButton *radioButton = ui->radioButton;
+    radioButton->setChecked(false);
+    radioButton = ui->radioButton_2;
+    radioButton->setChecked(false);
+    radioButton = ui->radioButton_3;
+    radioButton->setChecked(false);
+    radioButton = ui->radioButton_4;
+    radioButton->setChecked(false);
+
+    switch (question->getCorrectAnswerId())
     {
-        txtEditProfilePassword_3->appendPlainText(QString::fromStdString(question->getOption(i)));
+    case 1:
+        radioButton = ui->radioButton_5;
+        radioButton->setChecked(true);
+        break;
+    case 2:
+        radioButton = ui->radioButton_6;
+        radioButton->setChecked(true);
+        break;
+    case 3:
+        radioButton = ui->radioButton_7;
+        radioButton->setChecked(true);
+        break;
+    case 4:
+        radioButton = ui->radioButton_8;
+        radioButton->setChecked(true);
+        break;
+    default:
+        break;
     }
+
+    QLineEdit *lineEdit = ui->lineEdit_5;
+    lineEdit->setText(QString::fromStdString(question->getOption(0)));
+    lineEdit = ui->lineEdit_6;
+    lineEdit->setText(QString::fromStdString(question->getOption(1)));
+    lineEdit = ui->lineEdit_7;
+    lineEdit->setText(QString::fromStdString(question->getOption(2)));
+    lineEdit = ui->lineEdit_8;
+    lineEdit->setText(QString::fromStdString(question->getOption(3)));
+
     connect(ui->btnAddNewQuestionAdd_2, &QPushButton::clicked, this, [this, question, qQuestionTest]()
             {
-                QString qOptions = ui->plainTextEdit_2->toPlainText();
                 QString qChapter = ui->cmbChapter_2->currentText();
                 QPlainTextEdit *txtQuestion = ui->plainTextEditQuestionTest_2;
-                QString qNumberOfOptions = ui->txtAddNewQuestionNumber_2->text();
-                QString qCorrectAnswer = ui->txtEditProfilePassword_3->text();
 
-                string options = qOptions.toStdString();
                 string chapter = qChapter.toStdString();
                 string questionText = qQuestionTest->toPlainText().toStdString();
-                int numberOfOptions = qNumberOfOptions.toInt();
-                int correctAnswer = qCorrectAnswer.toInt();
-
-                string optionsArr[numberOfOptions];
-                for (int i = 0; i < numberOfOptions; i++)
+                int numberOfOptions = 4;
+                int correctAnswer = 0;
+                if (ui->radioButton_5->isChecked())
                 {
-                    optionsArr[i] = options.substr(0, options.find("\n"));
-                    options = options.substr(options.find("\n") + 1);
+                    correctAnswer = 1;
                 }
+                else if (ui->radioButton_6->isChecked())
+                {
+                    correctAnswer = 2;
+                }
+                else if (ui->radioButton_7->isChecked())
+                {
+                    correctAnswer = 3;
+                }
+                else if (ui->radioButton_8->isChecked())
+                {
+                    correctAnswer = 4;
+                }
+                string optionsArr[numberOfOptions];
+                QLineEdit *lineEdit = ui->lineEdit_5;
+                optionsArr[0] = lineEdit->text().toStdString();
+                lineEdit = ui->lineEdit_6;
+                optionsArr[1] = lineEdit->text().toStdString();
+                lineEdit = ui->lineEdit_7;
+                optionsArr[2] = lineEdit->text().toStdString();
+                lineEdit = ui->lineEdit_8;
+                optionsArr[3] = lineEdit->text().toStdString();
+
                 string chapterId = chapterManager.getChapterIdByName(chapter);
 
                 if (questionBankManager.updateQuestion(question->getId(), logged.getId(), chapterId, questionText, numberOfOptions, optionsArr, correctAnswer))
@@ -751,6 +830,10 @@ void MainWindow::on_btnAddNewQuestionBack_2_clicked()
 void MainWindow::on_btnAddNewQuestionAdd_2_clicked()
 {
 }
+
+void MainWindow::on_btnGenerateFile_clicked()
+{
+}
 void MainWindow::setUpTestDetails(Test *test)
 {
     QGroupBox *grBox = ui->groupBoxTestDetails;
@@ -770,18 +853,19 @@ void MainWindow::setUpTestDetails(Test *test)
 
     QTableWidget *table = ui->tbTestDetails;
     table->clearContents();
-    table->setColumnCount(8);
+    table->setColumnCount(9);
     table->setRowCount(0);
 
-    table->setHorizontalHeaderLabels({"Student ID", "Fullname", "Starts At", "Ends At", "Number of Question", "Correct Answer", "Details", "Delete"});
+    table->setHorizontalHeaderLabels({"Student ID", "Fullname", "Starts At", "Ends At", "Number of Question", "Correct Answer", "Score", "Details", "Delete"});
     table->setColumnWidth(0, 100); // Student ID
     table->setColumnWidth(1, 200); // Fullname
     table->setColumnWidth(2, 150); // Starts At
     table->setColumnWidth(3, 150); // Ends At
     table->setColumnWidth(4, 150); // Number of Question
     table->setColumnWidth(5, 150); // Correct Answer
-    table->setColumnWidth(6, 60);  // Details
-    table->setColumnWidth(7, 60);  // Delete
+    table->setColumnWidth(6, 60);  // Score
+    table->setColumnWidth(7, 60);  // Details
+    table->setColumnWidth(8, 60);  // Delete
 
     QHeaderView *header = table->horizontalHeader();
     header->setStyleSheet("QHeaderView::section { background-color: black; color: white; }");
@@ -811,12 +895,13 @@ void MainWindow::setUpTestDetails(Test *test)
         table->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(studentAttempt->getFinishedAt())));
         table->setItem(i, 4, new QTableWidgetItem(QString::number(test->getTotalQuestion())));
         table->setItem(i, 5, new QTableWidgetItem(QString::number(studentAttempt->getCorrectAnswer())));
-        for (int j = 0; j < 6; j++)
+        table->setItem(i, 6, new QTableWidgetItem(QString::number((studentAttempt->getCorrectAnswer() * 10.0) / test->getTotalQuestion(), 'f', 2)));
+        for (int j = 0; j < 7; j++)
         {
             table->item(i, j)->setTextAlignment(Qt::AlignCenter);
         }
         QPushButton *btnDetails = new QPushButton("Details");
-        table->setCellWidget(i, 6, btnDetails);
+        table->setCellWidget(i, 7, btnDetails);
         btnDetails->setStyleSheet(
             "padding: 5px 10px;"
             "font-size: 10px;"
@@ -836,7 +921,7 @@ void MainWindow::setUpTestDetails(Test *test)
                 { detailsStudentAttempt(studentAttempt); });
 
         QPushButton *btnDelete = new QPushButton("Delete");
-        table->setCellWidget(i, 7, btnDelete);
+        table->setCellWidget(i, 8, btnDelete);
         btnDelete->setStyleSheet(
             "padding: 5px 10px;"
             "font-size: 10px;"
@@ -861,12 +946,121 @@ void MainWindow::setUpTestDetails(Test *test)
 
                     if (reply == QMessageBox::Yes)
                     {
-                        qDebug() << "Student attempt deleted with ID:" << QString::fromStdString(studentAttempt->getId());
                         if (!studentAttemptManager.deleteAttempt(studentAttempt->getId()))
                             QMessageBox::warning(this, "Delete Attempt", "Failed to delete attempt. Please try again!");
                         else
                             ui->tbTestDetails->removeRow(i);
                     }; });
+    }
+    disconnect(ui->btnGenerateFile, &QPushButton::clicked, nullptr, nullptr);
+    connect(ui->btnGenerateFile, &QPushButton::clicked, this, [this, test]()
+            { 
+                qDebug() << test->getId();
+                QString filePath = QFileDialog::getSaveFileName(
+                        nullptr,                           // Parent widget (nullptr nếu không có)
+                        "Chọn vị trí lưu file",            // Tiêu đề của hộp thoại
+                        QDir::homePath(),                  // Thư mục mặc định (thư mục Home của người dùng)
+                        "CSV Files (*.csv);;All Files (*)" // Bộ lọc định dạng file
+                    );
+
+                    if (!filePath.isEmpty())
+                    {
+                        QFile file(filePath);
+                        if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+                        {
+                            QTextStream out(&file);
+                            // Write data
+                            out << "TEST DETAILS" << Qt::endl;
+                            out << "Test ID: " << QString::fromStdString(test->getId()) << Qt::endl;
+                            out << "Title: " << QString::fromStdString(test->getTitle()) << Qt::endl;
+                            out << "Number of Questions: " << QString::number(test->getTotalQuestion()) << Qt::endl;
+                            out << "Password: " << QString::fromStdString(test->getPassword()) << Qt::endl;
+                            out << "Duration: " << QString::number(test->getDuration()) << " minutes" << Qt::endl;
+                            out << "Starts At: " << QString::fromStdString(test->getStartsAt()) << Qt::endl;
+                            out << "Ends At: " << QString::fromStdString(test->getEndsAt()) << Qt::endl
+                                << Qt::endl;
+
+                            out << "Student ID, Fullname, Starts At, Ends At, Number of Question, Correct Answer, Score" << Qt::endl;
+                            int count = 0;
+                            StudentAttempt *studentAttempts = studentAttemptManager.getAttemptByTestId(test->getId(), count);
+                            for (int i = 0; i < count; i++)
+                            {
+                                StudentAttempt *studentAttempt = studentAttempts + i;
+                                if (studentAttempt == nullptr)
+                                {
+                                    qDebug() << "Student attempt not found. Please try again!";
+                                    continue;
+                                }
+                                out << QString::fromStdString(studentAttempt->getStudentId()) << ", "
+                                    << QString::fromStdString(managerStudent.getNameById(studentAttempt->getStudentId())) << ", "
+                                    << QString::fromStdString(studentAttempt->getStartsAt()) << ", "
+                                    << QString::fromStdString(studentAttempt->getFinishedAt()) << ", "
+                                    << QString::number(test->getTotalQuestion()) << ", "
+                                    << QString::number(studentAttempt->getCorrectAnswer()) << ", "
+                                    << QString::number((studentAttempt->getCorrectAnswer() * 10.0) / test->getTotalQuestion(), 'f', 2) << Qt::endl;
+                            }
+                            file.close();
+                            QMessageBox::information(this, "File Saved", "File saved successfully!");
+                        }
+                        else
+                        {
+                            QMessageBox::warning(this, "File Error", "Unable to open file for writing.");
+                        }
+                    } });
+}
+
+void MainWindow::btnGenerateFile_clicked(Test *test)
+{
+    QString filePath = QFileDialog::getSaveFileName(
+        nullptr,                           // Parent widget (nullptr nếu không có)
+        "Chọn vị trí lưu file",            // Tiêu đề của hộp thoại
+        QDir::homePath(),                  // Thư mục mặc định (thư mục Home của người dùng)
+        "CSV Files (*.csv);;All Files (*)" // Bộ lọc định dạng file
+    );
+
+    if (!filePath.isEmpty())
+    {
+        QFile file(filePath);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+        {
+            QTextStream out(&file);
+            // Write data
+            out << "TEST DETAILS" << Qt::endl;
+            out << "Test ID: " << QString::fromStdString(test->getId()) << Qt::endl;
+            out << "Title: " << QString::fromStdString(test->getTitle()) << Qt::endl;
+            out << "Number of Questions: " << QString::number(test->getTotalQuestion()) << Qt::endl;
+            out << "Password: " << QString::fromStdString(test->getPassword()) << Qt::endl;
+            out << "Duration: " << QString::number(test->getDuration()) << " minutes" << Qt::endl;
+            out << "Starts At: " << QString::fromStdString(test->getStartsAt()) << Qt::endl;
+            out << "Ends At: " << QString::fromStdString(test->getEndsAt()) << Qt::endl
+                << Qt::endl;
+
+            out << "Student ID, Fullname, Starts At, Ends At, Number of Question, Correct Answer, Score" << Qt::endl;
+            int count = 0;
+            StudentAttempt *studentAttempts = studentAttemptManager.getAttemptByTestId(test->getId(), count);
+            for (int i = 0; i < count; i++)
+            {
+                StudentAttempt *studentAttempt = studentAttempts + i;
+                if (studentAttempt == nullptr)
+                {
+                    qDebug() << "Student attempt not found. Please try again!";
+                    continue;
+                }
+                out << QString::fromStdString(studentAttempt->getStudentId()) << ", "
+                    << QString::fromStdString(managerStudent.getNameById(studentAttempt->getStudentId())) << ", "
+                    << QString::fromStdString(studentAttempt->getStartsAt()) << ", "
+                    << QString::fromStdString(studentAttempt->getFinishedAt()) << ", "
+                    << QString::number(test->getTotalQuestion()) << ", "
+                    << QString::number(studentAttempt->getCorrectAnswer()) << ", "
+                    << QString::number((studentAttempt->getCorrectAnswer() * 10.0) / test->getTotalQuestion(), 'f', 2) << Qt::endl;
+            }
+            file.close();
+            QMessageBox::information(this, "File Saved", "File saved successfully!");
+        }
+        else
+        {
+            QMessageBox::warning(this, "File Error", "Unable to open file for writing.");
+        }
     }
 }
 
@@ -945,4 +1139,54 @@ void MainWindow::detailsStudentAttempt(StudentAttempt *studentAttempt)
     }
     table->setEditTriggers(QAbstractItemView::NoEditTriggers); // Prevent editing
     table->setSelectionMode(QAbstractItemView::NoSelection);   // Prevent selection
+
+    disconnect(ui->btnGenerateFile_2, &QPushButton::clicked, nullptr, nullptr);
+    connect(ui->btnGenerateFile_2, &QPushButton::clicked, this, [this, studentAttempt]()
+            { 
+                QString filePath = QFileDialog::getSaveFileName(
+                        nullptr,                           // Parent widget (nullptr nếu không có)
+                        "Chọn vị trí lưu file",            // Tiêu đề của hộp thoại
+                        QDir::homePath(),                  // Thư mục mặc định (thư mục Home của người dùng)
+                        "CSV Files (*.csv);;All Files (*)" // Bộ lọc định dạng file
+                    );
+
+                    if (!filePath.isEmpty())
+                    {
+                        QFile file(filePath);
+                        if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+                        {
+                            QTextStream out(&file);
+                            // Write data
+                            out << "STUDENT ATTEMPT DETAILS" << Qt::endl;
+                            out << "Student ID: " << QString::fromStdString(studentAttempt->getStudentId()) << Qt::endl;
+                            out << "Test ID: " << QString::fromStdString(studentAttempt->getTestId()) << Qt::endl;
+                            out << "Starts At: " << QString::fromStdString(studentAttempt->getStartsAt()) << Qt::endl;
+                            out << "Ends At: " << QString::fromStdString(studentAttempt->getFinishedAt()) << Qt::endl;
+                            out << "Number of Questions: " << QString::number(studentAttempt->getTotalQuestions()) << Qt::endl;
+                            out << "Correct Answer: " << QString::number(studentAttempt->getCorrectAnswer()) << Qt::endl
+                                << Qt::endl;
+
+                            out << "Question ID, Question, Your Answer, Correct Answer" << Qt::endl;
+                            for (int i = 0; i < studentAttempt->getTotalQuestions(); i++)
+                            {
+                                Question *tmpQuestion = questionBankManager.getQuestionById(studentAttempt->getQuestionId(i));
+                                out << QString::fromStdString(tmpQuestion->getId()) << ", "
+                                    << QString::fromStdString(tmpQuestion->getQuestionText()) << ", ";
+                                if (studentAttempt->getStudentAnswer(i) == 0)
+                                {
+                                    out << "x, ";
+                                }
+                                else
+                                {
+                                    out << QString::fromStdString(tmpQuestion->getOption(studentAttempt->getStudentAnswer(i) - 1)) << ", ";
+                                }
+                                out << QString::fromStdString(tmpQuestion->getOption(tmpQuestion->getCorrectAnswerId() - 1)) << Qt::endl;
+                            }
+                            file.close();
+                            QMessageBox::information(this, "File Saved", "File saved successfully!");
+                        }
+                        else
+                        {
+                            QMessageBox::warning(this, "File Error", "Unable to open file for writing.");
+                        }} });
 }
