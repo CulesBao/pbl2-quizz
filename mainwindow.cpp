@@ -127,18 +127,17 @@ void MainWindow::setUpTeacherDashboard()
     table->setRowCount(0);
     int count = 0;
     Test *teacherTests = managerTest.getTestByTeacherId(logged.getId(), count);
-    table->setColumnCount(10);
-    table->setHorizontalHeaderLabels({"ID", "Teacher ID", "Title", "Total Question", "Duration", "Password", "Starts At", "Ends At", "Detail", "Delete"});
+    table->setColumnCount(9);
+    table->setHorizontalHeaderLabels({"ID", "Title", "Total Question", "Duration", "Password", "Starts At", "Ends At", "Detail", "Delete"});
     table->setColumnWidth(0, 70);  // ID
-    table->setColumnWidth(1, 80);  // Teacher ID
-    table->setColumnWidth(2, 120); // Title
-    table->setColumnWidth(3, 90);  // Total Question
-    table->setColumnWidth(4, 60);  // Duration
-    table->setColumnWidth(5, 80);  // Password
-    table->setColumnWidth(8, 160); // Starts At
-    table->setColumnWidth(7, 160); // Ends At
-    table->setColumnWidth(8, 60);  // Detail
-    table->setColumnWidth(9, 60);  // Delete
+    table->setColumnWidth(1, 120); // Title
+    table->setColumnWidth(2, 90);  // Total Question
+    table->setColumnWidth(3, 60);  // Duration
+    table->setColumnWidth(4, 80);  // Password
+    table->setColumnWidth(5, 160); // Starts At
+    table->setColumnWidth(6, 160); // Ends At
+    table->setColumnWidth(7, 60);  // Detail
+    table->setColumnWidth(8, 60);  // Delete
     table->setRowCount(count);
     QHeaderView *header = table->horizontalHeader();
     header->setStyleSheet("QHeaderView::section { background-color: black; color: white; }");
@@ -156,21 +155,20 @@ void MainWindow::setUpTeacherDashboard()
         }
 
         table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(test->getId())));
-        table->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(test->getTeacherId())));
-        table->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(test->getTitle())));
-        table->setItem(i, 3, new QTableWidgetItem(QString::number(test->getTotalQuestion())));
-        table->setItem(i, 4, new QTableWidgetItem(QString::number(test->getDuration())));
-        table->setItem(i, 5, new QTableWidgetItem(QString::fromStdString(test->getPassword())));
-        table->setItem(i, 6, new QTableWidgetItem(QString::fromStdString(test->getStartsAt())));
-        table->setItem(i, 7, new QTableWidgetItem(QString::fromStdString(test->getEndsAt())));
-        for (int j = 0; j < 8; j++)
+        table->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(test->getTitle())));
+        table->setItem(i, 2, new QTableWidgetItem(QString::number(test->getTotalQuestion())));
+        table->setItem(i, 3, new QTableWidgetItem(QString::number(test->getDuration())));
+        table->setItem(i, 4, new QTableWidgetItem(QString::fromStdString(test->getPassword())));
+        table->setItem(i, 5, new QTableWidgetItem(QString::fromStdString(test->getStartsAt())));
+        table->setItem(i, 6, new QTableWidgetItem(QString::fromStdString(test->getEndsAt())));
+        for (int j = 0; j < 7; j++)
         {
             table->item(i, j)->setTextAlignment(Qt::AlignCenter);
             table->item(i, j)->setBackground(test->getStatus() == 0 ? QBrush(QColor("#ffc107")) : test->getStatus() == 1 ? QBrush(QColor("#17a2b8"))
                                                                                                                          : QBrush(QColor("#28a745")));
         }
         QPushButton *btnDetails = new QPushButton("Details");
-        table->setCellWidget(i, 8, btnDetails);
+        table->setCellWidget(i, 7, btnDetails);
         btnDetails->setStyleSheet(
             "padding: 5px 10px;"
             "font-size: 10px;"
@@ -187,7 +185,7 @@ void MainWindow::setUpTeacherDashboard()
             "cursor: pointer;"
             "outline: none;");
         QPushButton *btnDelete = new QPushButton("Delete");
-        table->setCellWidget(i, 9, btnDelete);
+        table->setCellWidget(i, 8, btnDelete);
         btnDelete->setStyleSheet(
             "padding: 5px 10px;"
             "font-size: 10px;"
@@ -324,6 +322,17 @@ void MainWindow::on_btnAddNewTextNext_clicked()
     QDateTime qEndsAt = ui->dtEndAt->dateTime();
     QString qstartAt = qStartsAt.toString("hh:mm:ss dd/MM/yyyy");
     QString qEndAt = qEndsAt.toString("hh:mm:ss dd/MM/yyyy");
+
+    if (qStartsAt >= qEndsAt)
+    {
+        QMessageBox::warning(this, "Add New Test", "End time must be after start time. Please try again!");
+        return;
+    }
+    if (qStartsAt < QDateTime::currentDateTime().addSecs(-60))
+    {
+        QMessageBox::warning(this, "Add New Test", "Start time must be after current time. Please try again!");
+        return;
+    }
 
     int duration = qDuration.toInt();
     string title = qTitle.toStdString();

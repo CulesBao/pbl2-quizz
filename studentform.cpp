@@ -160,6 +160,8 @@ void StudentForm::setUpTestForm(Test test)
     CountdownTimer(test.getDuration() * 60);
 
     QTableWidget *table = ui->tbQuestion;
+    table->clearContents();
+    table->setRowCount(0);
     table->setColumnCount(5);
     table->setColumnWidth(0, 45);
     table->setColumnWidth(1, 45);
@@ -168,10 +170,12 @@ void StudentForm::setUpTestForm(Test test)
     table->setColumnWidth(4, 45);
 
     table->setHorizontalHeaderLabels({"", "", "", "", ""});
-    for (int i = 0; i < test.getTotalQuestion() / 5; i++)
+    int rowCount = (test.getTotalQuestion() % 5) ? test.getTotalQuestion() / 5 + 1 : test.getTotalQuestion() / 5;
+    for (int i = 0; i < rowCount; i++)
     {
         table->insertRow(i);
-        for (int j = 0; j < 5; j++)
+        int columnCount = (i == rowCount - 1) && (test.getTotalQuestion() % 5) ? test.getTotalQuestion() % 5 : 5;
+        for (int j = 0; j < columnCount; j++)
         {
             QPushButton *button = new QPushButton(QString::number(i * 5 + j + 1));
             button->setStyleSheet("background-color: red; color: white; padding: 5px;");
@@ -335,6 +339,9 @@ void StudentForm::on_pushButton_clicked()
 
     if (reply == QMessageBox::Yes)
     {
+        // Stop the countdown timer
+        timeRemaining = 0;
+
         studentAttemptManager.setFinishedAtForLastAttempt();
         setHistoryTable();
     }

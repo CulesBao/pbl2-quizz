@@ -969,7 +969,7 @@ QPushButton:pressed {
 </string>
       </property>
       <property name="title">
-       <string>Add New Tesst</string>
+       <string>Add New Test</string>
       </property>
       <widget class="QWidget" name="horizontalLayoutWidget_3">
        <property name="geometry">
@@ -1746,7 +1746,7 @@ QLineEdit:focus {
         <rect>
          <x>450</x>
          <y>540</y>
-         <width>83</width>
+         <width>91</width>
          <height>31</height>
         </rect>
        </property>
@@ -1775,7 +1775,7 @@ QPushButton:pressed {
 }</string>
        </property>
        <property name="text">
-        <string>Add</string>
+        <string>Update</string>
        </property>
       </widget>
       <widget class="QWidget" name="horizontalLayoutWidget_6">
@@ -2331,14 +2331,14 @@ QPushButton:pressed {
       </widget>
      </widget>
      <zorder>groupBoxDetailStudentAttempt</zorder>
-     <zorder>groupBoxAddNewTest</zorder>
      <zorder>groupBoxAddNewQuestion</zorder>
-     <zorder>groupBoxDetailsQuestion</zorder>
      <zorder>leftSidebar</zorder>
      <zorder>groupBoxEditProfile</zorder>
      <zorder>groupBoxMyQuestionBank</zorder>
      <zorder>groupBoxDashboard</zorder>
      <zorder>groupBoxTestDetails</zorder>
+     <zorder>groupBoxAddNewTest</zorder>
+     <zorder>groupBoxDetailsQuestion</zorder>
     </widget>
     <widget class="QWidget" name="pageRegister">
      <widget class="QGroupBox" name="groupBox_2">
