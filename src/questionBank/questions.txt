@@ -302,3 +302,4 @@ QUE299|TEA000|CHA000|The weather today is _____ it was yesterday.|4|3|bad than|b
 ||||0|-1|
 ||||0|-1|
 QUE303|TEA000|CHA002|this is test|4|2|3|1|2|4|
+QUE304|TEA000|CHA002|Test	|4|3|C|A|B|D|

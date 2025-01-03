@@ -117,7 +117,7 @@ void TestManager::loadFromFile()
 // KTRA MAT KHAU
 bool TestManager::validatePassword(const string &password) const
 {
-    if (password.length() <= 5)
+    if (password.length() <= 3)
         return false;
     for (char c : password)
     {
@@ -151,7 +151,7 @@ bool TestManager::validateTeacherId(const string &teacherId) const
 // KTRA THOI GIAN LAM BAI
 bool TestManager::validateDuration(const int &duration) const
 {
-    return duration >= 10;
+    return duration >= 3;
 }
 
 // KTRA TIEU DE BAI THI
